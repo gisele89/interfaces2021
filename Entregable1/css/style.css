@@ -1,0 +1,100 @@
+body{
+    background-color: #fafafa;
+    align-content: center;
+    font-family: "Montserrat";
+}
+canvas{
+    background-color: white;
+    border: 1px solid grey;
+    margin: 10px;
+}
+footer, header{
+    background-color: #555555;
+    color: white;
+    text-align: center;
+    display: flex;
+}
+header{
+    margin-bottom: 10px;
+}
+footer{
+    margin-top: 10px;
+    justify-content: center;
+}
+img#logo{
+    padding-right: 20px;
+    margin-left: 10px;
+    width: 2%;
+}
+.btn{
+    background-color: white;
+    color:#555555;
+    border: 1px solid #555555;
+    border-radius: 6px;
+    padding: 10px;
+    font-family: "Montserrat";
+    transition: 0.3s;
+    margin-top:5px;
+}
+.btn:hover{
+    background-color: #555555; 
+    color:white;
+}
+#div-canvas, section, #div-filtros, #color-picker{
+    display: flex;
+}
+i{
+    margin-right:5px;
+}
+#slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    height: 5px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  #slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    border-radius: 50%;
+    background: #555555; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    transition: 0.6s;
+  }
+  #slider::-webkit-slider-thumb:hover{
+      width:25px;
+      height: 25px;
+  }
+
+  .slidecontainer p, #div-filtros p, #color-picker p{
+      color:#555555;
+  }
+  .slidecontainer, #color-picker{
+    align-items: center;
+    display: flex;
+  }
+  aside{
+      margin:10px;
+  }
+.tools{
+    margin-left: 5px;
+}
+#filtros{
+    padding: 5px;
+    border-radius: 6px;
+    color: #555555;
+    margin: 5px;
+}
+
+.slidecontainer, #div-filtros, #color-picker{
+    margin-left: 20px;
+}
+input[type="color" i]{
+    border: none;
+    background-color: white;
+}
