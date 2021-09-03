@@ -22,6 +22,15 @@
             <button id="upload" class="btn"><i class="fas fa-upload"></i>Subir imágen</button>
             <input type="file" id="imageInput" accept = "image/*">
             <button id="download" class="btn"><i class="fas fa-download"></i>Descargar imágen</button>
+            <div class="filtros">
+                <p>Filtros</p>
+                <button id="negativo" class="btn"><i class="fas fa-stop"></i>Negativo</button>
+                <button id="sepia" class="btn"><i class="fas fa-thermometer-empty"></i>Sepia</button>
+                <button id="brillo" class="btn"><i class="far fa-sun"></i>Brillo</button>
+                <button id="saturacion" class="btn"><i class="fas fa-tint"></i>Saturación</button>
+                <button id="binarizacion" class="btn"><i class="fas fa-adjust"></i>Binarización</button>
+                <button id="blur" class="btn"><i class="far fa-dot-circle"></i>Blur</button>
+            </div>
         </aside>
     </div>
     <section>
@@ -38,18 +47,6 @@
             <p>Grosor</p>
             <input id="slider" type="range" min="1" max="100" value="5">
         </div>
-        <div id="div-filtros">
-            <p>Filtros</p>
-            <select name="filtro" id="filtros">
-                <option value="negativo">Negativo</option>
-                <option value="brillo">Brillo</option>
-                <option value="saturacion">Saturación</option>
-                <option value="binarizacion">Binarización</option>
-                <option value="sepia">Sepia</option>
-                <option value="blur">Blur</option>
-            </select>
-        </div>
-
     </section>
 
     <script src="js/script.js"></script>

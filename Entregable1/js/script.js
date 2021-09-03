@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imageData.data[index + 2] = b;
         imageData.data[index + 3] = a;
     }
-    //enesta función limpio el lienzo, queda en blanco
+    //En esta función limpio el lienzo, asignando a cada pixel el color blanco
     function cleanCanvas() {
         for (let x = 0; x < width; x++) {
             for (let y = 0; y < height; y++) {
@@ -130,4 +130,36 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#imageInput").addEventListener('change', function (e) {
         uploadImage(e);
     });
+    document.querySelector("#negativo").addEventListener('click', convertToBW);
+    document.querySelector("#sepia").addEventListener('click', convertToSepia);
+
+
+    //filtros de imágen
+    function convertToBW(){
+        let imageData=ctx.getImageData(0,0, canvas.width, canvas.height);
+
+        for (let i=0;i<imageData.data.length;i+=4) {
+            let avg = (imageData.data[i]+imageData.data[i+1]+imageData.data[i+2])/3;
+        
+            imageData.data[i] = avg;
+            imageData.data[i+1] = avg;
+            imageData.data[i+2] = avg;
+        
+        }
+        ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
+    }
+
+    function convertToSepia(){
+        let imageData=ctx.getImageData(0,0, canvas.width, canvas.height);
+
+        for (let i=0;i<imageData.data.length;i+=4) {
+            let avg = (imageData.data[i]+imageData.data[i+1]+imageData.data[i+2])/3;
+        
+            imageData.data[i] = avg ;
+            imageData.data[i+1] = avg +12 ;
+            imageData.data[i+2] = avg +7;
+        
+        }
+        ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
+    }
 })

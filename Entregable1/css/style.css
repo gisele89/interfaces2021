@@ -72,7 +72,7 @@ i{
       height: 25px;
   }
 
-  .slidecontainer p, #div-filtros p, #color-picker p{
+  .slidecontainer p, .filtros p, #color-picker p{
       color:#555555;
   }
   .slidecontainer, #color-picker{
