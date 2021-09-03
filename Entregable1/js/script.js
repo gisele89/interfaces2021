@@ -9,41 +9,41 @@ document.addEventListener("DOMContentLoaded", function () {
     let rubber = false;
     let color = "black";
     let lineWidth = 5;
-
+    let draw = false;
 
     //agrego los eventos al canvas para dibujar
-    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousedown', function(e){
+        startDraw(e)
+    });
     canvas.addEventListener('mouseup', stopDraw);
     canvas.addEventListener('mousemove', function (e) {
         drawLine(canvas, e);
     });
-    let draw = false;
-
-
-    function startDraw() {
+    function startDraw(e) { 
         draw = true;
+        drawLine(canvas, e);        
     }
 
     function stopDraw() {
         draw = false;
+        ctx.beginPath();
+
     }
     //dibujo según se seleccione el lapiz o la goma
     function drawLine(canvas, e) {
-        console.log(pencil);
         if (draw && pencil) {
-            ctx.beginPath();
             color = document.querySelector("#colorpicker").value;//tomo el valor seleccionado en el color picker
             lineWidth = document.querySelector("#slider").value;//tomo el grosor seleccionado en el slider
-            ctx.lineJoin = 'round';
-            ctx.lineCap = 'round';
             ctx.lineWidth = lineWidth;
             ctx.strokeStyle = color;
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
             let position = getPosition(canvas, e);
             ctx.lineTo(position.x, position.y);
             ctx.stroke();
-            ctx.closePath();
-        } else if (draw && rubber) {
             ctx.beginPath();
+            ctx.moveTo(position.x, position.y);
+        } else if (draw && rubber) {
             ctx.lineJoin = 'round';
             ctx.lineCap = 'round';
             color = 'white';
@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let position = getPosition(canvas, e);
             ctx.lineTo(position.x, position.y);
             ctx.stroke();
-            ctx.closePath();
+            ctx.beginPath();
+            ctx.moveTo(position.x, position.y);
         }
 
     }
@@ -99,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let image = new Image();
                 image.src = e.target.result;
                 image.onload = function (ev) {
-                    let aspectRatio = image.height / image.width;
+                    let aspectRatio = image.height / image.width; //calculo el aspect ratio para no deformar la imágen
                     let scaledWidth = width
                     let scaledHeight = width * aspectRatio;
                     ctx.drawImage(image, 0, 0, scaledWidth, scaledHeight);
@@ -107,10 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
-
-function calculateAspectRatio(){
-    
-}
     // descargo la imágen del canvas
     function downloadImage() {
         let a = document.createElement('a');
