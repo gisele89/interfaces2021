@@ -47,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.lineJoin = 'round';
             ctx.lineCap = 'round';
             color = 'white';
-            lineWidth = 10;
+            lineWidth = document.querySelector("#slider").value;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = lineWidth;
             let position = getPosition(canvas, e);
             ctx.lineTo(position.x, position.y);
             ctx.stroke();
@@ -97,12 +99,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 let image = new Image();
                 image.src = e.target.result;
                 image.onload = function (ev) {
-                    ctx.drawImage(image, 0, 0);
+                    let aspectRatio = image.height / image.width;
+                    let scaledWidth = width
+                    let scaledHeight = width * aspectRatio;
+                    ctx.drawImage(image, 0, 0, scaledWidth, scaledHeight);
                 }
             }
         }
     }
- // descargo la imágen del canvas
+
+function calculateAspectRatio(){
+    
+}
+    // descargo la imágen del canvas
     function downloadImage() {
         let a = document.createElement('a');
         a.href = canvas.toDataURL();

@@ -40,6 +40,7 @@ img#logo{
     background-color: #555555; 
     color:white;
 }
+
 #div-canvas, section, #div-filtros, #color-picker{
     display: flex;
 }
