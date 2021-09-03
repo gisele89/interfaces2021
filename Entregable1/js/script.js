@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function startDraw() {
         draw = true;
-        ctx.clearRect(0, 0, width, height);
-        ctx.beginPath();
     }
 
     function stopDraw() {
@@ -32,19 +30,23 @@ document.addEventListener("DOMContentLoaded", function () {
     //dibujo según se seleccione el lapiz o la goma
     function drawLine(canvas, e) {
         console.log(pencil);
-        if (draw &&pencil) {
-            color = document.querySelector("#colorpicker").value;
-            lineWidth = document.querySelector("#slider").value;
+        if (draw && pencil) {
+            ctx.beginPath();
+            color = document.querySelector("#colorpicker").value;//tomo el valor seleccionado en el color picker
+            lineWidth = document.querySelector("#slider").value;//tomo el grosor seleccionado en el slider
             ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
             ctx.lineWidth = lineWidth;
             ctx.strokeStyle = color;
             let position = getPosition(canvas, e);
             ctx.lineTo(position.x, position.y);
             ctx.stroke();
             ctx.closePath();
-        } else if (draw &&rubber) {
+        } else if (draw && rubber) {
+            ctx.beginPath();
             ctx.lineJoin = 'round';
-            color = '#white';
+            ctx.lineCap = 'round';
+            color = 'white';
             lineWidth = 10;
             let position = getPosition(canvas, e);
             ctx.lineTo(position.x, position.y);
@@ -62,16 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     }
-    //agrego los eventos al lápiz y a la goma para identificar cual se está usando
-    document.querySelector("#pencil").addEventListener('click', function () {
-        pencil = true;
-        rubber= false;
-    })
-    document.querySelector("#rubber").addEventListener('click', function () {
-        pencil = false;
-        rubber = true;
-    })
-
 
     function setPixel(imageData, x, y, r, g, b, a) {
         let index = (x + y * imageData.width) * 4;
@@ -80,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imageData.data[index + 2] = b;
         imageData.data[index + 3] = a;
     }
-
+    //enesta función limpio el lienzo, queda en blanco
     function cleanCanvas() {
         for (let x = 0; x < width; x++) {
             for (let y = 0; y < height; y++) {
@@ -95,8 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
         let imgInput = document.querySelector('#imageInput');
         imgInput.click();
     }
-
-    function uploadImage(e){
+    //cargo la imágen seleccionada desde el equipo
+    function uploadImage(e) {
         if (e.target.files) {
             let img = e.target.files[0];
             let reader = new FileReader();
@@ -110,23 +102,26 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     }
+ // descargo la imágen del canvas
+    function downloadImage() {
+        let a = document.createElement('a');
+        a.href = canvas.toDataURL();
+        a.download = 'image.png';
+        a.click();
+    }
 
-        function downloadImage() {
-            canvas.toDataURL();//con ésta función descargo la imágen
-        }
-
-        //agrego los eventos 
-        document.querySelector("#pencil").addEventListener('click', function () {
-            pencil = true;
-        });
-        document.querySelector("#rubber").addEventListener('click', function () {
-            pencil = false;
-            rubber = true;
-        });
-        document.querySelector("#clean").addEventListener('click', cleanCanvas);
-        document.querySelector("#upload").addEventListener('click', invokeLoad);
-        document.querySelector("#download").addEventListener('click', downloadImage);
-        document.querySelector("#imageInput").addEventListener('change', function (e) {
-            uploadImage(e);
-        });
+    //agrego los eventos 
+    document.querySelector("#pencil").addEventListener('click', function () {
+        pencil = true;
+    });
+    document.querySelector("#rubber").addEventListener('click', function () {
+        pencil = false;
+        rubber = true;
+    });
+    document.querySelector("#clean").addEventListener('click', cleanCanvas);
+    document.querySelector("#upload").addEventListener('click', invokeLoad);
+    document.querySelector("#download").addEventListener('click', downloadImage);
+    document.querySelector("#imageInput").addEventListener('change', function (e) {
+        uploadImage(e);
+    });
 })
