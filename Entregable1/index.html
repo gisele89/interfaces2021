@@ -18,15 +18,16 @@
     <div id="div-canvas">
         <section> <canvas id="canvas" width="1080" height="720"> </canvas></section>
         <aside>
-            <button class="btn"><i class="fa fa-broom"></i>Limpiar Lienzo</button>
-            <button class="btn"><i class="fas fa-upload"></i>Subir imágen</button>
-            <button class="btn"><i class="fas fa-download"></i>Descargar imágen</button>
+            <button id="clean" class="btn"><i class="fa fa-broom"></i>Limpiar Lienzo</button>
+            <button id="upload" class="btn"><i class="fas fa-upload"></i>Subir imágen</button>
+            <input type="file" id="imageInput" accept = "image/*">
+            <button id="download" class="btn"><i class="fas fa-download"></i>Descargar imágen</button>
         </aside>
     </div>
     <section>
         <div class="tools">
-            <button class="btn"><i class="fas fa-pencil-alt"></i>Lápiz</button>
-            <button class="btn"><i class="fas fa-eraser"></i>Goma</button>
+            <button id="pencil" class="btn"><i class="fas fa-pencil-alt"></i>Lápiz</button>
+            <button id="rubber" class="btn"><i class="fas fa-eraser"></i>Goma</button>
         </div>
         <div id="color-picker">
             <p>Color Picker</p>

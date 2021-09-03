@@ -47,23 +47,23 @@ i{
     margin-right:5px;
 }
 #slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
+    -webkit-appearance: none;  
     appearance: none;
-    height: 5px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    height: 5px; 
+    background: #d3d3d3; 
+    outline: none; 
+    opacity: 0.7; 
+    -webkit-transition: .2s; 
     transition: opacity .2s;
   }
   #slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+    -webkit-appearance: none; 
     appearance: none;
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
+    width: 20px; 
+    height: 20px; 
     border-radius: 50%;
-    background: #555555; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    background: #555555; 
+    cursor: pointer; 
     transition: 0.6s;
   }
   #slider::-webkit-slider-thumb:hover{
@@ -97,4 +97,7 @@ i{
 input[type="color" i]{
     border: none;
     background-color: white;
+}
+#imageInput{
+    display:none;
 }
