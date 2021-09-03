@@ -153,11 +153,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let imageData=ctx.getImageData(0,0, canvas.width, canvas.height);
 
         for (let i=0;i<imageData.data.length;i+=4) {
-            let avg = (imageData.data[i]+imageData.data[i+1]+imageData.data[i+2])/3;
+            let avg = (imageData.data[i]*0.2+imageData.data[i+1] *0.59+imageData.data[i+2]*0.11);
         
-            imageData.data[i] = avg ;
-            imageData.data[i+1] = avg +12 ;
-            imageData.data[i+2] = avg +7;
+            imageData.data[i] = avg + 100;
+            imageData.data[i+1] = avg +50;
+            imageData.data[i+2] = avg;
         
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
