@@ -132,6 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     document.querySelector("#negativo").addEventListener('click', convertToBW);
     document.querySelector("#sepia").addEventListener('click', convertToSepia);
+    document.querySelector("#brillo").addEventListener('click', addBrightnees);
+    document.querySelector("#saturacion").addEventListener('click', saturation);
 
 
     //filtros de imágen
@@ -162,4 +164,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
+
+    function addBrightnees() {
+        let imageData = ctx.getImageData( 0, 0, canvas.width, canvas.height );
+
+        for (let i = 0; i < imageData.data.length; i++) {
+            if ( imageData.data[i] + 10 <= 255 ) {
+                imageData.data[i] = imageData.data[i] + 10;
+            }else{
+                imageData.data[i] = 255
+            }
+            
+        }
+        ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
+    }
+
+    function saturation() {
+        let imageData = ctx.getImageData( 0, 0, canvas.width, canvas.height );
+        const r = parseInt(document.querySelector("#r-saturation-input").value);
+        const g = parseInt(document.querySelector("#g-saturation-input").value);
+        const b = parseInt(document.querySelector("#b-saturation-input").value);
+
+        for ( let i = 0; i< imageData.data.length; i+=4 ) {
+          imageData.data[i] = imageData.data[i] + r;
+          imageData.data[i+1] = imageData.data[i+1] + g;
+          imageData.data[i+2] = imageData.data[i+2] + b;
+        }
+        
+        ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
+    }
+
 })
