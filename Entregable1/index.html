@@ -24,11 +24,16 @@
             <button id="download" class="btn"><i class="fas fa-download"></i>Descargar imágen</button>
             <div class="filtros">
                 <p>Filtros</p>
-                <button id="negativo" class="btn"><i class="fas fa-stop"></i>Negativo</button>
+                <button id="original" class="btn"><i class="fas fa-undo-alt"></i></i>Original</button>
+                <button id="byn" class="btn"><i class="fas fa-stop"></i>Blanco y Negro</button>
                 <button id="sepia" class="btn"><i class="fas fa-thermometer-empty"></i>Sepia</button>
                 <button id="brillo" class="btn"><i class="far fa-sun"></i>Brillo</button>
-                <button id="binarizacion" class="btn"><i class="fas fa-adjust"></i>Binarización</button>
+                <button id="negativo" class="btn"><i class="fas fa-stop"></i>Negativo</button>
                 <button id="blur" class="btn"><i class="far fa-dot-circle"></i>Blur</button>
+                <div class="threshold">
+                    <p><i class="fas fa-adjust"></i> Binarización</p>
+                    <input id="slider-threshold" type="range" min="1" max="150" value="80">
+                </div>
                 <div>
                     <p>Saturacion</p>
                     <div class="rgb-input-container">
@@ -45,6 +50,7 @@
                     </div>
                     <button id="saturacion" class="btn"><i class="fas fa-tint"></i>Aplicar</button>
                 </div>
+
             </div>
         </aside>
     </div>
