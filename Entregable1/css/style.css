@@ -47,7 +47,7 @@ img#logo{
 i{
     margin-right:5px;
 }
-#slider, #slider-threshold {
+#slider, #slider-threshold, #slider-blur {
     -webkit-appearance: none;  
     appearance: none;
     height: 5px; 
@@ -57,7 +57,7 @@ i{
     -webkit-transition: .2s; 
     transition: opacity .2s;
   }
-  #slider::-webkit-slider-thumb, #slider-threshold::-webkit-slider-thumb {
+  #slider::-webkit-slider-thumb, #slider-threshold::-webkit-slider-thumb, #slider-blur::-webkit-slider-thumb {
     -webkit-appearance: none; 
     appearance: none;
     width: 20px; 
@@ -67,7 +67,7 @@ i{
     cursor: pointer; 
     transition: 0.6s;
   }
-  #slider::-webkit-slider-thumb:hover,  #slider-threshold::-webkit-slider-thumb:hover{
+  #slider::-webkit-slider-thumb:hover,  #slider-threshold::-webkit-slider-thumb:hover,  #slider-blur::-webkit-slider-thumb:hover{
       width:25px;
       height: 25px;
   }
@@ -75,7 +75,7 @@ i{
   .slidecontainer p, .filtros p, #color-picker p{
       color:#555555;
   }
-  .slidecontainer, #color-picker, .threshold{
+  .slidecontainer, #color-picker, .threshold, .blur{
     align-items: center;
     display: flex;
   }

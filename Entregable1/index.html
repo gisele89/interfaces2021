@@ -20,33 +20,39 @@
         <aside>
             <button id="clean" class="btn"><i class="fa fa-broom"></i>Limpiar Lienzo</button>
             <button id="upload" class="btn"><i class="fas fa-upload"></i>Subir imágen</button>
-            <input type="file" id="imageInput" accept = "image/*">
+            <input type="file" id="imageInput" accept="image/*">
             <button id="download" class="btn"><i class="fas fa-download"></i>Descargar imágen</button>
             <div class="filtros">
                 <p>Filtros</p>
-                <button id="original" class="btn"><i class="fas fa-undo-alt"></i></i>Original</button>
-                <button id="byn" class="btn"><i class="fas fa-stop"></i>Blanco y Negro</button>
+                <button id="byn" class="btn"><i class="far fa-circle"></i>Blanco y Negro</button>
                 <button id="sepia" class="btn"><i class="fas fa-thermometer-empty"></i>Sepia</button>
                 <button id="brillo" class="btn"><i class="far fa-sun"></i>Brillo</button>
-                <button id="negativo" class="btn"><i class="fas fa-stop"></i>Negativo</button>
-                <button id="blur" class="btn"><i class="far fa-dot-circle"></i>Blur</button>
+                <button id="negativo" class="btn"><i class="fas fa-circle"></i>Negativo</button>
+                <button id="original" class="btn"><i class="fas fa-undo-alt"></i></i>Original</button>
                 <div class="threshold">
                     <p><i class="fas fa-adjust"></i> Binarización</p>
                     <input id="slider-threshold" type="range" min="1" max="150" value="80">
+                </div>
+                <div class="blur">
+                    <p><i class="far fa-dot-circle"></i> Blur</p>
+                    <input id="slider-blur" type="range" min="1" max="20" value="1">
                 </div>
                 <div>
                     <p>Saturacion</p>
                     <div class="rgb-input-container">
                         <label for="r-saturation-input">R:</label>
-                        <input type="number" class="rgb-input" id="r-saturation-input" value=0 step="1" min="-10" max="10">
+                        <input type="number" class="rgb-input" id="r-saturation-input" value=0 step="1" min="-10"
+                            max="10">
                     </div>
                     <div class="rgb-input-container">
                         <label for="g-saturation-input">G:</label>
-                        <input type="number" class="rgb-input" id="g-saturation-input" value=0 step="1" min="-10" max="10">
+                        <input type="number" class="rgb-input" id="g-saturation-input" value=0 step="1" min="-10"
+                            max="10">
                     </div>
                     <div class="rgb-input-container">
                         <label for="b-saturation-input">B:</label>
-                        <input type="number" class="rgb-input" id="b-saturation-input" value=0 step="1" min="-10" max="10">
+                        <input type="number" class="rgb-input" id="b-saturation-input" value=0 step="1" min="-10"
+                            max="10">
                     </div>
                     <button id="saturacion" class="btn"><i class="fas fa-tint"></i>Aplicar</button>
                 </div>
