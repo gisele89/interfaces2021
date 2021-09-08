@@ -175,25 +175,51 @@ document.addEventListener("DOMContentLoaded", function () {
     //en ésta función sumo un valor predefenido ar para agregar brillo
     function addBrightnees() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < imageData.data.length; i++) {
-            if (imageData.data[i] + 10 <= 255) {
-                imageData.data[i] = imageData.data[i] + 10;
-            } else {
-                imageData.data[i] = 255
+
+        for ( let i = 0; i < imageData.data.length; i += 4 ) {
+            let r = imageData.data[i];
+            let g = imageData.data[i + 1];
+            let b = imageData.data[i + 2];
+
+            let hsv = rgbToHsv(r,g,b);
+
+            if ( hsv.v + 0.05 <= 1 ) {
+                hsv.v += 0.05;
+            }else{
+                hsv.v = 1;
             }
+
+            const rgb = hsvToRgb( hsv.h, hsv.s, hsv.v );
+
+            imageData.data[i] = Math.floor(rgb.r);
+            imageData.data[i + 1] = Math.floor(rgb.g);
+            imageData.data[i + 2] = Math.floor(rgb.b);
+
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
 
     function saturation() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const r = parseInt(document.querySelector("#r-saturation-input").value);
-        const g = parseInt(document.querySelector("#g-saturation-input").value);
-        const b = parseInt(document.querySelector("#b-saturation-input").value);
+        
         for (let i = 0; i < imageData.data.length; i += 4) {
-            imageData.data[i] = imageData.data[i] + r;
-            imageData.data[i + 1] = imageData.data[i + 1] + g;
-            imageData.data[i + 2] = imageData.data[i + 2] + b;
+            let r = imageData.data[i];
+            let g = imageData.data[i + 1];
+            let b = imageData.data[i + 2];
+
+            let hsv = rgbToHsv(r,g,b);
+
+            if ( hsv.s + 0.05 <= 1 ) {
+                hsv.s += 0.05;
+            }else{
+                hsv.s = 1;
+            }
+
+            const rgb = hsvToRgb( hsv.h, hsv.s, hsv.v );
+
+            imageData.data[i] = Math.floor(rgb.r);
+            imageData.data[i + 1] = Math.floor(rgb.g);
+            imageData.data[i + 2] = Math.floor(rgb.b);
         }
 
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
@@ -256,4 +282,55 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.putImageData(originalImage, 0, 0);
     }
 
+    function rgbToHsv(r, g, b) {
+        r /= 255, g /= 255, b /= 255;
+      
+        var max = Math.max(r, g, b), min = Math.min(r, g, b);
+        var h, s, v = max;
+      
+        var d = max - min;
+        s = max == 0 ? 0 : d / max;
+      
+        if (max == min) {
+          h = 0; // achromatic
+        } else {
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+      
+          h /= 6;
+        }
+      
+        return { h: h, 
+                s: s,
+                v: v 
+            } ;
+      }
+      
+      function hsvToRgb(h, s, v) {
+        var r, g, b;
+      
+        var i = Math.floor(h * 6);
+        var f = h * 6 - i;
+        var p = v * (1 - s);
+        var q = v * (1 - f * s);
+        var t = v * (1 - (1 - f) * s);
+      
+        switch (i % 6) {
+          case 0: r = v, g = t, b = p; break;
+          case 1: r = q, g = v, b = p; break;
+          case 2: r = p, g = v, b = t; break;
+          case 3: r = p, g = q, b = v; break;
+          case 4: r = t, g = p, b = v; break;
+          case 5: r = v, g = p, b = q; break;
+        }
+      
+        return {
+                r: r * 255,
+                g: g * 255, 
+                b: b * 255 
+                } ;
+      }
 })
