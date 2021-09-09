@@ -2,6 +2,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     let canvas = document.querySelector('#canvas');
     let ctx = canvas.getContext('2d');
+    let canvasInvisible = document.querySelector('#canvas-invisible');
+    let ctxInvisible = canvasInvisible.getContext('2d');
     let width = canvas.width;
     let height = canvas.height;
     let originalImage = null;
@@ -47,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.stroke();
             ctx.beginPath();
             ctx.moveTo(position.x, position.y);
-        } else if (draw && rubber) { 
+        } else if (draw && rubber) {
             ctx.lineJoin = 'round';
             ctx.lineCap = 'round';
             color = 'white';//el valor por defecto pasa a ser blanco
@@ -101,20 +103,41 @@ document.addEventListener("DOMContentLoaded", function () {
             reader.onload = function (e) {
                 let image = new Image();
                 image.src = e.target.result;
-                image.onload = function (ev) {
-                    let aspectRatio = image.height / image.width; //calculo el aspect ratio para no deformar la imágen
-                    let scaledWidth = width
-                    let scaledHeight = width * aspectRatio;
-                    ctx.drawImage(image, 0, 0, scaledWidth, scaledHeight);
-                    originalImage = ctx.getImageData(0, 0, scaledWidth, scaledHeight);
+                image.onload = function () {
+                    ctxInvisible.drawImage(image, 0, 0 , image.width, image.height); // cargo la imágen en un canvas invisible para conservar su tamaño original
+                    let imageSizes = resizeImage(image);
+                    ctx.drawImage(image, 0, 0, imageSizes.w, imageSizes.h);
+                    originalImage = ctx.getImageData(0, 0, imageSizes.w, imageSizes.h);
                 }
             }
         }
     }
-    // descargo la imágen del canvas usando dataToUrl asignandola a un anchor
+    function resizeImage(image) {
+        let imageWidth = image.width
+        let imageHeight = image.height
+        let aspectW = imageWidth / width;
+        let aspectH = imageHeight / height;
+        if (aspectW > 1 || aspectH > 1) {
+            if (aspectW > aspectH) {
+                imageWidth = width;
+                imageHeight = (imageHeight / aspectW);
+            }
+            else {
+                imageHeight = height;
+                imageWidth = imageWidth / aspectH;
+            }
+
+        }
+        return {
+            w: imageWidth,
+            h: imageHeight
+        }
+    }
+
+    // descargo la imágen del canvas invisible usando dataToUrl asignandola a un anchor
     function downloadImage() {
         let a = document.createElement('a');
-        a.href = canvas.toDataURL();
+        a.href = canvasInvisible.toDataURL();
         a.download = 'image.png';
         a.click();
     }
@@ -176,20 +199,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function addBrightnees() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-        for ( let i = 0; i < imageData.data.length; i += 4 ) {
+        for (let i = 0; i < imageData.data.length; i += 4) {
             let r = imageData.data[i];
             let g = imageData.data[i + 1];
             let b = imageData.data[i + 2];
 
-            let hsv = rgbToHsv(r,g,b);
+            let hsv = rgbToHsv(r, g, b);
 
-            if ( hsv.v + 0.05 <= 1 ) {
+            if (hsv.v + 0.05 <= 1) {
                 hsv.v += 0.05;
-            }else{
+            } else {
                 hsv.v = 1;
             }
 
-            const rgb = hsvToRgb( hsv.h, hsv.s, hsv.v );
+            const rgb = hsvToRgb(hsv.h, hsv.s, hsv.v);
 
             imageData.data[i] = Math.floor(rgb.r);
             imageData.data[i + 1] = Math.floor(rgb.g);
@@ -201,21 +224,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function saturation() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        
+
         for (let i = 0; i < imageData.data.length; i += 4) {
             let r = imageData.data[i];
             let g = imageData.data[i + 1];
             let b = imageData.data[i + 2];
 
-            let hsv = rgbToHsv(r,g,b);
+            let hsv = rgbToHsv(r, g, b);
 
-            if ( hsv.s + 0.05 <= 1 ) {
+            if (hsv.s + 0.05 <= 1) {
                 hsv.s += 0.05;
-            }else{
+            } else {
                 hsv.s = 1;
             }
 
-            const rgb = hsvToRgb( hsv.h, hsv.s, hsv.v );
+            const rgb = hsvToRgb(hsv.h, hsv.s, hsv.v);
 
             imageData.data[i] = Math.floor(rgb.r);
             imageData.data[i + 1] = Math.floor(rgb.g);
@@ -241,11 +264,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let threshold = e.target.value;
         console.log(threshold);
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        if (originalImage == null) {
-            originalImage = imageData;
-        } else {
-            imageData = originalImage;
-        }
+        /* if (originalImage == null) {
+             originalImage = imageData; si lo dejo no anda el original
+         } else {
+             imageData = originalImage;
+         }*/
 
         for (let i = 0; i < imageData.data.length; i += 4) {
             let avg = (imageData.data[i] * 0.2126 + imageData.data[i + 1] * 0.7152 + imageData.data[i + 2] * 0.0722 >= threshold) ? 255 : 0;
@@ -284,53 +307,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function rgbToHsv(r, g, b) {
         r /= 255, g /= 255, b /= 255;
-      
+
         var max = Math.max(r, g, b), min = Math.min(r, g, b);
         var h, s, v = max;
-      
+
         var d = max - min;
         s = max == 0 ? 0 : d / max;
-      
+
         if (max == min) {
-          h = 0; // achromatic
+            h = 0; // achromatic
         } else {
-          switch (max) {
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-          }
-      
-          h /= 6;
+            switch (max) {
+                case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                case g: h = (b - r) / d + 2; break;
+                case b: h = (r - g) / d + 4; break;
+            }
+
+            h /= 6;
         }
-      
-        return { h: h, 
-                s: s,
-                v: v 
-            } ;
-      }
-      
-      function hsvToRgb(h, s, v) {
+
+        return {
+            h: h,
+            s: s,
+            v: v
+        };
+    }
+
+    function hsvToRgb(h, s, v) {
         var r, g, b;
-      
+
         var i = Math.floor(h * 6);
         var f = h * 6 - i;
         var p = v * (1 - s);
         var q = v * (1 - f * s);
         var t = v * (1 - (1 - f) * s);
-      
+
         switch (i % 6) {
-          case 0: r = v, g = t, b = p; break;
-          case 1: r = q, g = v, b = p; break;
-          case 2: r = p, g = v, b = t; break;
-          case 3: r = p, g = q, b = v; break;
-          case 4: r = t, g = p, b = v; break;
-          case 5: r = v, g = p, b = q; break;
+            case 0: r = v, g = t, b = p; break;
+            case 1: r = q, g = v, b = p; break;
+            case 2: r = p, g = v, b = t; break;
+            case 3: r = p, g = q, b = v; break;
+            case 4: r = t, g = p, b = v; break;
+            case 5: r = v, g = p, b = q; break;
         }
-      
+
         return {
-                r: r * 255,
-                g: g * 255, 
-                b: b * 255 
-                } ;
-      }
+            r: r * 255,
+            g: g * 255,
+            b: b * 255
+        };
+    }
 })
