@@ -1,16 +1,13 @@
 "use strict"
 document.addEventListener("DOMContentLoaded", function () {
-    let canvas = document.querySelector('#canvas');
-    let ctx = canvas.getContext('2d');
-    let canvasInvisible = document.querySelector('#canvas-invisible');
-    let ctxInvisible = canvasInvisible.getContext('2d');
-    let width = canvas.width;
-    let height = canvas.height;
-    let originalImage = null;
+    let canvas = document.querySelector('#canvas');//se obtiene el canvas
+    let ctx = canvas.getContext('2d'); //se crea el contexto
+    let width = canvas.width; //seteo el ancho del canvas
+    let height = canvas.height;//seteo el alto del canvas
+    let originalImage = null;//variable que se usará para no perder la imagen original
     let imageData = ctx.createImageData(width, height);
 
-
-
+    //variables usadas para dibujar
     let pencil = false;
     let rubber = false;
     let color = "black";
@@ -25,11 +22,12 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.addEventListener('mousemove', function (e) {
         drawLine(canvas, e);
     });
+    //En ésta función se llama a la función que va a dibujar realmente y seteo la variable draw en true que se utiliza para controlar cuando se está dibujando y cuando no
     function startDraw(e) {
         draw = true;
         drawLine(canvas, e);
     }
-
+    //En ésta función cuando se termina de dubujar se setea draw en false
     function stopDraw() {
         draw = false;
         ctx.beginPath();
@@ -44,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.strokeStyle = color;
             ctx.lineJoin = 'round';
             ctx.lineCap = 'round';
-            let position = getPosition(canvas, e);
+            let position = getPosition(canvas, e);//obtengo la posición
             ctx.lineTo(position.x, position.y);
             ctx.stroke();
             ctx.beginPath();
@@ -56,14 +54,14 @@ document.addEventListener("DOMContentLoaded", function () {
             lineWidth = document.querySelector("#slider").value;
             ctx.strokeStyle = color;
             ctx.lineWidth = lineWidth;
-            let position = getPosition(canvas, e);
+            let position = getPosition(canvas, e);//obtengo la posición
             ctx.lineTo(position.x, position.y);
             ctx.stroke();
             ctx.beginPath();
             ctx.moveTo(position.x, position.y);
         }
     }
-    // obtengo coordenadas del mouse 
+    // obtengo coordenadas del mouse del usuario 
     function getPosition(canvas, e) {
         let ClientRect = canvas.getBoundingClientRect();
         return {
@@ -89,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ctx.putImageData(imageData, 0, 0);
     }
-
+    //En ésta función obtengo el input donde se carga la imágen y simulo el click
     function invokeLoad() {
         let imgInput = document.querySelector('#imageInput');
         imgInput.click();
@@ -97,52 +95,49 @@ document.addEventListener("DOMContentLoaded", function () {
     //cargo la imágen seleccionada desde el equipo
     function uploadImage(e) {
         if (e.target.files) {
-            let img = e.target.files[0];
+            let img = e.target.files[0];//el priemr archivo del listado
             let reader = new FileReader();
             reader.readAsDataURL(img);
             reader.onload = function (e) {
                 let image = new Image();
                 image.src = e.target.result;
-                image.onload = function () {
-                    ctxInvisible.drawImage(image, 0, 0 , image.width, image.height); // cargo la imágen en un canvas invisible para conservar su tamaño original
-                    let imageSizes = resizeImage(image);
-                    ctx.drawImage(image, 0, 0, imageSizes.w, imageSizes.h);
-                    originalImage = ctx.getImageData(0, 0, imageSizes.w, imageSizes.h);
+                image.onload = function () {//para asegurarme de que la imagen ya se encuentra cargada
+                    let imageSizes = resizeImage(image);//calculo el nuevo ancho y altura adaptado al canvas
+                    ctx.drawImage(image, 0, 0, imageSizes.w, imageSizes.h);//dibujo en el contexto del canvas la imagen  con su nuevo tamaño
+                    originalImage = ctx.getImageData(0, 0, imageSizes.w, imageSizes.h);//guardo en una variable la imagen antes de que se aplique cualquier efecto
                 }
             }
         }
     }
+    //En ésta función tomo el ancho y alto de la imágen original y calculo el aspect ratio para hacer el resize adaptado al canvas 
     function resizeImage(image) {
         let imageWidth = image.width
         let imageHeight = image.height
-        let aspectW = imageWidth / width;
-        let aspectH = imageHeight / height;
+        let aspectW = imageWidth / width;//divido el ancho de la imagen por el ancho del canvas
+        let aspectH = imageHeight / height;//divido la altura por la altura del canvas
         if (aspectW > 1 || aspectH > 1) {
-            if (aspectW > aspectH) {
+            if (aspectW > aspectH) {//es una imágen horizontal
                 imageWidth = width;
                 imageHeight = (imageHeight / aspectW);
             }
-            else {
+            else {//es una imagen vertical
                 imageHeight = height;
                 imageWidth = imageWidth / aspectH;
             }
-
         }
-        return {
+        return { //devuelvo un objeto con la nueva altura y ancho de la imágen 
             w: imageWidth,
             h: imageHeight
         }
     }
-
-    // descargo la imágen del canvas invisible usando dataToUrl asignandola a un anchor
+    // descargo la imágen del canvas usando dataToUrl para obtener justamente la url que luego la asigno como href de un anchor
     function downloadImage() {
         let a = document.createElement('a');
-        a.href = canvasInvisible.toDataURL();
+        a.href = canvas.toDataURL();
         a.download = 'image.png';
         a.click();
     }
-
-    //agrego los eventos 
+    //En esta parte agrego los eventos  a los botones 
     document.querySelector("#pencil").addEventListener('click', function () {
         pencil = true;
     });
@@ -166,11 +161,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     document.querySelector("#original").addEventListener('click', restoreOriginalImage);
     document.querySelector("#slider-blur").addEventListener('click', blur);
-
-
-
-    //filtros de imágen
-    //en ésta función calculo un promedio que luego es asignado nuevamente a cada canal
+    //Filtros de imágen
+    //En ésta función calculo un promedio de los canales r, g y b que luego es asignado nuevamente a cada canal por igual
     function convertToBW() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
@@ -182,23 +174,20 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
 
-    //en ésta función calculo un promedio por cierto valores que luego me ayudaran a obtener la tonalidad deseada
+    //En ésta función multiplico los canales r, g y b por cierto valores que luego me ayudaran a obtener la tonalidad deseada, sepia
     function convertToSepia() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
         for (let i = 0; i < imageData.data.length; i += 4) {
-            let avg = (imageData.data[i] * 0.2 + imageData.data[i + 1] * 0.59 + imageData.data[i + 2] * 0.11)
-            imageData.data[i] = avg + 100;
-            imageData.data[i + 1] = avg + 50;
-            imageData.data[i + 2] = avg;
+            let multiplicationSepia = (imageData.data[i] * 0.2 + imageData.data[i + 1] * 0.59 + imageData.data[i + 2] * 0.11)
+            imageData.data[i] = multiplicationSepia + 100;
+            imageData.data[i + 1] = multiplicationSepia + 50;
+            imageData.data[i + 2] = multiplicationSepia;
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
 
-    //en ésta función sumo un valor predefenido ar para agregar brillo
     function addBrightnees() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
         for (let i = 0; i < imageData.data.length; i += 4) {
             let r = imageData.data[i];
             let g = imageData.data[i + 1];
@@ -217,14 +206,11 @@ document.addEventListener("DOMContentLoaded", function () {
             imageData.data[i] = Math.floor(rgb.r);
             imageData.data[i + 1] = Math.floor(rgb.g);
             imageData.data[i + 2] = Math.floor(rgb.b);
-
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
-
     function saturation() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
         for (let i = 0; i < imageData.data.length; i += 4) {
             let r = imageData.data[i];
             let g = imageData.data[i + 1];
@@ -237,18 +223,14 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 hsv.s = 1;
             }
-
             const rgb = hsvToRgb(hsv.h, hsv.s, hsv.v);
-
             imageData.data[i] = Math.floor(rgb.r);
             imageData.data[i + 1] = Math.floor(rgb.g);
             imageData.data[i + 2] = Math.floor(rgb.b);
         }
-
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
-
-    //en ésta función en cada canal le resto a 255 el valor que tiene en ese momento el canal para obtener el opuesto
+    //En ésta función, en cada canal le resto a 255 el valor que tiene en ese momento el canal para obtener el opuesto
     function convertToNegative() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
@@ -258,53 +240,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
-
-    //en ésta función asigno blanco o negro dependiendo de un valor umbral proporcionado por el usuario
+    //En ésta función asigno blanco o negro dependiendo de un valor umbral proporcionado por el usuario
     function thresholding(e) {
-        let threshold = e.target.value;
-        console.log(threshold);
+        let threshold = e.target.value;//el umbral que el usuario eligió
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        /* if (originalImage == null) {
-             originalImage = imageData; si lo dejo no anda el original
-         } else {
-             imageData = originalImage;
-         }*/
-
         for (let i = 0; i < imageData.data.length; i += 4) {
             let avg = (imageData.data[i] * 0.2126 + imageData.data[i + 1] * 0.7152 + imageData.data[i + 2] * 0.0722 >= threshold) ? 255 : 0;
             imageData.data[i] = imageData.data[i + 1] = imageData.data[i + 2] = avg;
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
+    //En ésta función utilizando una matriz de referencia, la recorro y voy multiplicando y sumando los valores de esos pixeles cercanos en cada canal . Una vez terminado el recorrido,El resultado de esa suma luego lo asigno en cada canal
     function blur() {
-        let blur = document.querySelector("#slider-blur").value;
-        let sum = 0;
-        let delta = 5;
-        let alpha_left = 1 / (2 * Math.PI * delta * delta);
-        let step = blur < 3 ? 1 : 2;
-        for (let y = -blur; y <= blur; y += step) {
-            for (let x = -blur; x <= blur; x += step) {
-                let weight = alpha_left * Math.exp(-(x * x + y * y) / (2 * delta * delta));
-                sum += weight;
+        let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let matReference = 1/25;
+        for (let x = 0; x < imageData.width; x++) {
+            for (let y = 2; y < imageData.height - 2; y++) {
+                let r = 0.0;
+                let g = 0.0;
+                let b = 0.0;
+                for (let i = -2; i <= 2; i++) { 
+                for (let j = -2; j <= 2; j++) {                                      
+                        let index = getPixelIndex(imageData, x + i, y + j);  
+                        r += imageData.data[index + 0] * matReference ;
+                        g += imageData.data[index + 1] * matReference;
+                        b += imageData.data[index + 2] * matReference;
+                    }
+                } 
+                //console.log("red -> " + r + "green -> " + g + "blue -> " + b);               
+                setPixel(imageData, x, y, r , g , b , 255);
             }
         }
-        let count = 0;
-        for (let y = -blur; y <= blur; y += step) {
-            for (let x = -blur; x <= blur; x += step) {
-                count++;
-                ctx.globalAlpha = alpha_left * Math.exp(-(x * x + y * y) / (2 * delta * delta)) / sum * blur;
-                ctx.drawImage(canvas, x, y)
-            }
-        }
-        ctx.globalAlpha = 1;
+        ctx.putImageData(imageData, 0, 0); 
     }
-
-
-
+    function getPixelIndex(imageData, x, y) {
+        return (x + y * imageData.width) * 4;
+    }
+    //En ésta función coloco en el contexto del canvas la imagen original que subió el usuario que previamente fue guardada en una variable originalImage
     function restoreOriginalImage() {
         ctx.putImageData(originalImage, 0, 0);
     }
-
     function rgbToHsv(r, g, b) {
         r /= 255, g /= 255, b /= 255;
 
