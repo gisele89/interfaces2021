@@ -1,3 +1,4 @@
+/*Realizado para desktop, no responsive*/ 
 "use strict"
 document.addEventListener("DOMContentLoaded", function () {
     let canvas = document.querySelector('#canvas');//se obtiene el canvas
@@ -95,12 +96,12 @@ document.addEventListener("DOMContentLoaded", function () {
     //cargo la imágen seleccionada desde el equipo
     function uploadImage(e) {
         if (e.target.files) {
-            let img = e.target.files[0];//el priemr archivo del listado
+            let img = e.target.files[0];//el primer archivo del listado
             let reader = new FileReader();
             reader.readAsDataURL(img);
             reader.onload = function (e) {
-                let image = new Image();
-                image.src = e.target.result;
+                let image = new Image();//Creo una nueva imagen 
+                image.src = e.target.result; //asigno el resultado del target como el source de la imágen
                 image.onload = function () {//para asegurarme de que la imagen ya se encuentra cargada
                     let imageSizes = resizeImage(image);//calculo el nuevo ancho y altura adaptado al canvas
                     ctx.drawImage(image, 0, 0, imageSizes.w, imageSizes.h);//dibujo en el contexto del canvas la imagen  con su nuevo tamaño
@@ -185,7 +186,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
-
     function addBrightnees() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
@@ -250,31 +250,35 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
-    //En ésta función utilizando una matriz de referencia, la recorro y voy multiplicando y sumando los valores de esos pixeles cercanos en cada canal . Una vez terminado el recorrido,El resultado de esa suma luego lo asigno en cada canal
+    //En ésta función se aplica el blur a la imágen usando una función gaussiana de 2 dimensiones
+    /* info leída
+    https://en.wikipedia.org/wiki/Gaussian_blur
+    https://en.wikipedia.org/wiki/Gaussian_function
+    https://www.researchgate.net/publication/261278360_Investigation_on_the_effect_of_a_Gaussian_Blur_in_image_filtering_and_segmentation
+    https://software.intel.com/content/dam/develop/external/us/en/documents/cwp546-181134.pdf
+    */
     function blur() {
-        let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        let matReference = 1/25;
-        for (let x = 0; x < imageData.width; x++) {
-            for (let y = 2; y < imageData.height - 2; y++) {
-                let r = 0.0;
-                let g = 0.0;
-                let b = 0.0;
-                for (let i = -2; i <= 2; i++) { 
-                for (let j = -2; j <= 2; j++) {                                      
-                        let index = getPixelIndex(imageData, x + i, y + j);  
-                        r += imageData.data[index + 0] * matReference ;
-                        g += imageData.data[index + 1] * matReference;
-                        b += imageData.data[index + 2] * matReference;
-                    }
-                } 
-                //console.log("red -> " + r + "green -> " + g + "blue -> " + b);               
-                setPixel(imageData, x, y, r , g , b , 255);
+        let blur = document.querySelector("#slider-blur").value;//el grado de blur que eligió el usuario que representa el radio de la circunferencia aplicada en la función gaussiana
+        let sum = 0;
+        let delta = 5; //desviación estandar fija de la distribución gaussiana
+        let alpha_left = 1 / (2 * Math.PI * delta * delta); //amplitud de la función gaussiana
+        let step = blur < 3 ? 1 : 2; //calculo el valor de incremento para X e Y. (X distancia al origen en la coordenada x, Y distancia al origen en la coordenada y)
+        for (let y = -blur; y <= blur; y += step) {
+            for (let x = -blur; x <= blur; x += step) {
+                //se calcula el peso específico para las coordenadas x e y aplicando la función gaussiana donde el centro tendrá el mayor peso mientras que a medida que nos alejamos los pesos serán menores
+                let weight = alpha_left * Math.exp(-(x * x + y * y) / (2 * delta * delta));
+                sum += weight;//se acumulan todos los pesos
             }
         }
-        ctx.putImageData(imageData, 0, 0); 
-    }
-    function getPixelIndex(imageData, x, y) {
-        return (x + y * imageData.width) * 4;
+        let count = 0;
+        for (let y = -blur; y <= blur; y += step) {
+            for (let x = -blur; x <= blur; x += step) {
+                count++;
+                ctx.globalAlpha = alpha_left * Math.exp(-(x * x + y * y) / (2 * delta * delta)) / sum * blur;//aplico el nuevo valor de pixel como un promedio ponderado de los pixeles vecinos.
+                ctx.drawImage(canvas, x, y)
+            }
+        }
+        ctx.globalAlpha = 1;
     }
     //En ésta función coloco en el contexto del canvas la imagen original que subió el usuario que previamente fue guardada en una variable originalImage
     function restoreOriginalImage() {
