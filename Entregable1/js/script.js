@@ -186,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
 
+    //Convierto cada pixel a formato hsv, agrego brillo y lo vuelvo a convertir a rgb
     function addBrightnees() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
@@ -209,6 +210,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         ctx.putImageData(imageData, 0, 0, 0, 0, imageData.width, imageData.height);
     }
+
+    //Convierto cada pixel a formato hsv, agrego saturacion y lo vuelvo a convertir a rgb
     function saturation() {
         let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         for (let i = 0; i < imageData.data.length; i += 4) {
@@ -280,6 +283,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function restoreOriginalImage() {
         ctx.putImageData(originalImage, 0, 0);
     }
+
+    //Dado un color en formato rgb, se hace una transformacion a formato hsv
     function rgbToHsv(r, g, b) {
         r /= 255, g /= 255, b /= 255;
 
@@ -308,6 +313,8 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     }
 
+
+    //Dado un color en formato hsv, se realiza una transformacion a formato rgb
     function hsvToRgb(h, s, v) {
         var r, g, b;
 
