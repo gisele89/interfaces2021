@@ -1,0 +1,67 @@
+body {
+    background-color: #fafafa;
+    align-content: center;
+    font-family: "Montserrat";
+}
+
+footer {
+    background-color: #504B83;
+    color: white;
+    text-align: center;
+    display: flex;
+}
+
+header {
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    color: #504B83;
+}
+
+footer {
+    margin-top: 10px;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
+}
+
+img#logo {
+    padding-right: 20px;
+    margin-left: 10px;
+    width: 5%;
+    height: 5%
+}
+
+.btn {
+    background-color: white;
+    color: #504B83;
+    border: 1px solid #504B83;
+    border-radius: 6px;
+    padding: 10px;
+    font-family: "Montserrat";
+    transition: 0.3s;
+    margin-top: 5px;
+}
+
+.btn:hover {
+    background-color: #504B83;
+    color: white;
+}
+
+#game {
+    display: flex;
+}
+i{
+    margin-right:5px;
+}
+#canvas {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+    margin-right: 20px; 
+               
+}
+#timer{
+    font-size: 60px;
+    color: #504B83;
+}
