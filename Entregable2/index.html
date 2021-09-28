@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <img id="logo" src="images/fichas-de-casino.png" alt="Dos Fichas de poker">
+        <img id="logo" src="images/fichas-de-casino.png" alt="Dos Fichas de poker">        
         <h1>Cuatro en Línea</h1>
     </header>
     <div></div>
@@ -21,6 +21,15 @@
         <aside>
             <button id="play" class="btn"><i class="fas fa-play"></i>Jugar</button>
             <button id="reset" class="btn"><i class="fas fa-undo-alt"></i>Reintentar</button>
+            <div id="board-sizes">
+                <p>Elegí tu tamaño de tablero:</p>
+                <button id="board-4" class="btn"><i class="fas fa-chess-board"></i>4 x 3</button>
+                <button id="board-5" class="btn"><i class="fas fa-chess-board"></i>5 x 4</button>
+                <button id="board-6" class="btn"><i class="fas fa-chess-board"></i>6 x 5</button>
+                <button id="board-7" class="btn"><i class="fas fa-chess-board"></i>7 x 6</button>
+            </div>
+            
+
             <p id="timer"> </p>
         </aside>
     </div>
@@ -28,10 +37,10 @@
     <footer id="footer">
         <p>2021 | Interfaces de usuario e interacción | Gisele Bartolo - Jonatan Moreno</p>
     </footer>
-    <script src ="js/game.js"></script>
-    <script src ="js/gameBoard.js"></script>
-    <script src ="js/main.js"></script>
+    <script src ="js/gameBoard.js"></script>  
+    <script src ="js/game.js"></script>      
     <script src ="js/token.js"></script>
+    <script src ="js/main.js"></script>
 </body>
 
 </html>
