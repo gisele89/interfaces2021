@@ -7,20 +7,25 @@ class Token {
         this.color = color;
         this.ctx = context;
         this.redToken = new Image();
-        redToken.src = "images/ficha-roja.png";
+        this.redToken.src = "images/fichas-roja.png";
         this.blueToken = new Image();
-        blueToken.src = "images/ficha-azul.png";
+        this.blueToken.src = "images/fichas-azul.png";
         this.sizeToken = 30;
+        this.highlighted = false;
+        this.fillHighlighted= '#c4f8f8';
 
     }
+    //dibujo la ficha con la imagen correspondiente dependiendo del color 
     drawToken() {
         let rt = 'red';
-        if (color == rt) {
-            this.ctx.drawImage(this.redToken, this.posx, this.posy, this.sizeToken, this.sizeToken);
-        } else {
-            this.ctx.drawImage(this.blueToken, this.posx, this.posy, this.sizeToken, this.sizeToken);
-        }
-
+        this.redToken.onload, this.blueToken.onload = function() {
+            if (this.color == rt) {
+                this.ctx.drawImage(this.redToken, this.posx, this.posy, this.sizeToken, this.sizeToken);
+            } else {
+                this.ctx.drawImage(this.blueToken, this.posx, this.posy, this.sizeToken, this.sizeToken);
+            }
+        }.bind(this);
+        
     }
     getRadius() {
         return this.sizeToken / 2;
@@ -34,6 +39,9 @@ class Token {
     setPosition(x,y){
         this.posX = x - this.getRadius;
         this.posY = y - this.getRadius;
+    }
+    setHighlight(highlighted) {
+        this.highlighted = highlighted;
     }
 
 
