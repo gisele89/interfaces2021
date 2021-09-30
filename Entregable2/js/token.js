@@ -1,34 +1,31 @@
 "use strict";
-class Token {
+class Token extends Figure{
 
-    constructor(posX, posY, color, context) {        
-        this.color = color;
-        this.ctx = context;
-        this.posX = posX;
-        this.posY = posY;
+    constructor(posX, posY, color, context) {
+        super(posX, posY, color, context);
         this.redToken = new Image();
         this.redToken.src = "images/fichas-roja.png";
         this.blueToken = new Image();
         this.blueToken.src = "images/fichas-azul.png";
         this.sizeToken = 40;
         this.highlighted = false;
-        this.fillHighlighted= '#c4f8f8';
+        this.fillHighlighted = '#c4f8f8';
         this.setPosition(posX, posY);
         this.loadImages();
     }
 
-    loadImages() {        
-        this.redToken.onload, this.blueToken.onload = function() {
-            this.drawToken();
+    loadImages() {
+        this.redToken.onload, this.blueToken.onload = function () {
+            this.draw();
         }.bind(this);
     }
 
     //dibujo la ficha con la imagen correspondiente dependiendo del color 
-    drawToken() {
+    draw() {
         let rt = 'red';
-        if (this.color == rt) {            
+        if (this.color == rt) {
             this.ctx.drawImage(this.redToken, this.posX, this.posY, this.sizeToken, this.sizeToken);
-        } else {            
+        } else {
             this.ctx.drawImage(this.blueToken, this.posX, this.posY, this.sizeToken, this.sizeToken);
         }
     }
@@ -43,8 +40,14 @@ class Token {
         let _y = (this.posY + radius) - y;
         return Math.sqrt(_x * _x + _y * _y) < radius;
     }
+    getPosition() {
+        return {
+            x: this.posX,
+            y: this.posY
+        }
+    }
 
-    setPosition(x,y){
+    setPosition(x, y) {
         let radius = this.getRadius();
         this.posX = x - radius;
         this.posY = y - radius;
