@@ -39,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#canvas").addEventListener('mouseup', function (e) {
-        game.onMouseUp();
+        game.onMouseUp(e);
     });
     document.querySelector("#canvas").addEventListener('mousedown', function (e) {
-        game.onMouseDown();
+        game.onMouseDown(e);
     });
     document.querySelector("#canvas").addEventListener('mousemove', function (e) {
-        game.onMouseMove();
+        game.onMouseMove(e);
     });
 })
 

@@ -8,14 +8,13 @@ class Game {
         this.tokens = [];
         this.lastTokenClicked = null;
         this.isMouseDown = false;
+        this.board = null;
     }
     setBoardRow(br) {
-        this.boardRow = br;
-        console.log(br);
+        this.boardRow = br;        
     }
     setBoardCol(bc) {
-        this.boardCol = bc;
-        console.log(bc);
+        this.boardCol = bc;        
     }
 
     initGame() {
@@ -24,91 +23,88 @@ class Game {
         this.createTokens();
     }
 
-    createTokens() {//creo las fichas para cada jugador
-        this.clearCanvas();
+    createTokens() {//creo las fichas para cada jugador        
         let colorPlayer1 = 'red';
         let colorPlayer2 = 'blue';
+        this.tokens = [];
         for (let index = 0; index < this.maxTokens / 2; index++) {
             let posY = Math.round(Math.random() * 720) + 100;
             let posX = Math.round(Math.random() * 300);
-            this.createToken(colorPlayer1, posX, posY);
-            console.log("hola ficha roja");
-        }
+            this.createToken(colorPlayer1, posX, posY);            
+        }        
         for (let index = this.maxTokens / 2; index < this.maxTokens; index++) {
             let posY = Math.round(Math.random() * 720) + 100;//revisar
-            let posX = Math.round(Math.random() * (this.canvas.width - 650) + 650);//revisar
-            this.createToken(colorPlayer2, posX, posY);
-            console.log("hola ficha azul");
+            let posX = Math.round(Math.random() * (this.canvas.width - 650))  + 650 ;//revisar
+            //let posX = Math.round(Math.random() * this.canvas.width);//revisar
+            //let posY = Math.round(Math.random() * this.canvas.heigth);//revisar            
+            this.createToken(colorPlayer2, posX, posY);            
         }
     }
 
 
     createToken(color, posX, posY) { //creo una ficha del color correspondiente
-        let token = new Token(posX, posY, color, this.ctx,);
+        let token = new Token(posX, posY, color, this.ctx);
         token.drawToken()
-        this.tokens.push(token);//donde va?
+        this.tokens.push(token);//coloco las fichas en ele arreglo de fichas
 
     }
 
-    createBoard() {
+    createBoard() {               
+        this.board = new GameBoard(this.canvas, this.ctx, this.boardRow, this.boardCol);
+        this.board.drawBoard();
+    }
+   
+    drawBoard() {
+        this.board.drawBoard();
+    }
+
+    clearCanvas() {        
+        this.ctx.fillStyle = '#ffffff';       
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+    reDraw() {
         this.clearCanvas();
-        console.log("Me llega" + this.boardRow);
-        console.log("Me llega" + this.boardCol);
-        let board = new GameBoard(this.canvas, this.ctx, this.boardRow, this.boardCol);
-        board.drawBoard();
-    }
-    clearCanvas() {
-        this.ctx.fillStyle = '#ffffff';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.heigth);
+        this.drawBoard();
+        for (let index = 0; index < this.tokens.length; index++) {
+            this.tokens[index].drawToken();
+        }
     }
 
-    onMouseDown(e) {
+    onMouseDown(e) {        
         this.isMouseDown = true;
-        if (this.lastFiguredClicked != null) {
-            this.lastFiguredClicked.setHighlight(false);
-            this.lastFiguredClicked = null;
+        if (this.lastTokenClicked != null) {
+            this.lastTokenClicked.setHighlight(false);
+            this.lastTokenClicked = null;
         }
-        let clickedFigure = this.findClickedFigure(e.layerX, e.layerY);
+
+        let clickedFigure = this.findClickedFigure(e.layerX, e.layerY);        
         if (clickedFigure != null) {
-           clickedFigure.setHighlight(true);
-            this.lastFiguredClicked = clickedFigure;
+            clickedFigure.setHighlight(true);
+            this.lastTokenClicked = clickedFigure;
         }
-        this.drawToken();//seria drawtokens
+        this.reDraw();
     }
     onMouseMove(e) {
-        if (this.isMouseDown && this.lastFiguredClicked != null) {
-            this.lastFiguredClicked.setPosition(e.layerX, e.layerY);
-            this.drawToken();
+        if (this.isMouseDown && this.lastTokenClicked != null) {
+            this.lastTokenClicked.setPosition(e.layerX, e.layerY);
+            this.reDraw();
         }
     }
     onMouseUp(e) {
         this.isMouseDown = false;
     }
-     findClickedFigure(x, y) {
-        for (let index = 0; index < tokens.length; index++) {
-            const element = tokens[index];
+
+    findClickedFigure(x, y) {        
+        for (let index = 0; index < this.tokens.length; index++) {
+            const element = this.tokens[index];            
             if (element.isPointInside(x, y)) {
                 return element;
             }
         }
     }
+
     isWinner() {
-        return isHorizontalWinner() || isVerticalWinner() || isDiagonalAscWinner() || isDiagonalDescWinner();
+        return this.board.isHorizontalWinner() || this.board.isVerticalWinner() || this.board.isDiagonalAscWinner() || this.board.isDiagonalDescWinner();
     }
-
-    isHorizontalWinner() {//pasarfila
-
-    }
-    isVerticalWinner() {//pasar columna
-
-    }
-    isDiagonalAscWinner() {//pasar fila y columna
-
-    }
-    isDiagonalDescWinner() {//pasar fila y columna
-
-    }
-
-
-
 }
