@@ -97,6 +97,11 @@ class Game {
     }
     onMouseUp(e) {
         this.isMouseDown = false;
+        if (this.verifyTokenIsInDropZone()) {
+            console.log("Estoy en la zona");
+        }else{
+            console.log("No estoy en la zona");
+        }
     }
 
     findClickedFigure(x, y) {
@@ -108,7 +113,7 @@ class Game {
         }
     }
     verifyTokenIsInDropZone() {
-        this.board.isInTokenDropZone(this.lastTokenClicked);//boolean
+        return this.board.isInTokenDropZone(this.lastTokenClicked);//boolean
     }
 
     isWinner() {

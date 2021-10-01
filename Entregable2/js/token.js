@@ -2,7 +2,7 @@
 class Token extends Figure{
 
     constructor(posX, posY, color, context) {
-        super(posX, posY, color, context);
+        super(posX, posY, context, color);
         this.redToken = new Image();
         this.redToken.src = "images/fichas-roja.png";
         this.blueToken = new Image();

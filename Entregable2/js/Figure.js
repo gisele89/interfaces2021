@@ -1,5 +1,5 @@
 class Figure {
-    constructor(posX, posY, color, context) {
+    constructor(posX, posY, context, color) {
         this.posX = posX;
         this.posY = posY;
         this.color = color;

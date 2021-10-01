@@ -35,6 +35,7 @@ class GameBoard {
         let y = this.calculatePosition().y - this.sizeToken; //le resto el tamaño de la ficha de drop zone para dibujar una fila antes del tablero
         let tokenDropZone = new TokenDropZone(x, y, this.ctx, this.cols);
         tokenDropZone.draw();
+        return tokenDropZone;
     }
     initBoard() {
         this.cellImage.onload = function () {
@@ -44,8 +45,8 @@ class GameBoard {
     //calculo el centro para dibujar el tablero
     calculatePosition() {
         return {
-            x: (this.canvas.width / 2) - (this.cols / 2) * this.sizeToken - 1.5,
-            y: (this.canvas.height / 2) - (this.rows / 2) * this.sizeToken
+            x: (this.canvas.width / 2) - ((this.cols / 2) * this.sizeToken),
+            y: (this.canvas.height / 2) - ((this.rows / 2) * this.sizeToken)
         }
     }
     //dibujo el tablero
@@ -58,13 +59,12 @@ class GameBoard {
     }
     //verifico si la posición de la última figura clickeada coincide con alguna posición de la drop zone
     isInTokenDropZone(lastTokenClicked) {
-        let posXLastToken = lastTokenClicked.getPosition().x + (lastTokenClicked.getRadius()) / 2; //hace falta sumar el radio?
-        let posYLastToken = lastTokenClicked.getPosition().y + (lastTokenClicked.getRadius()) / 2;
-        for (let index = 0; index < this.cols; index++) {
-            if (isPointInside(this.tokenDropZone[index]) == posXLastToken && this.tokenDropZone[index].y == posYLastToken) {
+        for (let index = 0; index < this.tokenDropZone.length; index++) {
+            if (this.tokenDropZone[index].isInDropZone(lastTokenClicked)) {//cada ficha sabe si está en la drop zone
                 return true;//acomodar ésto a lo nuevo
+            } else {
+                return false;
             }
-            return false;
         }
     }
 
