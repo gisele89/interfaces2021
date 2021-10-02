@@ -10,10 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
     cellImage.src = "images/board-image.png";
     ctx.drawImage(cellImage, 10, 10, cellImage.width, cellImage.height);
     let game = new Game(canvas, ctx, boardRow, boardCol);
-    game.initGame();
+    
+    document.querySelector("#play").addEventListener('click', function (e) {
+        game.initGame();
+    });
 
     document.querySelector("#reset").addEventListener('click', function (e) {
-        game.initGame;
+        game.initGame();
     });
     //asigno eventos para cambiar el tamaño del tablero 
 

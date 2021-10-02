@@ -102,11 +102,13 @@ class GameBoard {
         }
         let countTokens = 1;
         for (let i = 0; i < this.cols - 1; i++) {
-            if (this.boardMatrix[i + 1][posJ] && this.boardMatrix[i][posJ] && this.boardMatrix[i][posJ].getColor() == this.boardMatrix[i + 1][posJ].getColor() && countTokens <= maxTokensToWin) {
+            if (this.boardMatrix[i + 1][posJ] && this.boardMatrix[i][posJ] && this.boardMatrix[i][posJ].getColor() == this.boardMatrix[i + 1][posJ].getColor() && countTokens < maxTokensToWin) {
                 countTokens++;
             } else {
-                countTokens = 1;
-            }
+                if (countTokens < maxTokensToWin) {
+                    countTokens = 1;
+                }
+            }            
         }
         return countTokens >= maxTokensToWin;
     }
