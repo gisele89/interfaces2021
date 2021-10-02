@@ -8,6 +8,7 @@ class GameBoard {
         this.cellImage = new Image();
         this.cellImage.src = "images/board-image.png";
         this.sizeToken = 50;
+        this.droppedTokensCount = 0;
         this.boardMatrix = [];
         this.tokenDropZone;
         this.initMatrix();
@@ -31,7 +32,7 @@ class GameBoard {
     drawDropZone() {
         let x = this.calculatePosition().x;
         let y = this.calculatePosition().y - this.sizeToken; //le resto el tamaño de la ficha de drop zone para dibujar una fila antes del tablero
-        let tokenDropZone = new TokenDropZone(x, y, this.ctx, this.cols);
+        let tokenDropZone = new TokenDropZone(0, 0, this.ctx, this.cols);
         tokenDropZone.draw();
         return tokenDropZone;
     }
@@ -53,7 +54,7 @@ class GameBoard {
         let y = this.calculatePosition().y
         let boardPattern = this.ctx.createPattern(this.cellImage, 'repeat');
         this.ctx.fillStyle = boardPattern;
-        this.ctx.fillRect(x, y, this.cellImage.width * this.cols, this.cellImage.height * this.rows);       
+        this.ctx.fillRect(0, 50, this.cellImage.width * this.cols, this.cellImage.height * this.rows);
     }
     //verifico si la posición de la última figura clickeada coincide con alguna posición de la drop zone
     isInTokenDropZone(lastTokenClicked) {
@@ -66,30 +67,50 @@ class GameBoard {
     }
     //verifico que hay lugar en la columna de la matriz donde el usuario quiere agregar una ficha recorriendo desde abajo hacia arriba
     addToken(lastTokenClicked) {
-        //console.log("getPosition " + this.tokenDropZone.getPosition().x);
         let x = this.tokenDropZone.getPosition().x;
         let y = this.tokenDropZone.getPosition().y + this.sizeToken;
 
         let radius = this.tokenDropZone.getRadius();
         let i = this.tokenDropZone.getDropZoneIndex(lastTokenClicked);
         x = x + i * this.sizeToken;
-       
-        let dropped = false; 
-        for (let j = this.rows - 1; j >= 0; j--) {                     
+
+        let dropped = false;
+        for (let j = this.rows - 1; j >= 0; j--) {
             if (this.boardMatrix[i][j] == null && !dropped) {
                 y = y + j * this.sizeToken;
-                //console.log("Ficha cayo en x: " + x + ": y" + y);
                 lastTokenClicked.setPosition(x + radius, y + radius);
                 this.boardMatrix[i][j] = lastTokenClicked;  //buscar posicion, hacer fórmula
                 dropped = true;
+                this.droppedTokensCount += 1;
+                lastTokenClicked.setDisableToken();//se deshabilita la ficha jugada
             }
         }
     }
 
-
-    isHorizontalWinner(rows) {//pasarfila
-
+    getDroppedTokensCount() {
+        return this.droppedTokensCount;
     }
+
+    isHorizontalWinner(lastTokenClicked, maxTokensToWin) {
+        let posJ;
+        for (let i = 0; i < this.cols; i++) {
+            for (let j = 0; j < this.rows; j++) {
+                if (this.boardMatrix[i][j] === lastTokenClicked) {
+                    posJ = j;
+                }
+            }
+        }
+        let countTokens = 1;
+        for (let i = 0; i < this.cols - 1; i++) {
+            if (this.boardMatrix[i + 1][posJ] && this.boardMatrix[i][posJ] && this.boardMatrix[i][posJ].getColor() == this.boardMatrix[i + 1][posJ].getColor() && countTokens <= maxTokensToWin) {
+                countTokens++;
+            } else {
+                countTokens = 1;
+            }
+        }
+        return countTokens >= maxTokensToWin;
+    }
+
     isVerticalWinner(cols) {//pasar columna
 
     }

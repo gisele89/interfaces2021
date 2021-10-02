@@ -22,8 +22,8 @@ class TokenDropZone extends Figure {
     draw() {
         let dropPattern = this.ctx.createPattern(this.dropImage, 'repeat');
         this.ctx.fillStyle = dropPattern;
-        this.ctx.fillRect(this.posX, this.posY, this.dropImage.width * this.cols, this.dropImage.height);
-       // this.ctx.fillRect(0, 0, this.dropImage.width * this.cols, this.dropImage.height);
+        //this.ctx.fillRect(this.posX, this.posY, this.dropImage.width * this.cols, this.dropImage.height);
+       this.ctx.fillRect(0, 0, this.dropImage.width * this.cols, this.dropImage.height);
     }
 
     getRadius() {

@@ -6,6 +6,7 @@ class Game {
         this.boardCol = boardCol;
         this.maxTokens = 0;
         this.tokens = [];
+        this.maxTokensToWin = 4;
         this.lastTokenClicked = null;
         this.isMouseDown = false;
         this.board = null;
@@ -90,7 +91,7 @@ class Game {
         this.reDraw();
     }
     onMouseMove(e) {
-        if (this.isMouseDown && this.lastTokenClicked != null) {
+        if (this.isMouseDown && this.lastTokenClicked != null && !this.lastTokenClicked.getDisableToken()) {
             this.lastTokenClicked.setPosition(e.layerX, e.layerY);
             this.reDraw();
         }
@@ -115,22 +116,34 @@ class Game {
         }
     }
     verifyTokenIsInDropZone() {
-        console.log(this.lastTokenClicked);
+        //console.log(this.lastTokenClicked);
         return this.board.isInTokenDropZone(this.lastTokenClicked);//boolean
     }
     addTokenToGameBoard() {
         this.board.addToken(this.lastTokenClicked);
-        this.deleteTokenAddedToMatrix(this.lastTokenClicked);
-    }
-    deleteTokenAddedToMatrix(lastTokenClicked) {
-        for (let index = 0; index < this.tokens.length; index++) {
-            if (this.tokens[index].getPosition().x == lastTokenClicked.getPosition().x && this.tokens[index].getPosition().y == lastTokenClicked.getPosition().y) {
-                this.tokens.slice(index);
+       // this.deleteTokenAddedToMatrix(this.lastTokenClicked);
+        let winner;
+        if (this.board.getDroppedTokensCount() >= this.maxTokensToWin) {
+            winner = this.isWinner(this.lastTokenClicked, this.maxTokensToWin);
+            if (winner) {
+                console.log("Ganaste")
+            } else {
+                console.log("No Ganaste")
             }
+
         }
     }
+   /* deleteTokenAddedToMatrix(lastTokenClicked) {
+        for (let index = 0; index < this.tokens.length; index++) {
+            if (this.tokens[index].getPosition().x == lastTokenClicked.getPosition().x && this.tokens[index].getPosition().y == lastTokenClicked.getPosition().y) {
+                console.log(this.tokens);
+                //this.tokens.splice(index, 1);
+                console.log(this.tokens);
+            }
+        }
+    }*/
 
-    isWinner() {
-        return this.board.isHorizontalWinner() || this.board.isVerticalWinner() || this.board.isDiagonalAscWinner() || this.board.isDiagonalDescWinner();
+    isWinner(lastTokenClicked, maxTokensToWin) {
+        return this.board.isHorizontalWinner(lastTokenClicked, maxTokensToWin); //|| this.board.isVerticalWinner() || this.board.isDiagonalAscWinner() || this.board.isDiagonalDescWinner();
     }
 }

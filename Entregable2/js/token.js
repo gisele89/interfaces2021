@@ -1,5 +1,5 @@
 "use strict";
-class Token extends Figure{
+class Token extends Figure {
 
     constructor(posX, posY, color, context) {
         super(posX, posY, context, color);
@@ -10,6 +10,7 @@ class Token extends Figure{
         this.sizeToken = 40;
         this.highlighted = false;
         this.fillHighlighted = '#c4f8f8';
+        this.disableToken = false;
         this.setPosition(posX, posY);
         this.loadImages();
     }
@@ -33,6 +34,9 @@ class Token extends Figure{
     getRadius() {
         return this.sizeToken / 2;
     }
+    getColor(){
+        return this.color;
+    }
 
     isPointInside(x, y) {
         let radius = this.getRadius();
@@ -45,6 +49,12 @@ class Token extends Figure{
             x: this.posX,
             y: this.posY
         }
+    }
+    setDisableToken() {
+        this.disableToken = true;
+    }
+    getDisableToken(){
+        return this.disableToken;
     }
 
     setPosition(x, y) {
