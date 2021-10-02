@@ -98,8 +98,10 @@ class Game {
     onMouseUp(e) {
         this.isMouseDown = false;
         if (this.verifyTokenIsInDropZone()) {
-            console.log("Estoy en la zona");
-        }else{
+            this.addTokenToGameBoard();
+            this.reDraw();
+            console.log("Estoy en el tablero");
+        } else {
             console.log("No estoy en la zona");
         }
     }
@@ -113,7 +115,19 @@ class Game {
         }
     }
     verifyTokenIsInDropZone() {
+        console.log(this.lastTokenClicked);
         return this.board.isInTokenDropZone(this.lastTokenClicked);//boolean
+    }
+    addTokenToGameBoard() {
+        this.board.addToken(this.lastTokenClicked);
+        this.deleteTokenAddedToMatrix(this.lastTokenClicked);
+    }
+    deleteTokenAddedToMatrix(lastTokenClicked) {
+        for (let index = 0; index < this.tokens.length; index++) {
+            if (this.tokens[index].getPosition().x == lastTokenClicked.getPosition().x && this.tokens[index].getPosition().y == lastTokenClicked.getPosition().y) {
+                this.tokens.slice(index);
+            }
+        }
     }
 
     isWinner() {

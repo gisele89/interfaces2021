@@ -23,20 +23,14 @@ class TokenDropZone extends Figure {
         let dropPattern = this.ctx.createPattern(this.dropImage, 'repeat');
         this.ctx.fillStyle = dropPattern;
         this.ctx.fillRect(this.posX, this.posY, this.dropImage.width * this.cols, this.dropImage.height);
+       // this.ctx.fillRect(0, 0, this.dropImage.width * this.cols, this.dropImage.height);
     }
 
     getRadius() {
         return this.sizeToken / 2;
     }
-
-    isPointInside(tokenDropZone) {
-        let x = tokenDropZone.getPosX();
-        let y = tokenDropZone.getPosY();
-        let isInside = !(x < this.posX || x > this.posX + this.width || y < this.posY || y > this.posY + this.height);
-        if (isInside == true) {
-            tokenDropZone.setPosition(this.posX, this.posY);
-        }
-        return isInside;
+    getColumn(){
+        return 
     }
     //verifico si estoy en la drop zone
     isInDropZone(lastTokenClicked) {
@@ -55,6 +49,20 @@ class TokenDropZone extends Figure {
         }
     }
 
+    getDropZoneIndex(lastTokenClicked) {
+        let posXLastToken = lastTokenClicked.getPosition().x;
+        let posDropInit = this.getPosition().x;
+        let posDropEnd = this.getPosition().x + this.sizeToken;
+        for (let index = 0; index < this.cols; index++) {
+            if (posXLastToken > posDropInit && posXLastToken < posDropEnd) {
+                return index;
+            }
+            posDropInit = posDropEnd;
+            posDropEnd = posDropEnd + this.sizeToken;
+        }
+        return -1;
+    }
+
 
     getPosition() {
         return {
@@ -63,10 +71,9 @@ class TokenDropZone extends Figure {
         }
     }
 
-    setPosition(x, y) {
-        let radius = this.getRadius();
-        this.posX = x - radius;
-        this.posY = y - radius;
+    setPosition(x, y) {        
+        this.posX = x;
+        this.posY = y;
     }
     setHighlight(highlighted) {
         this.highlighted = highlighted;
