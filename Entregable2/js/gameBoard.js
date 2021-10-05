@@ -79,7 +79,7 @@ class GameBoard {
             if (this.boardMatrix[i][j] == null && !dropped) {
                 y = y + j * this.sizeToken;
                 lastTokenClicked.setPosition(x + radius, y + radius);
-                this.boardMatrix[i][j] = lastTokenClicked;  //buscar posicion, hacer fórmula
+                this.boardMatrix[i][j] = lastTokenClicked;
                 dropped = true;
                 this.droppedTokensCount += 1;
                 lastTokenClicked.setDisableToken();//se deshabilita la ficha jugada
@@ -90,9 +90,10 @@ class GameBoard {
     getDroppedTokensCount() {
         return this.droppedTokensCount;
     }
-
+    //verifico si hay algún ganador en las filas
     isHorizontalWinner(lastTokenClicked, maxTokensToWin) {
         let posJ;
+        //obtengo la fila y columna  de la última ficha agregada
         for (let i = 0; i < this.cols; i++) {
             for (let j = 0; j < this.rows; j++) {
                 if (this.boardMatrix[i][j] === lastTokenClicked) {
@@ -101,6 +102,7 @@ class GameBoard {
             }
         }
         let countTokens = 1;
+        //evaluo que no tenga null la matriz y coincida el color de la última ficha clickeada con las de la fila
         for (let i = 0; i < this.cols - 1; i++) {
             if (this.boardMatrix[i + 1][posJ] && this.boardMatrix[i][posJ] && this.boardMatrix[i][posJ].getColor() == this.boardMatrix[i + 1][posJ].getColor() && countTokens < maxTokensToWin) {
                 countTokens++;
@@ -112,9 +114,10 @@ class GameBoard {
         }
         return countTokens >= maxTokensToWin;
     }
-
+    //verifico si hay algún ganador en las columnas
     isVerticalWinner(lastTokenClicked, maxTokensToWin) {
         let posI;
+        //obtengo la fila y columna  de la última ficha agregada
         for (let i = 0; i < this.cols; i++) {
             for (let j = 0; j < this.rows; j++) {
                 if (this.boardMatrix[i][j] === lastTokenClicked) {
@@ -123,6 +126,7 @@ class GameBoard {
             }
         }
         let countTokens = 1;
+        //evaluo que no tenga null la matriz y coincida el color de la última ficha clickeada con las de la columna
         for (let j = 0; j < this.rows - 1; j++) {
             if (this.boardMatrix[posI][j + 1] && this.boardMatrix[posI][j] && this.boardMatrix[posI][j].getColor() == this.boardMatrix[posI][j + 1].getColor() && countTokens < maxTokensToWin) {
                 countTokens++;
@@ -133,121 +137,77 @@ class GameBoard {
             }
         }
         return countTokens >= maxTokensToWin;
-
     }
+    //verifico si hay algún ganador en la diagonal ascendente
     isDiagonalAscWinner(lastTokenClicked, maxTokensToWin) {
-        console.log("isDiagonalAscWinner");
         let posI;
         let posJ;
+        //obtengo la fila y columna  de la última ficha agregada
         for (let i = 0; i < this.cols; i++) {
             for (let j = 0; j < this.rows; j++) {
                 if (this.boardMatrix[i][j] === lastTokenClicked) {
                     posI = i;
                     posJ = j
-                    console.log("Ciclo 1 i: " + posI + "j: " + posJ);
-
                 }
             }
         }
 
-        for (let i = posI; i > 0; i--) {
-            for (let j = posJ; j < this.rows - 1; j++) {
-                if (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j + 1].getColor()) {
-                    posI = i - 1;
-                    posJ = j + 1;
-                    console.log("Ciclo 2 i: " + posI + "j: " + posJ);
-                }
-            }
+        let i = posI;
+        let j = posJ;
+        //encuentro la última ficha de la diagonal cercana a la última fila de la matriz y la primer columna
+        while ((i > 0 && j < this.rows - 1) && this.boardMatrix[i][j] && this.boardMatrix[i - 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j + 1].getColor()) {
+            i--;
+            j++;
         }
-
+        //asciendo para detrminar si se ganó en ésta diagonal
         let countTokens = 1;
-        console.log(this.boardMatrix);
-        for (let i = posI; i < this.cols - 1; i++) {
-            for (let j = posJ; j > 0; j--) {
-                console.log("Ciclo 3 i: " + posI + "j: " + posJ);
-                if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j - 1].getColor() && countTokens < maxTokensToWin) {
-                    console.log("estoy evaluando");
-                    countTokens++;
-                    console.log("Sumando tokens: " + countTokens);
-                } else {
-                    if (countTokens < maxTokensToWin) {
-                        countTokens = 0;
-                    }
+        while (i < this.cols - 1 && j > 0) {
+            if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j - 1].getColor() && countTokens < maxTokensToWin) {
+                countTokens++;
+            } else {
+                if (countTokens < maxTokensToWin) {
+                    countTokens = 0;
                 }
             }
+            i++;
+            j--;
         }
         return countTokens >= maxTokensToWin;
     }
-
+    //verifico si hay algún ganador en la diagonal descendente
     isDiagonalDescWinner(lastTokenClicked, maxTokensToWin) {
-        console.log("isDiagonalDescWinner");
         let posI;
         let posJ;
+        //obtengo la fila y columna  de la última ficha agregada
         for (let i = 0; i < this.cols; i++) {
             for (let j = 0; j < this.rows; j++) {
                 if (this.boardMatrix[i][j] === lastTokenClicked) {
                     posI = i;
                     posJ = j
-                    console.log("Ciclo 1 i:" + i + " j:" + j);
-
                 }
             }
-        }
-        for (let i = posI; i > 0; i--) {
-            for (let j = posJ; j > 0; j--) {
-                if (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j - 1].getColor()) {
-                    posI = i - 1;
-                    posJ = j - 1;
-                    console.log("Ciclo 2 i:" + i + " j:" + j);
-                }
-            }
-        }
 
+        }
+        let i = posI;
+        let j = posJ;
+        //encuentro la última ficha de la diagonal cercana a la primer fila de la matriz y primer columna
+        while ((i > 0 && j > 0) && (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j - 1].getColor())) {
+            i--;
+            j--;
+        }
         let countTokens = 1;
-
-        for (let i = posI; i < this.cols - 1; i++) {
-            for (let j = posJ; j < this.rows - 1; j++) {
-                console.log("Ciclo 3 i:" + posI + " j:" + posJ);
-                if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j + 1].getColor() && countTokens < maxTokensToWin) {
-                    console.log("estoy evaluando");
-                    countTokens++;
-                    console.log("Sumando tokens: " + countTokens);
-                } else {
-                    if (countTokens < maxTokensToWin) {
-                        countTokens = 0;
-                    }
+        //verifico si hay algún ganador en la diagonal descendente
+        while (i < this.cols - 1 && j < this.rows - 1) {
+            if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j + 1].getColor() && countTokens <= maxTokensToWin) {
+                countTokens++;
+            } else {
+                if (countTokens < maxTokensToWin) {
+                    countTokens = 1;
                 }
             }
+            i++;
+            j++;
         }
         return countTokens >= maxTokensToWin;
-
-
-        /* for (let i = posI; i < this.cols - 1; i++) {
-             for (let j = posJ; j < this.rows - 1; j++) {
-                 if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j + 1].getColor()) {
-                     posI = i + 1;
-                     posJ = j + 1;
-                     console.log("Ciclo 2 i:" + i + " j:" + j);
-                 }
-             }
-         }
- 
-         let countTokens = 1;
- 
-         for (let i = posI; i > 0; i--) {
-             for (let j = posJ; j > 0; j--) {
-                 console.log("Ciclo 3 i:" + posI + " j:" + posJ);
-                 if (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j - 1].getColor() && countTokens < maxTokensToWin) {
-                     console.log("estoy evaluando");
-                     countTokens++;
-                     console.log("Sumando tokens: " + countTokens);
-                 } else {
-                     if (countTokens < maxTokensToWin) {
-                         countTokens = 0;
-                     }
-                 }
-             }
-         }
-         return countTokens >= maxTokensToWin;*/
     }
 }

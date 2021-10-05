@@ -113,8 +113,7 @@ class Game {
         }
     }
     verifyTokenIsInDropZone() {
-        //console.log(this.lastTokenClicked);
-        return this.board.isInTokenDropZone(this.lastTokenClicked);//boolean
+        return this.board.isInTokenDropZone(this.lastTokenClicked);
     }
     addTokenToGameBoard() {
         this.board.addToken(this.lastTokenClicked);
