@@ -108,18 +108,146 @@ class GameBoard {
                 if (countTokens < maxTokensToWin) {
                     countTokens = 1;
                 }
-            }            
+            }
         }
         return countTokens >= maxTokensToWin;
     }
 
-    isVerticalWinner(cols) {//pasar columna
+    isVerticalWinner(lastTokenClicked, maxTokensToWin) {
+        let posI;
+        for (let i = 0; i < this.cols; i++) {
+            for (let j = 0; j < this.rows; j++) {
+                if (this.boardMatrix[i][j] === lastTokenClicked) {
+                    posI = i;
+                }
+            }
+        }
+        let countTokens = 1;
+        for (let j = 0; j < this.rows - 1; j++) {
+            if (this.boardMatrix[posI][j + 1] && this.boardMatrix[posI][j] && this.boardMatrix[posI][j].getColor() == this.boardMatrix[posI][j + 1].getColor() && countTokens < maxTokensToWin) {
+                countTokens++;
+            } else {
+                if (countTokens < maxTokensToWin) {
+                    countTokens = 1;
+                }
+            }
+        }
+        return countTokens >= maxTokensToWin;
 
     }
-    isDiagonalAscWinner(row, col) {//pasar fila y columna
+    isDiagonalAscWinner(lastTokenClicked, maxTokensToWin) {
+        console.log("isDiagonalAscWinner");
+        let posI;
+        let posJ;
+        for (let i = 0; i < this.cols; i++) {
+            for (let j = 0; j < this.rows; j++) {
+                if (this.boardMatrix[i][j] === lastTokenClicked) {
+                    posI = i;
+                    posJ = j
+                    console.log("Ciclo 1 i: " + posI + "j: " + posJ);
 
+                }
+            }
+        }
+
+        for (let i = posI; i > 0; i--) {
+            for (let j = posJ; j < this.rows - 1; j++) {
+                if (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j + 1].getColor()) {
+                    posI = i - 1;
+                    posJ = j + 1;
+                    console.log("Ciclo 2 i: " + posI + "j: " + posJ);
+                }
+            }
+        }
+
+        let countTokens = 1;
+        console.log(this.boardMatrix);
+        for (let i = posI; i < this.cols - 1; i++) {
+            for (let j = posJ; j > 0; j--) {
+                console.log("Ciclo 3 i: " + posI + "j: " + posJ);
+                if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j - 1].getColor() && countTokens < maxTokensToWin) {
+                    console.log("estoy evaluando");
+                    countTokens++;
+                    console.log("Sumando tokens: " + countTokens);
+                } else {
+                    if (countTokens < maxTokensToWin) {
+                        countTokens = 0;
+                    }
+                }
+            }
+        }
+        return countTokens >= maxTokensToWin;
     }
-    isDiagonalDescWinner(row, col) {//pasar fila y columna
 
+    isDiagonalDescWinner(lastTokenClicked, maxTokensToWin) {
+        console.log("isDiagonalDescWinner");
+        let posI;
+        let posJ;
+        for (let i = 0; i < this.cols; i++) {
+            for (let j = 0; j < this.rows; j++) {
+                if (this.boardMatrix[i][j] === lastTokenClicked) {
+                    posI = i;
+                    posJ = j
+                    console.log("Ciclo 1 i:" + i + " j:" + j);
+
+                }
+            }
+        }
+        for (let i = posI; i > 0; i--) {
+            for (let j = posJ; j > 0; j--) {
+                if (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j - 1].getColor()) {
+                    posI = i - 1;
+                    posJ = j - 1;
+                    console.log("Ciclo 2 i:" + i + " j:" + j);
+                }
+            }
+        }
+
+        let countTokens = 1;
+
+        for (let i = posI; i < this.cols - 1; i++) {
+            for (let j = posJ; j < this.rows - 1; j++) {
+                console.log("Ciclo 3 i:" + posI + " j:" + posJ);
+                if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j + 1].getColor() && countTokens < maxTokensToWin) {
+                    console.log("estoy evaluando");
+                    countTokens++;
+                    console.log("Sumando tokens: " + countTokens);
+                } else {
+                    if (countTokens < maxTokensToWin) {
+                        countTokens = 0;
+                    }
+                }
+            }
+        }
+        return countTokens >= maxTokensToWin;
+
+
+        /* for (let i = posI; i < this.cols - 1; i++) {
+             for (let j = posJ; j < this.rows - 1; j++) {
+                 if (this.boardMatrix[i][j] && this.boardMatrix[i + 1][j + 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i + 1][j + 1].getColor()) {
+                     posI = i + 1;
+                     posJ = j + 1;
+                     console.log("Ciclo 2 i:" + i + " j:" + j);
+                 }
+             }
+         }
+ 
+         let countTokens = 1;
+ 
+         for (let i = posI; i > 0; i--) {
+             for (let j = posJ; j > 0; j--) {
+                 console.log("Ciclo 3 i:" + posI + " j:" + posJ);
+                 if (this.boardMatrix[i][j] && this.boardMatrix[i - 1][j - 1] && this.boardMatrix[i][j].getColor() == this.boardMatrix[i - 1][j - 1].getColor() && countTokens < maxTokensToWin) {
+                     console.log("estoy evaluando");
+                     countTokens++;
+                     console.log("Sumando tokens: " + countTokens);
+                 } else {
+                     if (countTokens < maxTokensToWin) {
+                         countTokens = 0;
+                     }
+                 }
+             }
+         }
+         return countTokens >= maxTokensToWin;*/
     }
 }

@@ -42,7 +42,6 @@ class TokenDropZone extends Figure {
         posDropInitY = this.getPosition().y;
         posDropEndY = this.getPosition().y + this.sizeToken;
         if (posXLastToken > posDropInit && posXLastToken < posDropEnd && posYLastToken > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
-            console.log("está en la drop zone")
             return true;
         } else {
             return false;
