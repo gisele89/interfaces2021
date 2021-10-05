@@ -103,9 +103,6 @@ class Game {
         if (this.verifyTokenIsInDropZone()) {
             this.addTokenToGameBoard();
             this.reDraw();
-            console.log("Estoy en el tablero");
-        } else {
-            console.log("No estoy en la zona");
         }
     }
 
@@ -123,7 +120,7 @@ class Game {
     }
     addTokenToGameBoard() {
         this.board.addToken(this.lastTokenClicked);
-       // this.deleteTokenAddedToMatrix(this.lastTokenClicked);
+        // this.deleteTokenAddedToMatrix(this.lastTokenClicked);
         let winner;
         if (this.board.getDroppedTokensCount() >= this.maxTokensToWin) {
             winner = this.isWinner(this.lastTokenClicked, this.maxTokensToWin);
@@ -135,17 +132,17 @@ class Game {
 
         }
     }
-   /* deleteTokenAddedToMatrix(lastTokenClicked) {
-        for (let index = 0; index < this.tokens.length; index++) {
-            if (this.tokens[index].getPosition().x == lastTokenClicked.getPosition().x && this.tokens[index].getPosition().y == lastTokenClicked.getPosition().y) {
-                console.log(this.tokens);
-                //this.tokens.splice(index, 1);
-                console.log(this.tokens);
-            }
-        }
-    }*/
+    /* deleteTokenAddedToMatrix(lastTokenClicked) {
+         for (let index = 0; index < this.tokens.length; index++) {
+             if (this.tokens[index].getPosition().x == lastTokenClicked.getPosition().x && this.tokens[index].getPosition().y == lastTokenClicked.getPosition().y) {
+                 console.log(this.tokens);
+                 //this.tokens.splice(index, 1);
+                 console.log(this.tokens);
+             }
+         }
+     }*/
 
     isWinner(lastTokenClicked, maxTokensToWin) {
-        return this.board.isHorizontalWinner(lastTokenClicked, maxTokensToWin); //|| this.board.isVerticalWinner() || this.board.isDiagonalAscWinner() || this.board.isDiagonalDescWinner();
+        return this.board.isHorizontalWinner(lastTokenClicked, maxTokensToWin) || this.board.isVerticalWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalAscWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalDescWinner(lastTokenClicked, maxTokensToWin) ;
     }
 }
