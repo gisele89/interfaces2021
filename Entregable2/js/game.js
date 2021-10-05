@@ -117,19 +117,23 @@ class Game {
     verifyTokenIsInDropZone() {
         return this.board.isInTokenDropZone(this.lastTokenClicked);
     }
+    //se agregan las fichas que se van situando en la dropzone
     addTokenToGameBoard() {
         this.board.addToken(this.lastTokenClicked);
-        // this.deleteTokenAddedToMatrix(this.lastTokenClicked);
         let winner;
         if (this.board.getDroppedTokensCount() >= this.maxTokensToWin) {
             winner = this.isWinner(this.lastTokenClicked, this.maxTokensToWin);
             if (winner) {
-                console.log("Ganaste")
+                document.querySelector("#msj").innerHTML = "¡Felicitaciones, Ganaste Jugador ..!";
             } else {
                 console.log("No Ganaste")
             }
 
         }
+    }
+    //se resetea el mensaje a vacio cuando se presiona el botón
+    resetMessage(){
+        document.querySelector("#msj").innerHTML = "";
     }
     /* deleteTokenAddedToMatrix(lastTokenClicked) {
          for (let index = 0; index < this.tokens.length; index++) {
@@ -140,7 +144,7 @@ class Game {
              }
          }
      }*/
-
+    //verifico que hay un ganador
     isWinner(lastTokenClicked, maxTokensToWin) {
         return this.board.isHorizontalWinner(lastTokenClicked, maxTokensToWin) || this.board.isVerticalWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalAscWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalDescWinner(lastTokenClicked, maxTokensToWin) ;
     }

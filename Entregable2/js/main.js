@@ -10,13 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
     cellImage.src = "images/board-image.png";
     ctx.drawImage(cellImage, 10, 10, cellImage.width, cellImage.height);
     let game = new Game(canvas, ctx, boardRow, boardCol);
-    
+
     document.querySelector("#play").addEventListener('click', function (e) {
         game.initGame();
+        disableEnableButtonsBoard(true);
     });
 
     document.querySelector("#reset").addEventListener('click', function (e) {
         game.initGame();
+        game.resetMessage();
+        resetMessageTimer();
+        disableEnableButtonsBoard(false);
     });
     //asigno eventos para cambiar el tamaño del tablero 
 
@@ -51,14 +55,39 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#canvas").addEventListener('mousemove', function (e) {
         game.onMouseMove(e);
     });
-})
 
-/*document.querySelector("#play").addEventListener('click', function (e) {
-    setInterval(setTimer, 1000);
-});
-    function setTimer() {
-        const d = new Date();
-        document.querySelector("#timer").innerHTML = d.toLocaleTimeString();
+    document.querySelector("#play").addEventListener('click', function (e) {
+        doCountdown();
+    });
+    function resetMessageTimer() {
+        document.querySelector("#timer").innerHTML = "";
     }
+    //deshabilito o habilito los botones según el valor pasado por parámetro
+    function disableEnableButtonsBoard(state) {
+        console.log("deshabilitando");
+        document.querySelector("#board-5").disabled = state;
+        document.querySelector("#board-6").disabled = state;
+        document.querySelector("#board-7").disabled = state;
+        document.querySelector("#board-8").disabled = state;
+    }
+
+    function doCountdown() {
+        let countDownDate = new Date();
+        countDownDate = countDownDate.getTime() + 60000;
+
+        let x = setInterval(function () {
+            let now = new Date().getTime();
+            let distance = countDownDate - now;
+
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.querySelector("#timer").innerHTML = minutes + ": " + seconds;
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector("#timer").innerHTML = "¡Se acabó el tiempo!";
+            }
+        }, 1000);
+    }
+
 })
-*/
