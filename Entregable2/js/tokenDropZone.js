@@ -22,8 +22,11 @@ class TokenDropZone extends Figure {
     draw() {
         let dropPattern = this.ctx.createPattern(this.dropImage, 'repeat');
         this.ctx.fillStyle = dropPattern;
+        this.ctx.save();
+        this.ctx.translate(this.posX,this.posY);
         //this.ctx.fillRect(this.posX, this.posY, this.dropImage.width * this.cols, this.dropImage.height);
-       this.ctx.fillRect(0, 0, this.dropImage.width * this.cols, this.dropImage.height);
+        this.ctx.fillRect(0, 0, this.dropImage.width * this.cols, this.dropImage.height);
+        this.ctx.restore()
     }
 
     getRadius() {
@@ -41,9 +44,12 @@ class TokenDropZone extends Figure {
         posDropEnd = this.getPosition().x + this.sizeToken * this.cols;
         posDropInitY = this.getPosition().y;
         posDropEndY = this.getPosition().y + this.sizeToken;
-        if (posXLastToken > posDropInit && posXLastToken < posDropEnd && posYLastToken > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
+        console.log(posYLastToken);
+        console.log(posDropInitY);
+        console.log(posDropEndY);
+        if (posXLastToken + this.sizeToken/2  > posDropInit && posXLastToken < posDropEnd && posYLastToken + this.sizeToken/2 > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
             return true;
-        } else {
+        }else {
             return false;
         }
     }

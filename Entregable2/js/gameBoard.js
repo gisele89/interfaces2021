@@ -31,8 +31,8 @@ class GameBoard {
     //dibujo la zona habilitada para arrojar las fichas
     drawDropZone() {
         let x = this.calculatePosition().x;
-        let y = this.calculatePosition().y - this.sizeToken; //le resto el tamaño de la ficha de drop zone para dibujar una fila antes del tablero
-        let tokenDropZone = new TokenDropZone(0, 0, this.ctx, this.cols);
+        let y = this.calculatePosition().y; //le resto el tamaño de la ficha de drop zone para dibujar una fila antes del tablero
+        let tokenDropZone = new TokenDropZone(x, y, this.ctx, this.cols);
         tokenDropZone.draw();
         return tokenDropZone;
     }
@@ -53,11 +53,16 @@ class GameBoard {
         let x = this.calculatePosition().x;
         let y = this.calculatePosition().y
         let boardPattern = this.ctx.createPattern(this.cellImage, 'repeat');
+        this.ctx.save();
+        this.ctx.translate(x,y);
         this.ctx.fillStyle = boardPattern;
         this.ctx.fillRect(0, 50, this.cellImage.width * this.cols, this.cellImage.height * this.rows);
+        this.ctx.restore()
     }
     //verifico si la posición de la última figura clickeada coincide con alguna posición de la drop zone
     isInTokenDropZone(lastTokenClicked) {
+        console.log(lastTokenClicked);
+        console.log(this.tokenDropZone)
         if (lastTokenClicked && this.tokenDropZone.isInDropZone(lastTokenClicked)) {//cada ficha sabe si está en la drop zone
             return true;//acomodar ésto a lo nuevo
         } else {
