@@ -10,6 +10,8 @@ class Game {
         this.lastTokenClicked = null;
         this.isMouseDown = false;
         this.board = null;
+        this.jugador1 = 'Jugador 1';
+        this.jugador2 = 'Jugador 2';
     }
     setBoardRow(br) {
         this.boardRow = br;
