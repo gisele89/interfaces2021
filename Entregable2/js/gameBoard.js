@@ -61,8 +61,6 @@ class GameBoard {
     }
     //verifico si la posición de la última figura clickeada coincide con alguna posición de la drop zone
     isInTokenDropZone(lastTokenClicked) {
-        console.log(lastTokenClicked);
-        console.log(this.tokenDropZone)
         if (lastTokenClicked && this.tokenDropZone.isInDropZone(lastTokenClicked)) {//cada ficha sabe si está en la drop zone
             return true;//acomodar ésto a lo nuevo
         } else {
@@ -215,4 +213,6 @@ class GameBoard {
         }
         return countTokens >= maxTokensToWin;
     }
+
+    
 }

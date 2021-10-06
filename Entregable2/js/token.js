@@ -53,6 +53,9 @@ class Token extends Figure {
     setDisableToken() {
         this.disableToken = true;
     }
+    setEnableToken(){
+        this.disableToken = false;  
+    }
     getDisableToken(){
         return this.disableToken;
     }

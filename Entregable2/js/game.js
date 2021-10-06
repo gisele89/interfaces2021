@@ -6,10 +6,11 @@ class Game {
         this.boardCol = boardCol;
         this.maxTokens = 0;
         this.tokens = [];
-        this.maxTokensToWin = 4;
+        this.maxTokensToWin = this.boardRow;
         this.lastTokenClicked = null;
         this.isMouseDown = false;
         this.board = null;
+        this.countdown = null;
         this.jugador1 = 'Jugador 1';
         this.jugador2 = 'Jugador 2';
     }
@@ -21,6 +22,7 @@ class Game {
     }
 
     initGame() {
+        this.maxTokensToWin = this.boardRow;
         this.clearCanvas();
         this.createBoard();
         this.createTokens();
@@ -35,6 +37,7 @@ class Game {
             let posY = Math.round(Math.random() * 720) + 10;
             let posX = Math.round(Math.random() * 300);
             this.createToken(colorPlayer1, posX, posY);
+            
         }
         for (let index = this.maxTokens / 2; index < this.maxTokens; index++) {
             let posY = Math.round(Math.random() * 720) + 10;//revisar
@@ -43,6 +46,7 @@ class Game {
             //let posY = Math.round(Math.random() * this.canvas.heigth);//revisar            
             this.createToken(colorPlayer2, posX, posY);
         }
+        this.disableTokens();
     }
 
 
@@ -124,7 +128,9 @@ class Game {
         if (this.board.getDroppedTokensCount() >= this.maxTokensToWin) {
             winner = this.isWinner(this.lastTokenClicked, this.maxTokensToWin);
             if (winner) {
+                this.clearCountdown();
                 document.querySelector("#msj").innerHTML = "¡Felicitaciones, Ganaste Jugador ..!";
+                this.disableTokens();
             } else {
                 console.log("No Ganaste")
             }
@@ -132,20 +138,48 @@ class Game {
         }
     }
     //se resetea el mensaje a vacio cuando se presiona el botón
-    resetMessage(){
+    resetMessage() {
         document.querySelector("#msj").innerHTML = "";
     }
-    /* deleteTokenAddedToMatrix(lastTokenClicked) {
-         for (let index = 0; index < this.tokens.length; index++) {
-             if (this.tokens[index].getPosition().x == lastTokenClicked.getPosition().x && this.tokens[index].getPosition().y == lastTokenClicked.getPosition().y) {
-                 console.log(this.tokens);
-                 //this.tokens.splice(index, 1);
-                 console.log(this.tokens);
-             }
-         }
-     }*/
+
     //verifico que hay un ganador
     isWinner(lastTokenClicked, maxTokensToWin) {
-        return this.board.isHorizontalWinner(lastTokenClicked, maxTokensToWin) || this.board.isVerticalWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalAscWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalDescWinner(lastTokenClicked, maxTokensToWin) ;
+        return this.board.isHorizontalWinner(lastTokenClicked, maxTokensToWin) || this.board.isVerticalWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalAscWinner(lastTokenClicked, maxTokensToWin) || this.board.isDiagonalDescWinner(lastTokenClicked, maxTokensToWin);
+    }
+
+    disableTokens() {
+        for (let index = 0; index < this.tokens.length; index++) {
+            this.tokens[index].setDisableToken();
+        }
+    }
+
+    enableTokens() {
+        for (let index = 0; index < this.tokens.length; index++) {
+            this.tokens[index].setEnableToken();
+        }
+    }
+
+    doCountdown() {
+        let countDownDate = new Date();
+        countDownDate = countDownDate.getTime() + 61000;
+
+        this.countdown = setInterval(function () {
+            let now = new Date().getTime();
+            let distance = countDownDate - now;
+
+            let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.querySelector("#timer").innerHTML = "0" + minutes + ": " + ("0" + seconds).slice(-2);
+            if (distance < 0) {
+                clearInterval(this.countdown);
+                document.querySelector("#timer").innerHTML = "¡Se acabó el tiempo!";
+                this.disableTokens();
+            }
+        }.bind(this), 1000);
+    }
+
+    clearCountdown() {
+        clearInterval(this.countdown);
     }
 }
