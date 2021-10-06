@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     cellImage.src = "images/board-image.png";
     ctx.drawImage(cellImage, 10, 10, cellImage.width, cellImage.height);
     let game = new Game(canvas, ctx, boardRow, boardCol);
+    
+    //asigno eventos 
 
     document.querySelector("#play").addEventListener('click', function (e) {
         game.doCountdown();
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         disableEnableButtonsBoard(false);
         game.clearCountdown();
     });
-    //asigno eventos para cambiar el tamaño del tablero 
+    
 
     document.querySelector("#board-5").addEventListener('click', function (e) {
         game.setBoardRow(4);
@@ -59,6 +61,27 @@ document.addEventListener("DOMContentLoaded", function () {
         game.onMouseMove(e);
     });
 
+    document.querySelector("#ficha-2").addEventListener('click', function (e) {
+        
+    });
+    document.querySelector("#ficha-3").addEventListener('click', function (e) {
+        
+    });
+    document.querySelector("#ficha-4").addEventListener('click', function (e) {
+        
+    });
+    document.querySelector("#ficha-azul-2").addEventListener('click', function (e) {
+        
+    });
+    document.querySelector("#ficha-azul-3").addEventListener('click', function (e) {
+        
+    });
+    document.querySelector("#ficha-azul-4").addEventListener('click', function (e) {
+        
+    });
+
+
+    //reseteo el timer
     function resetMessageTimer() {
         document.querySelector("#timer").innerHTML = "";
     }
@@ -68,6 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#board-6").disabled = state;
         document.querySelector("#board-7").disabled = state;
         document.querySelector("#board-8").disabled = state;
+        document.querySelector("#ficha-2").disabled = state;
+        document.querySelector("#ficha-3").disabled = state;
+        document.querySelector("#ficha-4").disabled = state;
+        document.querySelector("#ficha-azul-2").disabled = state;
+        document.querySelector("#ficha-azul-3").disabled = state;
+        document.querySelector("#ficha-azul-4").disabled = state;
     }
 
 

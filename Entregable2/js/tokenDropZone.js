@@ -11,7 +11,7 @@ class TokenDropZone extends Figure {
         this.setPosition(posX, posY);
         this.loadImages();
     }
-
+    //se carga la imagen
     loadImages() {
         this.dropImage.onload = function () {
             this.draw();
@@ -23,7 +23,7 @@ class TokenDropZone extends Figure {
         let dropPattern = this.ctx.createPattern(this.dropImage, 'repeat');
         this.ctx.fillStyle = dropPattern;
         this.ctx.save();
-        this.ctx.translate(this.posX,this.posY);
+        this.ctx.translate(this.posX, this.posY);
         //this.ctx.fillRect(this.posX, this.posY, this.dropImage.width * this.cols, this.dropImage.height);
         this.ctx.fillRect(0, 0, this.dropImage.width * this.cols, this.dropImage.height);
         this.ctx.restore()
@@ -32,8 +32,8 @@ class TokenDropZone extends Figure {
     getRadius() {
         return this.sizeToken / 2;
     }
-    getColumn(){
-        return 
+    getColumn() {
+        return
     }
     //verifico si estoy en la drop zone
     isInDropZone(lastTokenClicked) {
@@ -43,14 +43,14 @@ class TokenDropZone extends Figure {
         posDropInit = this.getPosition().x;
         posDropEnd = this.getPosition().x + this.sizeToken * this.cols;
         posDropInitY = this.getPosition().y;
-        posDropEndY = this.getPosition().y + this.sizeToken/2;
-        if (posXLastToken + this.sizeToken/2  > posDropInit && posXLastToken < posDropEnd && posYLastToken + this.sizeToken/2 > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
+        posDropEndY = this.getPosition().y + this.sizeToken / 2;
+        if (posXLastToken + this.sizeToken / 2 > posDropInit && posXLastToken < posDropEnd && posYLastToken + this.sizeToken / 2 > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
             return true;
-        }else {
+        } else {
             return false;
         }
     }
-
+    //calculo en que columa se encuentra la ficha arrojada en la zona de lanzamiento de fichas 
     getDropZoneIndex(lastTokenClicked) {
         let posXLastToken = lastTokenClicked.getPosition().x;
         let posDropInit = this.getPosition().x;
@@ -65,18 +65,19 @@ class TokenDropZone extends Figure {
         return -1;
     }
 
-
+    //obtengo la posición de la ficha en x y en y
     getPosition() {
         return {
             x: this.posX,
             y: this.posY
         }
     }
-
-    setPosition(x, y) {        
+    //seteo una nueva posición
+    setPosition(x, y) {
         this.posX = x;
         this.posY = y;
     }
+    //resaltado
     setHighlight(highlighted) {
         this.highlighted = highlighted;
     }

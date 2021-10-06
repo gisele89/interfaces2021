@@ -24,7 +24,7 @@ class GameBoard {
             }
         }
     }
-
+    //se dibuja la zona de lanzamiento de fichas
     initDropZone() {
         this.tokenDropZone = this.drawDropZone();
     }
@@ -36,6 +36,7 @@ class GameBoard {
         tokenDropZone.draw();
         return tokenDropZone;
     }
+    //se dibuja el tablero
     initBoard() {
         this.cellImage.onload = function () {
             this.drawBoard();
@@ -54,7 +55,7 @@ class GameBoard {
         let y = this.calculatePosition().y
         let boardPattern = this.ctx.createPattern(this.cellImage, 'repeat');
         this.ctx.save();
-        this.ctx.translate(x,y);
+        this.ctx.translate(x, y);
         this.ctx.fillStyle = boardPattern;
         this.ctx.fillRect(0, 50, this.cellImage.width * this.cols, this.cellImage.height * this.rows);
         this.ctx.restore()
@@ -73,23 +74,23 @@ class GameBoard {
         let x = this.tokenDropZone.getPosition().x;
         let y = this.tokenDropZone.getPosition().y + this.sizeToken;
 
-        let radius = this.tokenDropZone.getRadius();
+        let radius = this.tokenDropZone.getRadius();//obtengo el radio
         let i = this.tokenDropZone.getDropZoneIndex(lastTokenClicked);
-        x = x + i * this.sizeToken;
+        x = x + i * this.sizeToken;//obtengo la posición en x donde debe situar la ficha
 
         let dropped = false;
         for (let j = this.rows - 1; j >= 0; j--) {
             if (this.boardMatrix[i][j] == null && !dropped) {
-                y = y + j * this.sizeToken;
-                lastTokenClicked.setPosition(x + radius, y + radius);
-                this.boardMatrix[i][j] = lastTokenClicked;
+                y = y + j * this.sizeToken;//obtengo la posición en y donde debe situar la ficha
+                lastTokenClicked.setPosition(x + radius, y + radius);//asigno nuevas posiciones
+                this.boardMatrix[i][j] = lastTokenClicked;//situo la ficha
                 dropped = true;
                 this.droppedTokensCount += 1;
                 lastTokenClicked.setDisableToken();//se deshabilita la ficha jugada
             }
         }
     }
-
+    //cuento las fichas arrojadas
     getDroppedTokensCount() {
         return this.droppedTokensCount;
     }
@@ -214,5 +215,5 @@ class GameBoard {
         return countTokens >= maxTokensToWin;
     }
 
-    
+
 }

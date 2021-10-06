@@ -12,8 +12,8 @@
 
 <body>
     <header>
-        <img id="logo" src="images/fichas-de-casino.png" alt="Dos Fichas de poker">        
-        <h1>Cuatro en Línea</h1>
+        <img id="logo" src="images/fichas-de-casino.png" alt="Dos Fichas de poker">
+        <h1>X en Línea</h1>
     </header>
     <div></div>
     <div id="game">
@@ -28,21 +28,38 @@
                 <button id="board-7" class="btn"><i class="fas fa-chess-board"></i>7 x 6</button>
                 <button id="board-8" class="btn"><i class="fas fa-chess-board"></i>8 x 7</button>
             </div>
-            <p id ="msj"></p>
-            <p>Te quedan : </p>
+            <div id="tokens">
+                <p>Personalizá las fichas:</p>
+                <p>Jugador 1</p>
+                <div>
+
+                    <button id="ficha-2"><img src="images/ficha-roja-2.png"></button>
+                    <button id="ficha-3"><img src="images/ficha-roja-3.png"></button>
+                    <button id="ficha-4"><img src="images/ficha-roja-4.png"></button>
+                </div>
+                <p>Jugador 2</p>
+                <div>
+
+                    <button id="ficha-azul-2"><img src="images/ficha-azul-2.png"></button>
+                    <button id="ficha-azul-3"><img src="images/ficha-azul-3.png"></button>
+                    <button id="ficha-azul-4"><img src="images/ficha-azul-4.png"></button>
+                </div>
+            </div>
+            <p id="msj"></p>
+            <p id="timer-title"></p>
             <p id="timer"> </p>
         </aside>
     </div>
-    
+
     <footer id="footer">
         <p>2021 | Interfaces de usuario e interacción | Gisele Bartolo - Jonatan Moreno</p>
     </footer>
-    <script src ="js/gameBoard.js"></script>  
-    <script src ="js/game.js"></script>
-    <script src ="js/Figure.js"></script>    
-    <script src ="js/token.js"></script>
-    <script src ="js/tokenDropZone.js"></script>
-    <script src ="js/main.js"></script>
+    <script src="js/gameBoard.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/Figure.js"></script>
+    <script src="js/token.js"></script>
+    <script src="js/tokenDropZone.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
