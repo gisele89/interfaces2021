@@ -14,6 +14,9 @@ class Game {
         this.player1 = null;
         this.player2 = null;
         this.turn = null;
+        this.imageToChangeRed = null;
+        this.imageToChangeBlue= null;
+
     }
     //se setea las filas
     setBoardRow(br) {
@@ -29,7 +32,15 @@ class Game {
         this.clearCanvas();
         this.createBoard();
         this.createTokens();
-        this.nextTurn();
+       // this.nextTurn();
+    }
+    setImageToChangeRed(img) {
+        this.imageToChangeRed = img;
+        console.log("seteo de imagen hecho")
+    }
+    setImageToChangeBlue(img) {
+        this.imageToChangeBlue = img;
+        console.log("seteo de imagen hecho")
     }
 
     createTokens() {//creo las fichas para cada jugador        
@@ -41,26 +52,26 @@ class Game {
         for (let index = 0; index < this.maxTokens / 2; index++) {
             let posY = this.canvas.height / 3 + 20 * index;
             let posX = this.canvas.width / 2 - this.boardCol * 50 - 20;
-            this.createToken(colorPlayer1, posX, posY);
+            this.createToken(colorPlayer1, posX, posY, this.imageToChangeRed);
 
         }
         //creo las fichas azules
         for (let index = 0; index < this.maxTokens / 2; index++) {
             let posY = this.canvas.height / 3 + 20 * index;
             let posX = this.canvas.width / 2 + this.boardCol * 50 + 20;
-            this.createToken(colorPlayer2, posX, posY);
+            this.createToken(colorPlayer2, posX, posY, this.imageToChangeBlue);
         }
         this.disableTokens();
     }
 
 
-    createToken(color, posX, posY) { //creo una ficha del color correspondiente
-        let token = new Token(posX, posY, color, this.ctx);
+    createToken(color, posX, posY, imageToChange) { //creo una ficha del color correspondiente
+        let token = new Token(posX, posY, color, this.ctx, imageToChange);
         token.draw()
         this.tokens.push(token);//coloco las fichas en ele arreglo de fichas
 
     }
-    //cero el tablero y lo dibujo, así omo también la zona d elanzamiento de fichas
+    //cero el tablero y lo dibujo, así como también la zona d elanzamiento de fichas
     createBoard() {
         this.board = new GameBoard(this.canvas, this.ctx, this.boardRow, this.boardCol);
         this.board.drawBoard();
@@ -179,7 +190,7 @@ class Game {
 
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.querySelector("#timer-title").innerHTML ="Te quedan:";
+            document.querySelector("#timer-title").innerHTML = "Te quedan:";
             document.querySelector("#timer").innerHTML = "0" + minutes + ": " + ("0" + seconds).slice(-2);
             if (distance < 0) {
                 clearInterval(this.countdown);//reseteo

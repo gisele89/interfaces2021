@@ -1,8 +1,9 @@
 "use strict";
 class Token extends Figure {
 
-    constructor(posX, posY, color, context) {
+    constructor(posX, posY, color, context, imageToChange) {
         super(posX, posY, context, color);
+        this.imageToChange = imageToChange;
         this.redToken = new Image();
         this.redToken.src = "images/fichas-roja.png";
         this.blueToken = new Image();
@@ -17,7 +18,7 @@ class Token extends Figure {
     //se carga la imágen
     loadImages() {
         this.redToken.onload, this.blueToken.onload = function () {
-            this.draw();
+            this.draw();             
         }.bind(this);
     }
 
@@ -25,9 +26,18 @@ class Token extends Figure {
     draw() {
         let rt = 'red';
         if (this.color == rt) {
-            this.ctx.drawImage(this.redToken, this.posX, this.posY, this.sizeToken, this.sizeToken);//dibujo rojas
+            if (this.imageToChange == null) {
+                this.ctx.drawImage(this.redToken, this.posX, this.posY, this.sizeToken, this.sizeToken);//dibujo rojas con la imágen por defecto
+            } else {
+                this.ctx.drawImage(this.imageToChange, this.posX, this.posY, this.sizeToken, this.sizeToken);
+            }
+
         } else {
-            this.ctx.drawImage(this.blueToken, this.posX, this.posY, this.sizeToken, this.sizeToken);//dibujo azules
+            if (this.imageToChange == null) {
+                this.ctx.drawImage(this.blueToken, this.posX, this.posY, this.sizeToken, this.sizeToken);//dibujo azules con la imágen por defecto
+            } else {
+                this.ctx.drawImage(this.imageToChange, this.posX, this.posY, this.sizeToken, this.sizeToken);
+            }
         }
     }
 

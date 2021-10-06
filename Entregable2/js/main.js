@@ -10,12 +10,13 @@ document.addEventListener("DOMContentLoaded", function () {
     cellImage.src = "images/board-image.png";
     ctx.drawImage(cellImage, 10, 10, cellImage.width, cellImage.height);
     let game = new Game(canvas, ctx, boardRow, boardCol);
-    
+
     //asigno eventos 
 
     document.querySelector("#play").addEventListener('click', function (e) {
         game.doCountdown();
         game.initGame();
+        game.nextTurn();
         game.enableTokens();
         disableEnableButtonsBoard(true);
     });
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         disableEnableButtonsBoard(false);
         game.clearCountdown();
     });
-    
+
 
     document.querySelector("#board-5").addEventListener('click', function (e) {
         game.setBoardRow(4);
@@ -62,23 +63,44 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#ficha-2").addEventListener('click', function (e) {
-        
+        let img = new Image();
+        img.src = 'images/ficha-roja-2.png';
+        game.setImageToChangeRed(img);
+        game.initGame();
     });
     document.querySelector("#ficha-3").addEventListener('click', function (e) {
-        
+        let img = new Image();
+        img.src = 'images/ficha-roja-3.png';
+        game.setImageToChangeRed(img);
+        game.initGame();
     });
     document.querySelector("#ficha-4").addEventListener('click', function (e) {
-        
+        let img = new Image();
+        img.src = 'images/ficha-roja-4.png';
+        game.setImageToChangeRed(img);
+        game.initGame();
     });
     document.querySelector("#ficha-azul-2").addEventListener('click', function (e) {
-        
+        let img = new Image();
+        img.src = 'images/ficha-azul-2.png';
+        game.setImageToChangeBlue(img);
+        game.initGame();
     });
     document.querySelector("#ficha-azul-3").addEventListener('click', function (e) {
-        
+        let img = new Image();
+        img.src = 'images/ficha-azul-3.png';
+        game.setImageToChangeBlue(img);
+        game.initGame();
     });
     document.querySelector("#ficha-azul-4").addEventListener('click', function (e) {
-        
+        let img = new Image();
+        img.src = 'images/ficha-azul-4.png';
+        game.setImageToChangeBlue(img);
+        game.initGame();
     });
+    document.querySelector("#help").addEventListener('click', function (e){
+        document.querySelector("#help-text").innerHTML = "Elegí el tamaño de tablero que te guste. Tené en cuenta que para ganar tendrás que alinear tantas fichas cómo filas tenga tu tablero elegido. Por ejemplo, si elegís el tablero de 6 x 5, precisarás 5 fichas alineadas para ganar. Una vez elegido el tablero, si querés personalizá tu ficha. Cuando estés listo dale a Jugar! Recordá que tenés 1 minuto para resolver el juego"
+    })
 
 
     //reseteo el timer
