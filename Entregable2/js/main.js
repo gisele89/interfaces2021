@@ -31,24 +31,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     document.querySelector("#board-5").addEventListener('click', function (e) {
-        game.setBoardRow(4);
-        game.setBoardCol(5);
-        game.initGame();
-    });
-    document.querySelector("#board-6").addEventListener('click', function (e) {
-        game.setBoardRow(5);
-        game.setBoardCol(6);
-        game.initGame();
-    });
-    document.querySelector("#board-7").addEventListener('click', function (e) {
         game.setBoardRow(6);
         game.setBoardCol(7);
         game.initGame();
     });
-
-    document.querySelector("#board-8").addEventListener('click', function (e) {
+    document.querySelector("#board-6").addEventListener('click', function (e) {
         game.setBoardRow(7);
         game.setBoardCol(8);
+        game.initGame();
+    });
+    document.querySelector("#board-7").addEventListener('click', function (e) {
+        game.setBoardRow(8);
+        game.setBoardCol(9);
+        game.initGame();
+    });
+
+    document.querySelector("#board-8").addEventListener('click', function (e) {
+        game.setBoardRow(9);
+        game.setBoardCol(10);
         game.initGame();
     });
 

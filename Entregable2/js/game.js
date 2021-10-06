@@ -6,7 +6,8 @@ class Game {
         this.boardCol = boardCol;
         this.maxTokens = 0;
         this.tokens = [];
-        this.maxTokensToWin = this.boardRow;
+        this.maxTokensToWin = boardRow - 2;
+        console.log(this.maxTokensToWin);
         this.lastTokenClicked = null;
         this.isMouseDown = false;
         this.board = null;
@@ -15,7 +16,7 @@ class Game {
         this.player2 = null;
         this.turn = null;
         this.imageToChangeRed = null;
-        this.imageToChangeBlue= null;
+        this.imageToChangeBlue = null;
 
     }
     //se setea las filas
@@ -28,11 +29,11 @@ class Game {
     }
     //se inicia el juego creando tablero, fichas, valor de X en linea y seteando turnos
     initGame() {
-        this.maxTokensToWin = this.boardRow;
+        this.maxTokensToWin = this.boardRow - 2;
         this.clearCanvas();
         this.createBoard();
         this.createTokens();
-       // this.nextTurn();
+        // this.nextTurn();
     }
     setImageToChangeRed(img) {
         this.imageToChangeRed = img;
