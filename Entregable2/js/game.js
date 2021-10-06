@@ -11,8 +11,9 @@ class Game {
         this.isMouseDown = false;
         this.board = null;
         this.countdown = null;
-        this.jugador1 = 'Jugador 1';
-        this.jugador2 = 'Jugador 2';
+        this.player1 = null;
+        this.player2 = null;
+        this.turn = null;
     }
     setBoardRow(br) {
         this.boardRow = br;
@@ -26,6 +27,7 @@ class Game {
         this.clearCanvas();
         this.createBoard();
         this.createTokens();
+        this.nextTurn();
     }
 
     createTokens() {//creo las fichas para cada jugador        
@@ -34,14 +36,14 @@ class Game {
         this.tokens = [];
         this.maxTokens = this.boardCol * this.boardRow;
         for (let index = 0; index < this.maxTokens / 2; index++) {
-            let posY = Math.round(Math.random() * 720) + 10;
-            let posX = Math.round(Math.random() * 300);
+            let posY = this.canvas.height/3 + 20 * index;
+            let posX = this.canvas.width/2 - this.boardCol * 50 - 20;
             this.createToken(colorPlayer1, posX, posY);
             
         }
-        for (let index = this.maxTokens / 2; index < this.maxTokens; index++) {
-            let posY = Math.round(Math.random() * 720) + 10;//revisar
-            let posX = Math.round(Math.random() * (this.canvas.width - 650)) + 750;//revisar
+        for (let index = 0; index < this.maxTokens / 2; index++) {
+            let posY = this.canvas.height/3 + 20 * index;
+            let posX = this.canvas.width/2 + this.boardCol * 50 + 20;
             //let posX = Math.round(Math.random() * this.canvas.width);//revisar
             //let posY = Math.round(Math.random() * this.canvas.heigth);//revisar            
             this.createToken(colorPlayer2, posX, posY);
@@ -83,6 +85,7 @@ class Game {
     }
 
     onMouseDown(e) {
+        console.log(e);
         this.isMouseDown = true;
         if (this.lastTokenClicked != null) {
             this.lastTokenClicked.setHighlight(false);
@@ -90,7 +93,7 @@ class Game {
         }
 
         let clickedFigure = this.findClickedFigure(e.layerX, e.layerY);
-        if (clickedFigure != null) {
+        if ( clickedFigure != null && this.verifyTurn(clickedFigure) ) {
             clickedFigure.setHighlight(true);
             this.lastTokenClicked = clickedFigure;
         }
@@ -129,12 +132,14 @@ class Game {
             winner = this.isWinner(this.lastTokenClicked, this.maxTokensToWin);
             if (winner) {
                 this.clearCountdown();
-                document.querySelector("#msj").innerHTML = "¡Felicitaciones, Ganaste Jugador ..!";
+                document.querySelector("#msj").innerHTML = "¡Felicitaciones, Ganaste " + this.turn + "!";
                 this.disableTokens();
             } else {
-                console.log("No Ganaste")
+                this.nextTurn();
             }
 
+        }else{
+            this.nextTurn();
         }
     }
     //se resetea el mensaje a vacio cuando se presiona el botón
@@ -181,5 +186,26 @@ class Game {
 
     clearCountdown() {
         clearInterval(this.countdown);
+    }
+
+    //
+    nextTurn() {
+        this.jugador1 = 'Jugador 1';
+        this.jugador2 = 'Jugador 2';
+        if ( this.turn == null || this.turn == this.jugador2) {
+            this.turn = this.jugador1;
+        }else {
+            this.turn = this.jugador2;
+        }
+        document.querySelector("#msj").innerHTML = "Turno " + this.turn;
+    }
+
+    //Verifico si la ficha clickeada corresponde con el turno actual
+    verifyTurn( clickedElement ) {
+        if ( ( clickedElement.color == 'red' && this.turn == this.jugador1 ) || ( clickedElement.color == 'blue' && this.turn == this.jugador2 ) ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
