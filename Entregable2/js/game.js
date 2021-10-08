@@ -51,15 +51,15 @@ class Game {
         this.maxTokens = this.boardCol * this.boardRow;
         //creo las fichas rojas
         for (let index = 0; index < this.maxTokens / 2; index++) {
-            let posY = this.canvas.height / 3 + 20 * index;
-            let posX = this.canvas.width / 2 - this.boardCol * 50 - 20;
+            let posY = this.canvas.height - 50 - 14 * index;
+            let posX = 50;
             this.createToken(colorPlayer1, posX, posY, this.imageToChangeRed);
 
         }
         //creo las fichas azules
         for (let index = 0; index < this.maxTokens / 2; index++) {
-            let posY = this.canvas.height / 3 + 20 * index;
-            let posX = this.canvas.width / 2 + this.boardCol * 50 + 20;
+            let posY = 50 + 14 * index;
+            let posX = this.canvas.width - 50;
             this.createToken(colorPlayer2, posX, posY, this.imageToChangeBlue);
         }
         this.disableTokens();
