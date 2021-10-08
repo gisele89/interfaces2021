@@ -37,14 +37,14 @@ class TokenDropZone extends Figure {
     }
     //verifico si estoy en la drop zone
     isInDropZone(lastTokenClicked) {
-        let posXLastToken = lastTokenClicked.getPosition().x
-        let posYLastToken = lastTokenClicked.getPosition().y
+        let posXLastToken = lastTokenClicked.getPosition().x;
+        let posYLastToken = lastTokenClicked.getPosition().y;
         let posDropInit, posDropEnd, posDropInitY, posDropEndY;
         posDropInit = this.getPosition().x;
         posDropEnd = this.getPosition().x + this.sizeToken * this.cols;
         posDropInitY = this.getPosition().y;
-        posDropEndY = this.getPosition().y + this.sizeToken / 2;
-        if (posXLastToken + this.sizeToken / 2 > posDropInit && posXLastToken < posDropEnd && posYLastToken + this.sizeToken / 2 > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
+        posDropEndY = this.getPosition().y + this.sizeToken;
+        if (posXLastToken > posDropInit && posXLastToken < posDropEnd && posYLastToken > posDropInitY && posYLastToken < posDropEndY) {//comparo a partir de los límites de la drop zone
             return true;
         } else {
             return false;
@@ -56,6 +56,7 @@ class TokenDropZone extends Figure {
         let posDropInit = this.getPosition().x;
         let posDropEnd = this.getPosition().x + this.sizeToken;
         for (let index = 0; index < this.cols; index++) {
+            console.log(posDropInit,posDropEnd);
             if (posXLastToken > posDropInit && posXLastToken < posDropEnd) {
                 return index;
             }

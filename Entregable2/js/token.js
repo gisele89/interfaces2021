@@ -61,6 +61,11 @@ class Token extends Figure {
             y: this.posY
         }
     }
+
+    getSizeToken() {
+        return this.sizeToken;
+    }
+
     //deshabilito y habilito fichas
     setDisableToken() {
         this.disableToken = true;
@@ -78,6 +83,16 @@ class Token extends Figure {
         this.posX = x - radius;
         this.posY = y - radius;
     }
+
+    //Obtengo posicion actual
+    getPosition() {
+        let radius = this.getRadius();
+        return {
+                x: this.posX + radius,
+                y: this.posY + radius
+                }
+    }
+
     setHighlight(highlighted) {
         this.highlighted = highlighted;
     }

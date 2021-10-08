@@ -76,6 +76,7 @@ class GameBoard {
 
         let radius = this.tokenDropZone.getRadius();//obtengo el radio
         let i = this.tokenDropZone.getDropZoneIndex(lastTokenClicked);
+        console.log(i)
         x = x + i * this.sizeToken;//obtengo la posición en x donde debe situar la ficha
 
         let dropped = false;

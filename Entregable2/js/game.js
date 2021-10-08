@@ -7,8 +7,8 @@ class Game {
         this.maxTokens = 0;
         this.tokens = [];
         this.maxTokensToWin = boardRow - 2;
-        console.log(this.maxTokensToWin);
         this.lastTokenClicked = null;
+        this.lastTokenPreviousPosition = null;
         this.isMouseDown = false;
         this.board = null;
         this.countdown = null;
@@ -126,6 +126,9 @@ class Game {
         if (this.verifyTokenIsInDropZone()) {
             this.addTokenToGameBoard();
             this.reDraw();
+        }else {
+            this.lastTokenClicked.setPosition( this.lastTokenPreviousPosition.x, this.lastTokenPreviousPosition.y );
+            this.reDraw();
         }
     }
 
@@ -133,6 +136,7 @@ class Game {
         for (let index = 0; index < this.tokens.length; index++) {
             const element = this.tokens[index];
             if (element.isPointInside(x, y)) {
+                this.lastTokenPreviousPosition = element.getPosition()
                 return element;
             }
         }
