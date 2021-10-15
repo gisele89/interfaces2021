@@ -1,0 +1,39 @@
+body{
+    background-color: #3b3759;
+    font-family: "Montserrat";
+    margin:0;
+}
+footer{
+    color:white;
+    margin-top: 10px;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #3b3759, #363251, #302d4a, #2b2842, #26233b);
+}
+#canvas{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
+    background-color: white;
+}
+header{
+    background-image: linear-gradient(to bottom, #26233b, #2b2842, #302d4a, #363251, #3b3759);
+    display: flex;
+    margin-bottom:10px;
+}
+#logo{
+    width: 1.5%;
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#name-logo{
+    width: 10%;
+}
+#game{
+    display:flex;
+    justify-content: center;
+}
