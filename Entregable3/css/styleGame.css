@@ -1,10 +1,16 @@
-body{
+body {
     background-color: #3b3759;
     font-family: "Montserrat";
-    margin:0;
+    margin: 0;
 }
-footer{
-    color:white;
+body #game{
+    display:flex;
+    margin:0px auto;
+    
+}
+
+footer {
+    color: white;
     margin-top: 10px;
     justify-content: center;
     position: fixed;
@@ -14,26 +20,79 @@ footer{
     text-align: center;
     background-image: linear-gradient(to bottom, #3b3759, #363251, #302d4a, #2b2842, #26233b);
 }
-#canvas{
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
-    background-color: white;
+
+#game {
+    width: 100%;
+    height: 975px;
+    overflow: hidden;
 }
-header{
+
+header {
     background-image: linear-gradient(to bottom, #26233b, #2b2842, #302d4a, #363251, #3b3759);
     display: flex;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
-#logo{
+
+#logo {
     width: 1.5%;
     margin-left: 30px;
     margin-right: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-#name-logo{
+
+#name-logo {
     width: 10%;
 }
-#game{
-    display:flex;
-    justify-content: center;
+
+.back {
+    position: relative;
 }
+
+.background, .midground, .foreground {
+    position: absolute;
+    bottom: 0;
+}
+.midground{
+    animation: midgroundMovement 240s linear infinite forwards
+}
+.foreground{
+    animation: foregroundMovement 90s linear infinite forwards
+}
+
+@keyframes midgroundMovement {
+    to {
+        transform: translateX(-7000px);
+      }
+}
+
+@keyframes foregroundMovement {
+    to {
+        transform: translateX(-7000px);
+      }
+}
+ .static{/*//para usar cuando está estático */
+    position: absolute;
+    bottom: 20%;
+    background: url(../images/spaceShip.png) no-repeat;
+    height: 200px;
+    width: 300px;
+    left:400px;
+}
+.up{/* //esto lo tendría que hacer cuando se presiona la barra espaciadora */
+    position: absolute;
+    bottom: 20%; /*esto debe variar*/
+    background: url(../images/spritesheet.png)repeat-x;
+    height: 200px;
+    width: 300px;
+    animation: upSpace .8s steps(4) forwards;
+    left:400px;
+
+}
+
+@keyframes upSpace {
+    /* Partimos de la primera viñeta del sprite sheet */
+    0% { background-position:0 }
+    /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
+    100% { background-position:-1200px }
+  }

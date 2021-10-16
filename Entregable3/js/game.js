@@ -1,23 +1,15 @@
 class Game {
-    constructor(canvas, ctx) {
-        this.canvas = canvas;
-        this.ctx = ctx;
-        this.lastTokenClicked = null;
-        this.isMouseDown = false;
-        this.board = null;
-        this.countdown = null;
+    constructor() {
         this.player = null;
         this.avatarToChange = null;
 
     }
 
     initGame() {
-
+        console.log("game");
     }
 
-    createBackground() {
 
-    }
     createPlayer() {
 
     }
@@ -25,19 +17,7 @@ class Game {
 
     }
 
-    drawBackground() {
-
-    }
-    drawPlayer() {
-
-    }
-
-    drawElements() {
-
-    }
-    reDraw() {
-
-    }
+  
     onKeyDown(e) {
 
     }
