@@ -2,6 +2,8 @@ class Game {
     constructor() {
         this.player = null;
         this.avatarToChange = null;
+        this.spaceship = document.querySelector ('#spaceShip');
+
 
     }
 
@@ -24,6 +26,17 @@ class Game {
 
     isWinner() {
 
+    }
+    fallPlayer(){
+        this.spaceship.classList.add('static-fall');
+        this.spaceship.classList.remove('up');
+        
+        //dejar caer
+    }
+    upPlayer(){
+        this.spaceship.classList.remove('static-fall');
+        this.spaceship.classList.add('up');
+        //hacer subir
     }
 
     //se realiza la cuenta atrás de 1 minuto //ver duración de juego

@@ -71,9 +71,9 @@ header {
         transform: translateX(-7000px);
       }
 }
- .static{/*//para usar cuando está estático */
+ .static-fall{/*//para usar cuando está estático */
     position: absolute;
-    bottom: 20%;
+    bottom: 400px;
     background: url(../images/spaceShip.png) no-repeat;
     height: 200px;
     width: 300px;
@@ -81,18 +81,15 @@ header {
 }
 .up{/* //esto lo tendría que hacer cuando se presiona la barra espaciadora */
     position: absolute;
-    bottom: 20%; /*esto debe variar*/
+    bottom: 400px; /*esto debe variar*/
     background: url(../images/spritesheet.png)repeat-x;
     height: 200px;
     width: 300px;
-    animation: upSpace .8s steps(4) forwards;
+    animation: upSpace .4s steps(4) forwards;
     left:400px;
 
 }
-
 @keyframes upSpace {
-    /* Partimos de la primera viñeta del sprite sheet */
     0% { background-position:0 }
-    /* El tamaño total de ancho del sprite. Es negativo para que no "camine" hacia atrás */
     100% { background-position:-1200px }
   }
