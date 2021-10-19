@@ -12,7 +12,8 @@ window.addEventListener('keydown', function (e) {
     console.log(keyCode);
     if (keyCode == 'Enter') {//detecto enter
         //game.doCountdown();
-        //game.initGame();
+        game.initGame();
+        console.log("inicio juego");
 
 
 

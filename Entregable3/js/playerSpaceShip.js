@@ -21,6 +21,12 @@ class playerSpaceShip {
     decrementLives() {
         this.lives -= 1;
     }
+    getQuantityCoins(){
+        return this.coins;
+    }
+    setLives(){
+        this.lives +=1;
+    }
 
 
 }
