@@ -2,6 +2,7 @@ body {
     background-color: #3b3759;
     font-family: "Montserrat";
     margin: 0;
+    overflow: hidden;
 }
 
 body #game {
@@ -79,7 +80,7 @@ header {
     position: absolute;
     bottom: 400px;
     background: url(../images/spaceShip.png) no-repeat;
-    height: 200px;
+    height: 130px;
     width: 300px;
     left: 400px;
 }

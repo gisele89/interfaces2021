@@ -3,7 +3,7 @@ class Game {
         this.player = new playerSpaceShip();
         this.avatarToChange = null;
         this.spaceship = document.querySelector('#spaceShip');
-        this.quantiyCoins = 80;
+        this.quantiyCoins = 50;
 
 
     }
@@ -43,20 +43,21 @@ class Game {
 
     changePositionUp() {
         let actualPos;
-        //actualPos = Number(this.spaceship.style.top);//devuelve cero
         actualPos = this.spaceship.getBoundingClientRect().top;
-        console.log("subiendo" + actualPos);
-        if (actualPos > 100) {
-            actualPos -= 15 + 'px';
+        if (actualPos > 0) {
+            actualPos -= 5;
+            this.spaceship.style.top = actualPos + 'px';
         }
 
     }
 
     changePositionFall() {
         let actualPos;
-        actualPos = this.spaceship.style.top;
-        if (actualPos < 1000) {
-            actualPos += 15 + 'px';
+        actualPos = this.spaceship.getBoundingClientRect().top + window.scrollY;        
+        console.log("Bajando" +actualPos);
+        if (actualPos < 840) {
+            actualPos += 5;
+            this.spaceship.style.top = actualPos + 'px'
         }
     }
 
@@ -83,9 +84,9 @@ class Game {
             let gem;
             gem = document.createElement("div");
             gem.setAttribute("class", "gem");
-            gem.style.left = this.generateRandomPosition().x + 'px';
-            gem.style.top = this.generateRandomPosition().y + 'px';
-            //habría que setear una posición random
+            let randomPos = this.generateRandomPosition();
+            gem.style.left = randomPos.x + 'px';
+            gem.style.top = randomPos.y + 'px';
             document.querySelector("#elements").appendChild(gem);
         }
     }
@@ -95,24 +96,24 @@ class Game {
             let coin;
             coin = document.createElement("div");
             coin.setAttribute("class", "coin");
-            coin.style.left = this.generateRandomPosition().x + 'px';
-            coin.style.top = this.generateRandomPosition().y + 'px';
-            //habría que setear una posición random
+            let randomPos = this.generateRandomPosition();
+            coin.style.left = randomPos.x + 'px';
+            coin.style.top = randomPos.y + 'px';
             document.querySelector("#elements").appendChild(coin);
         }
     }
 
     generateMeteorites() {
         let max = 50;
-        let min = 30;
+        let min = 10;
         let quantiyMeteorites = Math.floor(Math.random() * (max - min)) + min;
         for (let index = 0; index < quantiyMeteorites; index++) {
             let meteorite;
             meteorite = document.createElement("div");
             meteorite.setAttribute("class", "meteorite");
-            meteorite.style.left = this.generateRandomPosition().x + 'px';
-            meteorite.style.top = this.generateRandomPosition().y + 'px';
-            //habría que setear una posición random
+            let randomPos = this.generateRandomPosition();
+            meteorite.style.left = randomPos.x + 'px';
+            meteorite.style.top = randomPos.y + 'px';
             document.querySelector("#elements").appendChild(meteorite);
         }
 
@@ -123,9 +124,9 @@ class Game {
             let ball;
             ball = document.createElement("div");
             ball.setAttribute("class", "ball");
-            ball.style.left = this.generateRandomPosition().x + 'px';
-            ball.style.top = this.generateRandomPosition().y + 'px';
-            //habría que setear una posición random
+            let randomPos = this.generateRandomPosition();
+            ball.style.left = randomPos.x + 'px';
+            ball.style.top = randomPos.y + 'px';
             document.querySelector("#elements").appendChild(ball);
         }
 
@@ -137,26 +138,24 @@ class Game {
         let maxY = 900;
         let minY = 100;
         let posX = Math.floor(Math.random() * (maxX - minX)) + minX;
-        console.log(posX);
         let posY = Math.floor(Math.random() * (maxY - minY)) + minY;
-        console.log(posX);
         return {
             x: posX,
             y: posY
         }
     }
 
-    detectCollissionWithGem(){
+    detectCollissionWithGem() {
 
     }
-    detectCollissionWithMeteorite(){
+    detectCollissionWithMeteorite() {
 
     }
-    detectCollissionWithBall(){
+    detectCollissionWithBall() {
 
     }
 
-    detectCollissionWithCoin(){
+    detectCollissionWithCoin() {
 
     }
 
