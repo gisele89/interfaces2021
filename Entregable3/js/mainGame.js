@@ -1,3 +1,4 @@
+//probado en desktop (1920 x 1080), en Chrome
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
     let game = new Game();
@@ -32,13 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const elapsed = timestamp - start;
         if (previousTimeStamp !== timestamp) {
             if (keyDown && keyCode == 'Space') {
-                console.log("up");
                 game.upPlayer();
-            } else {
-                console.log("fall");
+            } else {                
                 game.fallPlayer();
             }
             previousTimeStamp = timestamp;
+            game.detectColission();
             window.requestAnimationFrame(step);
         }
     }

@@ -1,26 +1,30 @@
 class Game {
     constructor() {
-        this.player = new playerSpaceShip();
+        this.spaceship = document.querySelector('#spaceShip');//pasar a objeto
+        this.playerSpaceShip = new playerSpaceShip(this.spaceship);
         this.avatarToChange = null;
-        this.spaceship = document.querySelector('#spaceShip');
-        this.quantiyCoins = 50;
+        this.quantityCoins = 40;
+        this.elements = [];
 
 
     }
 
     initGame() {
-        this.generateGems();
-        this.generateCoins();
-        this.generateMeteorites();
-        this.generateElectricityBalls();
+        this.createElements();
+        //this.doCountdown();
+
     }
 
 
     createPlayer() {
 
     }
+    //genero dinámicamente los elementos
     createElements() {
-
+        //this.generateGems();
+        this.generateCoins();
+        //this.generateMeteorites();
+        //this.generateElectricityBalls();
     }
 
 
@@ -36,11 +40,11 @@ class Game {
 
     //se chequea si junta todas las monedas del nivel entonces se le da una vida
     checkCoins() {
-        if (this.player.getQuantityCoins() == this.quantiyCoins) {
-            this.player.setLives();
+        if (this.playerSpaceShip.getQuantityCoins() == this.quantityCoins) {
+            this.playerSpaceShip.setLives();
         }
     }
-
+    //Ajusto la posición cuando se presiona la barra espaciadora
     changePositionUp() {
         let actualPos;
         actualPos = this.spaceship.getBoundingClientRect().top;
@@ -48,95 +52,77 @@ class Game {
             actualPos -= 5;
             this.spaceship.style.top = actualPos + 'px';
         }
-
     }
-
+    //Ajusto la posición cuando se suelta la barra espaciadora
     changePositionFall() {
         let actualPos;
-        actualPos = this.spaceship.getBoundingClientRect().top + window.scrollY;        
-        console.log("Bajando" +actualPos);
+        actualPos = this.spaceship.getBoundingClientRect().top;
         if (actualPos < 840) {
             actualPos += 5;
             this.spaceship.style.top = actualPos + 'px'
         }
     }
-
+    //seteo la animación de caíada
     fallPlayer() {
         this.spaceship.classList.add('static-fall');
         this.spaceship.classList.remove('up');
         this.changePositionFall();
-        console.log("Caída hecha");
-        //dejar caer
     }
-
+    //seteo la animación de subida
     upPlayer() {
         this.spaceship.classList.remove('static-fall');
         this.spaceship.classList.add('up');
         this.changePositionUp();
-        console.log("Subida hecha");
-        //hacer subir
     }
 
     generateGems() {
         let max = 3;
         let quantiyGems = Math.floor(Math.random() * max);
         for (let index = 0; index < quantiyGems; index++) {
-            let gem;
-            gem = document.createElement("div");
-            gem.setAttribute("class", "gem");
+            let gem = new Gem(this.playerSpaceShip);
             let randomPos = this.generateRandomPosition();
-            gem.style.left = randomPos.x + 'px';
-            gem.style.top = randomPos.y + 'px';
-            document.querySelector("#elements").appendChild(gem);
+            gem.generateElement(randomPos);
+            this.elements.push(gem);
         }
     }
 
     generateCoins() {
-        for (let index = 0; index < this.quantiyCoins; index++) {
-            let coin;
-            coin = document.createElement("div");
-            coin.setAttribute("class", "coin");
+        for (let index = 0; index < this.quantityCoins; index++) {
+            let coin = new Coin(this.playerSpaceShip);
             let randomPos = this.generateRandomPosition();
-            coin.style.left = randomPos.x + 'px';
-            coin.style.top = randomPos.y + 'px';
-            document.querySelector("#elements").appendChild(coin);
+            coin.generateElement(randomPos);
+            this.elements.push(coin);
         }
     }
 
     generateMeteorites() {
-        let max = 50;
+        let max = 20;
         let min = 10;
         let quantiyMeteorites = Math.floor(Math.random() * (max - min)) + min;
         for (let index = 0; index < quantiyMeteorites; index++) {
-            let meteorite;
-            meteorite = document.createElement("div");
-            meteorite.setAttribute("class", "meteorite");
+            let meteorite = new Meteorite(this.playerSpaceShip);
             let randomPos = this.generateRandomPosition();
-            meteorite.style.left = randomPos.x + 'px';
-            meteorite.style.top = randomPos.y + 'px';
-            document.querySelector("#elements").appendChild(meteorite);
+            meteorite.generateElement(randomPos);
+            this.elements.push(meteorite);
         }
 
     }
     generateElectricityBalls() {
         let quantiyBalls = 10;
         for (let index = 0; index < quantiyBalls; index++) {
-            let ball;
-            ball = document.createElement("div");
-            ball.setAttribute("class", "ball");
+            let ball = new ElectricityBall(this.playerSpaceShip);
             let randomPos = this.generateRandomPosition();
-            ball.style.left = randomPos.x + 'px';
-            ball.style.top = randomPos.y + 'px';
-            document.querySelector("#elements").appendChild(ball);
+            ball.generateElement(randomPos);
+            this.elements.push(ball);
         }
 
     }
 
     generateRandomPosition() {
         let maxX = 7500;
-        let minX = 1500;
-        let maxY = 900;
-        let minY = 100;
+        let minX = 1900;
+        let maxY = 700;
+        let minY = 150;
         let posX = Math.floor(Math.random() * (maxX - minX)) + minX;
         let posY = Math.floor(Math.random() * (maxY - minY)) + minY;
         return {
@@ -145,19 +131,12 @@ class Game {
         }
     }
 
-    detectCollissionWithGem() {
-
-    }
-    detectCollissionWithMeteorite() {
-
-    }
-    detectCollissionWithBall() {
-
+    detectColission() {//está función estaría en la clase elements y por herencia la tienen los demás objetos y recibe como parametro la nave con su posición en ese momento
+        for (let index = 0; index < this.elements.length; index++) {
+            this.elements[index].detectColission();
+        }
     }
 
-    detectCollissionWithCoin() {
-
-    }
 
     //se realiza la cuenta atrás de 1:30 minuto //ver duración de juego
     doCountdown() {
@@ -170,12 +149,11 @@ class Game {
 
             let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.querySelector("#timer-title").innerHTML = "Te quedan:";
-            document.querySelector("#timer").innerHTML = "0" + minutes + ": " + ("0" + seconds).slice(-2);
+            // document.querySelector("#timer-title").innerHTML = "Te quedan:";
+            document.querySelector("#count").innerHTML = "0" + minutes + ": " + ("0" + seconds).slice(-2);
             if (distance < 0) {
                 clearInterval(this.countdown);//reseteo
-                document.querySelector("#timer").innerHTML = "¡Se acabó el tiempo!";
-                this.disableTokens();
+                // document.querySelector("#timer").innerHTML = "¡Se acabó el tiempo!";
             }
         }.bind(this), 1000);
     }
