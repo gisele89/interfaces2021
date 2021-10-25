@@ -5,6 +5,7 @@ class playerSpaceShip {
         this.coins = 0;
         this.lives = 1;
         this.spaceShip = spaceShip;
+        this.countCoins = document.querySelector("#count-coin");
     }
 
     setAvatar(avatar) {
@@ -29,8 +30,8 @@ class playerSpaceShip {
         return this.lives;
     }
     getPosition() {
-        let top = this.spaceShip.getBoundingClientRect().top +window.scrollY;
-        let left = this.spaceShip.getBoundingClientRect().left +window.scrollX;
+        let top = this.spaceShip.getBoundingClientRect().top + window.scrollY;
+        let left = this.spaceShip.getBoundingClientRect().left + window.scrollX;
         return {
             top: top,
             left: left
@@ -43,5 +44,8 @@ class playerSpaceShip {
             width: width,
             height: height
         }
-    }    
+    }
+    printCoins() {
+        this.countCoins.innerHTML = this.coins;
+    }
 }

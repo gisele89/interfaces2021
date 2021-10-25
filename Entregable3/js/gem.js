@@ -35,4 +35,7 @@ class Gem extends Element{
         // se le pasa el jugador y se le incrementa las monedas
 
     }
+    reactToColission(){
+        
+    }
 }

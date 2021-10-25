@@ -25,7 +25,8 @@ class Coin extends Element {
         let coinH = this.getSize().height;
 
         let spaceShipCoor = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }//pasar a objeto
-        let coinCoor = { x: coinX, y: coinY, width: coinW, height: coinH }//pasar a objeto los elemnts        
+        let coinCoor = { x: coinX, y: coinY, width: coinW, height: coinH }//pasar a objeto los elemnts 
+
         if (spaceShipCoor.x < coinCoor.x + coinCoor.width && //agregar this
             spaceShipCoor.x + spaceShipCoor.width > coinCoor.x &&
             spaceShipCoor.y < coinCoor.y + coinCoor.height &&
@@ -33,8 +34,14 @@ class Coin extends Element {
             console.log("colisión de moneda detectada");
             console.log(spaceShipCoor);
             console.log(coinCoor); 
+            this.spaceShip.incrementCoins();
+            this.spaceShip.printCoins();
+            return true;
         }
         // se le pasa el jugador y se le incrementa las monedas
-
     }
+    reactToColission(){
+        this.coin.classList.add('disappear');
+    }
+
 }

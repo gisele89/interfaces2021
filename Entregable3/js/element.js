@@ -12,7 +12,7 @@ class Element {
     }
 
     getPosition() {
-        let top = this.element.getBoundingClientRect().top +window.scrollY; //no estoy asociando el div ?
+        let top = this.element.getBoundingClientRect().top +window.scrollY; 
         let left = this.element.getBoundingClientRect().left +window.scrollX;
         return {
             top: top,
@@ -26,5 +26,8 @@ class Element {
             width: width,
             height: height
         }
+    }
+    reactToColission(){
+
     }
 }

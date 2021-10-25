@@ -15,10 +15,6 @@ class Game {
 
     }
 
-
-    createPlayer() {
-
-    }
     //genero dinámicamente los elementos
     createElements() {
         //this.generateGems();
@@ -133,7 +129,15 @@ class Game {
 
     detectColission() {//está función estaría en la clase elements y por herencia la tienen los demás objetos y recibe como parametro la nave con su posición en ese momento
         for (let index = 0; index < this.elements.length; index++) {
-            this.elements[index].detectColission();
+            if (this.elements[index].detectColission()) {
+                this.elements[index].reactToColission(); //agregar animación correspondientes
+                window.setTimeout(
+                    function removethis() {
+                        this.elements.splice(index, 1);
+                    }, 1000);
+                //elimino el elemento colisionado del arreglo
+            }
+
         }
     }
 
