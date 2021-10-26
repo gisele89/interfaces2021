@@ -31,12 +31,16 @@ class ElectricityBall extends Element{
             spaceShipCoor.y < ball.y + ball.height &&
             spaceShipCoor.height + spaceShipCoor.y > ball.y) {
             console.log("colisión de bola detectada");
+            this.spaceShip.decrementCoins();
+            this.spaceShip.printCoins();
+            return true;
         }
+        return false;
         // se le pasa el jugador y se le incrementa las monedas
 
     }
     reactToColission(){
-        
+        this.ball.classList.add('shake');
     }
 
     

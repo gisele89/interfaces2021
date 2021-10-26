@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
         keyDown = false;
     });
 
-    let start, previousTimeStamp;
+    let start, previousTimeStamp, req;
+
 
     function step(timestamp) {
         if (start === undefined) {
@@ -34,13 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
         if (previousTimeStamp !== timestamp) {
             if (keyDown && keyCode == 'Space') {
                 game.upPlayer();
-            } else {                
+            } else {
                 game.fallPlayer();
             }
             previousTimeStamp = timestamp;
-            game.detectColission();
-            window.requestAnimationFrame(step);
+            if(game.detectColission()){
+                window.cancelAnimationFrame(req);
+            }
+            req = window.requestAnimationFrame(step);
         }
     }
-    window.requestAnimationFrame(step);
+    req = window.requestAnimationFrame(step);
+    
 })

@@ -18,7 +18,9 @@ class playerSpaceShip {
         this.lives += 1;
     }
     decrementCoins() {
-        this.coins -= 1;
+        if(this.coins>=10){
+            this.coins -= 10;
+        }   
     }
     decrementLives() {
         this.lives -= 1;

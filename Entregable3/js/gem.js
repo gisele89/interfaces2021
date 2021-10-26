@@ -36,6 +36,6 @@ class Gem extends Element{
 
     }
     reactToColission(){
-        
+        this.gem.classList.add('disappear');  
     }
 }

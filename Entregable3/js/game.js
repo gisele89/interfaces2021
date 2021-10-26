@@ -20,7 +20,7 @@ class Game {
         //this.generateGems();
         this.generateCoins();
         //this.generateMeteorites();
-        //this.generateElectricityBalls();
+        this.generateElectricityBalls();
     }
 
 
@@ -130,15 +130,15 @@ class Game {
     detectColission() {//está función estaría en la clase elements y por herencia la tienen los demás objetos y recibe como parametro la nave con su posición en ese momento
         for (let index = 0; index < this.elements.length; index++) {
             if (this.elements[index].detectColission()) {
-                this.elements[index].reactToColission(); //agregar animación correspondientes
-                window.setTimeout(
-                    function removethis() {
-                        this.elements.splice(index, 1);
-                    }, 1000);
+                this.elements[index].reactToColission();
+                this.elements.splice(index, 1);
+                console.log("animación realizada"); //agregar animación correspondientes
+                return true;
                 //elimino el elemento colisionado del arreglo
             }
 
         }
+        return false;
     }
 
 

@@ -122,7 +122,7 @@ header {
     background: url(../images/coin.svg) no-repeat;
     width: 44px;
     height: 71px; 
-    animation: coinsMovement 240s linear infinite forwards;
+    animation: coinsMovement 90s linear infinite forwards;
     border: 1px solid black;
 }
 
@@ -149,7 +149,6 @@ header {
     background: url(../images/coin.svg) no-repeat;  
     width: 50%;
     height: 50%;  
-    top: 50px;
     left: 1800px
 }
 #count{
@@ -164,6 +163,8 @@ header {
 }
 .points{
     display:flex;
+    margin-top: 30px;
+    margin-right: 20px;
 }
 #count-coin{
     font-size: 30px;
@@ -171,21 +172,53 @@ header {
     color: white;
 }
 .disappear{
-    animation:disappear 0.8s linear forwards;
+    animation: disappear 0.5s linear forwards, coinsMovement 90s linear infinite forwards;
+   
+    /* opacity: 0;
+    transition: opacity 0.3s linear;  transition: opacity 0.5s ease-in-out;  */
 }
+.shake{
+    animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) infinite both, ballsMovement 300s linear infinite forwards;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+}
+
 @keyframes disappear{
     0%{
       opacity: 1; 
     }
+    25%{
+        opacity: 0.7;   
+    }
     50%{
       opacity: 0.5; 
+    }
+    75%{
+        opacity: 0.2; 
     }
     100%{
 
     opacity: 0; 
     }
-  }
-  
+  }  
 
 
 @keyframes ballsMovement {
