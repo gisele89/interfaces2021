@@ -37,14 +37,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 game.upPlayer();
             } else {
                 game.fallPlayer();
+                game.checkGameOver();
             }
+            
             previousTimeStamp = timestamp;
             if(game.detectColission()){
                 window.cancelAnimationFrame(req);
             }
+            
             req = window.requestAnimationFrame(step);
         }
+       
+        
     }
     req = window.requestAnimationFrame(step);
+
+    document.querySelector("#back-2").addEventListener('click', changeBackground);
+    document.querySelector("#back-3").addEventListener('click', changeBackground2);
+
+    function changeBackground(){
+        document.querySelector("#midground-image").src = "../images/midground2.png";
+        document.querySelector("#foreground-image").src = "../images/foreground2.png";
+    }
+    function changeBackground2(){
+        document.querySelector("#midground-image").src = "../images/midground3.png";
+        document.querySelector("#foreground-image").src = "../images/foreground3.png";
+    }
     
 })

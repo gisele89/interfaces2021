@@ -53,7 +53,7 @@ class Game {
     changePositionFall() {
         let actualPos;
         actualPos = this.spaceship.getBoundingClientRect().top;
-        if (actualPos < 840) {
+        if (actualPos <= 840) {
             actualPos += 5;
             this.spaceship.style.top = actualPos + 'px'
         }
@@ -132,11 +132,8 @@ class Game {
             if (this.elements[index].detectColission()) {
                 this.elements[index].reactToColission();
                 this.elements.splice(index, 1);
-                console.log("animación realizada"); //agregar animación correspondientes
                 return true;
-                //elimino el elemento colisionado del arreglo
             }
-
         }
         return false;
     }
@@ -165,8 +162,23 @@ class Game {
     clearCountdown() {
         clearInterval(this.countdown);
     }
+    checkGameOver() {
+        if (this.gameOver()) {
+            console.log("Game over");
+        }
+    }
 
+    gameOver() {
+        let gameWindow = document.querySelector('#game');
+        if (this.playerSpaceShip.getPosition().top + this.playerSpaceShip.getSize().height == gameWindow.offsetHeight) {//se termina el juego cuando se toca el piso
+            console.log("tocando piso");
+            this.spaceship.classList.remove('static-fall');
+            this.spaceship.classList.add('ground');
+            return true;
+            // }else if(){
 
-
-
+            //   }
+        }
+    }
+   
 }

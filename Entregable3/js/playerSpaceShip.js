@@ -41,7 +41,7 @@ class playerSpaceShip {
     }
     getSize() {
         let width = this.spaceShip.offsetWidth;
-        let height = this.spaceShip.offsetWidth;
+        let height = this.spaceShip.offsetHeight;
         return {
             width: width,
             height: height
