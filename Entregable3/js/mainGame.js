@@ -52,6 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     req = window.requestAnimationFrame(step);
 
+    if(document.querySelector("#back-1")) {
+        document.querySelector("#back-1").addEventListener('click', changeBackground1);
+    }
     
     if(document.querySelector("#back-2")) {
         document.querySelector("#back-2").addEventListener('click', changeBackground);
@@ -64,6 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#midground").classList.add('midground2');
         document.querySelector("#foreground").classList.remove('foreground');
         document.querySelector("#foreground").classList.add('foreground2');
+    }
+    function changeBackground1(){
+        document.querySelector("#background").classList.remove('background2');
+        document.querySelector("#background").classList.add('background');
+        document.querySelector("#midground").classList.remove('midground2');
+        document.querySelector("#midground").classList.add('midground');
+        document.querySelector("#foreground").classList.remove('foreground2');
+        document.querySelector("#foreground").classList.add('foreground');
     }
    
     

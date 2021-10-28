@@ -57,11 +57,7 @@ header {
     position: absolute;
     bottom: 5%;
 }
-.midground2{
-    position: absolute;
-    bottom: 0;
-}
-.foreground2 {
+.foreground2,.midground2 {
     position: absolute;
     bottom: 15%;
 }
@@ -99,7 +95,7 @@ header {
 .midground2 {
     background: url(../images/midground2.png) repeat-x;
     animation: movement2 150s linear infinite;
-     height: 686px;
+     height: 302px;
     width: 7003px; 
 }
 
@@ -142,7 +138,23 @@ header {
         background-position: 0
     }
 }
-
+#change-back{
+    margin-left:30px;
+    display: flex;
+    align-items: center;
+}
+#back-1, #back-2{
+    width: 7%;
+    background-color: transparent;
+    border: none;
+}
+#back-1 img, #back-2 img{
+    width:100%
+}
+#back-1:hover, #back-2:hover{
+  cursor:pointer;
+  width: 9% ;
+}
 .static-fall {
     /*//para usar cuando está estático */
     position: absolute;
@@ -193,7 +205,7 @@ header {
 }
 
 #elements {
-    /* position: relative; */
+    /*position: relative;*/
     width: 8000px;
     height: 100%
 }
