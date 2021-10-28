@@ -44,7 +44,7 @@ class Game {
     changePositionUp() {
         let actualPos;
         actualPos = this.spaceship.getBoundingClientRect().top;
-        if (actualPos > 0) {
+        if (actualPos > 100) {
             actualPos -= 5;
             this.spaceship.style.top = actualPos + 'px';
         }

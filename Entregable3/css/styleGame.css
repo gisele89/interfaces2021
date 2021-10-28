@@ -45,32 +45,101 @@ header {
 #name-logo {
     width: 10%;
 }
+#image-game{
+    justify-content: center;
+    display: flex;
+}
 
 .back {
     position: relative;
 }
-
-.background, .midground, .foreground {
+.background,.background2{
+    position: absolute;
+    bottom: 5%;
+}
+.midground2{
     position: absolute;
     bottom: 0;
 }
+.foreground2 {
+    position: absolute;
+    bottom: 15%;
+}
+
+.midground, .foreground {
+    position: absolute;
+    bottom: 10%;
+}
+.background {
+    background: url(../images/background.png) no-repeat;
+     height: 1080px;
+    width: 1920px; 
+}
+
+.background2 {
+    background: url(../images/background2.png) no-repeat;
+     height: 1080px;
+    width: 1920px; 
+}
 
 .midground {
-    background: url(../images/midground.svg) no-repeat; 
-    animation: movement 240s linear infinite forwards;
-    height: 305px;
-    width: 8000px;
-
+    background: url(../images/midground.png) repeat-x;
+    animation: movement 150s linear infinite;
+     height: 305px;
+    width: 8000px; 
 }
 
-.foreground {
-    /* background: url(../images/foreground.png); */
-    animation: movement 90s linear infinite forwards;
+ .foreground {
+    background: url(../images/foreground.png) repeat-x;
+    animation: movementForeground 40s linear infinite;
+    height: 2200px; 
+    width: 4829px;
+} 
+
+.midground2 {
+    background: url(../images/midground2.png) repeat-x;
+    animation: movement2 150s linear infinite;
+     height: 686px;
+    width: 7003px; 
 }
+
+ .foreground2 {
+    background: url(../images/foreground2.png) repeat-x;
+    animation: movementForeground2 40s linear infinite;
+    height:824px;
+    width: 8500px; 
+} 
 
 @keyframes movement {
-    to {
-        transform: translateX(-7000px);
+    0% {
+        background-position: 8000px
+    }
+    100% {
+        background-position: 0
+    }
+}
+@keyframes movementForeground {
+    0% {
+        background-position: 7003px
+    }
+    100% {
+        background-position: 0
+    }
+}
+@keyframes movementForeground2 {
+    0% {
+        background-position: 8500px
+    }
+    100% {
+        background-position: 0
+    }
+}
+@keyframes movement2 {
+    0% {
+        background-position: 4672px
+    }
+    100% {
+        background-position: 0
     }
 }
 
@@ -93,15 +162,16 @@ header {
     animation: upSpace .4s steps(4) infinite forwards;
     left: 400px;
 }
-.ground{
+
+.ground {
     position: absolute;
-     bottom: 300px; 
+    bottom: 300px;
     background: url(../images/spaceShipExplosion.png)repeat-x;
-    height:254px;
+    height: 254px;
     width: 302px;
     animation: spaceShipExplosion 2s steps(23) forwards, disappear 0.2s linear forwards 1s;
     /* animation: spaceShipExplosion 0.6s steps(9) forwards, disappear 0.5s linear forwards .4s; */
-    left: 400px; 
+    left: 400px;
 }
 
 @keyframes spaceShipExplosion {
@@ -123,7 +193,7 @@ header {
 }
 
 #elements {
-    position: relative;
+    /* position: relative; */
     width: 8000px;
     height: 100%
 }
@@ -140,7 +210,7 @@ header {
     position: absolute;
     background: url(../images/coin.svg) no-repeat;
     width: 44px;
-    height: 71px; 
+    height: 71px;
     animation: coinsMovement 90s linear infinite forwards;
 }
 
@@ -148,27 +218,27 @@ header {
     position: absolute;
     background: url(../images/meteorite.svg) no-repeat;
     width: 145px;
-    height: 158px; 
+    height: 158px;
     animation: meteoritesMovement 70s linear infinite forwards;
-
 }
 
 .ball {
     position: absolute;
     background: url(../images/electricityBall.svg) no-repeat;
     width: 109px;
-    height: 96px;  
+    height: 96px;
     animation: ballsMovement 300s linear infinite forwards;
-    
 }
-.coin-sum-image{
+
+.coin-sum-image {
     position: absolute;
-    background: url(../images/coin.svg) no-repeat;  
+    background: url(../images/coin.svg) no-repeat;
     width: 50%;
-    height: 50%;  
-    left: 1800px
+    height: 50%;
+    left: 90%;
 }
-#count{
+
+#count {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -178,62 +248,62 @@ header {
     font-size: 50px;
     z-index: 999;
 }
-.points{
-    display:flex;
+
+.points {
+    display: flex;
     margin-top: 30px;
     margin-right: 20px;
 }
-#count-coin{
+
+#count-coin {
     font-size: 30px;
     z-index: 999;
     color: white;
 }
-.disappear{
+
+.disappear {
     animation: disappear 0.3s linear forwards, coinsMovement 90s linear infinite forwards;
 }
-.shake{
-    animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) infinite both, ballsMovement 300s linear infinite forwards;
+
+.shake {
+    animation: shake 0.8s cubic-bezier(.36, .07, .19, .97) infinite both, ballsMovement 300s linear infinite forwards;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
 }
+
 @keyframes shake {
     10%, 90% {
         transform: translate3d(-1px, 0, 0);
-      }
-      
-      20%, 80% {
+    }
+    20%, 80% {
         transform: translate3d(2px, 0, 0);
-      }
-    
-      30%, 50%, 70% {
+    }
+    30%, 50%, 70% {
         transform: translate3d(-4px, 0, 0);
-      }
-    
-      40%, 60% {
+    }
+    40%, 60% {
         transform: translate3d(4px, 0, 0);
-      }
+    }
 }
 
-@keyframes disappear{
-    0%{
-      opacity: 1; 
+@keyframes disappear {
+    0% {
+        opacity: 1;
     }
-    25%{
-        opacity: 0.7;   
+    25% {
+        opacity: 0.7;
     }
-    50%{
-      opacity: 0.5; 
+    50% {
+        opacity: 0.5;
     }
-    75%{
-        opacity: 0.2; 
+    75% {
+        opacity: 0.2;
     }
-    100%{
-
-    opacity: 0; 
+    100% {
+        opacity: 0;
     }
-  }  
-
+}
 
 @keyframes ballsMovement {
     to {
@@ -252,7 +322,6 @@ header {
 @keyframes coinsMovement {
     to {
         transform: translateX(-7000px);
-    
     }
 }
 

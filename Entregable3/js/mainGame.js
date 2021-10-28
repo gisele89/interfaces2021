@@ -52,16 +52,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     req = window.requestAnimationFrame(step);
 
-    document.querySelector("#back-2").addEventListener('click', changeBackground);
-    document.querySelector("#back-3").addEventListener('click', changeBackground2);
-
+    
+    if(document.querySelector("#back-2")) {
+        document.querySelector("#back-2").addEventListener('click', changeBackground);
+    }
+   
     function changeBackground(){
-        document.querySelector("#midground-image").src = "../images/midground2.png";
-        document.querySelector("#foreground-image").src = "../images/foreground2.png";
+        document.querySelector("#background").classList.remove('background');
+        document.querySelector("#background").classList.add('background2');
+        document.querySelector("#midground").classList.remove('midground');
+        document.querySelector("#midground").classList.add('midground2');
+        document.querySelector("#foreground").classList.remove('foreground');
+        document.querySelector("#foreground").classList.add('foreground2');
     }
-    function changeBackground2(){
-        document.querySelector("#midground-image").src = "../images/midground3.png";
-        document.querySelector("#foreground-image").src = "../images/foreground3.png";
-    }
+   
     
 })
