@@ -13,6 +13,7 @@ class playerSpaceShip {
         this.spaceShip.style.top = '400px';
         this.spaceShip.classList.remove('ground');
         this.spaceShip.style["animation-play-state"] = "running";
+        this.printCoins();
     }
 
     incrementCoins() {
@@ -69,7 +70,5 @@ class playerSpaceShip {
 
     isCrashed() {
         return this.crashed;
-    }
-    
-    
-}
+    }   
+ }

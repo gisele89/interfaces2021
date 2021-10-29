@@ -11,7 +11,6 @@ class Meteorite extends Element{
         this.meteorite.style.top = randomPos.y + 'px';
         document.querySelector("#elements").appendChild(this.meteorite);
         this.element = this.meteorite; 
-        console.log("meteoriteagregada");
     }
     detectColission() {        
         //metodo para detectar si el jugador chocó contra la moneda
@@ -24,19 +23,16 @@ class Meteorite extends Element{
         let meteoriteW = this.getSize().width;
         let meteoriteH = this.getSize().height;
 
-        let rect1 = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }//pasar a objeto
-        let rect2 = { x: meteoriteX, y: meteoriteY, width: meteoriteW, height: meteoriteH }//pasar a objeto los elemnts
+        let rect1 = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }
+        let rect2 = { x: meteoriteX, y: meteoriteY, width: meteoriteW, height: meteoriteH }
 
         if (rect1.x < rect2.x + rect2.width &&
             rect1.x + rect1.width > rect2.x &&
             rect1.y < rect2.y + rect2.height &&
             rect1.height + rect1.y > rect2.y) {
-            console.log("colisión de meteorito detectada");
             return true;
         }
         return false;
-        // se le pasa el jugador y se le incrementa las monedas
-
     }
     reactToColission(){
         this.spaceShip.setCrashed();

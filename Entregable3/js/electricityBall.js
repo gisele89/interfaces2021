@@ -11,7 +11,6 @@ class ElectricityBall extends Element{
         this.ball.style.top = randomPos.y + 'px';
         document.querySelector("#elements").appendChild(this.ball);
         this.element = this.ball; 
-        console.log("ballagregada");
     }
     detectColission() {
         //metodo para detectar si el jugador chocó contra la moneda
@@ -24,21 +23,18 @@ class ElectricityBall extends Element{
        let  ballW = this.getSize().width;
        let ballH = this.getSize().height;
 
-        let spaceShipCoor = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }//pasar a objeto
-        let ball = { x: ballX, y: ballY, width: ballW, height: ballH }//pasar a objeto los elemnts
+        let spaceShipCoor = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }
+        let ball = { x: ballX, y: ballY, width: ballW, height: ballH }
 
-        if (spaceShipCoor.x < ball.x + ball.width && //agregar this
+        if (spaceShipCoor.x < ball.x + ball.width && 
             spaceShipCoor.x + spaceShipCoor.width > ball.x &&
             spaceShipCoor.y < ball.y + ball.height &&
             spaceShipCoor.height + spaceShipCoor.y > ball.y) {
-            console.log("colisión de bola detectada");
             this.spaceShip.decrementCoins();
             this.spaceShip.printCoins();
             return true;
         }
         return false;
-        // se le pasa el jugador y se le incrementa las monedas
-
     }
     reactToColission(){
         this.ball.classList.add('shake');

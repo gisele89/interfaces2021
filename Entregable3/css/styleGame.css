@@ -198,7 +198,6 @@ header {
     height: 254px;
     width: 302px;
     animation: spaceShipExplosion 2s steps(23) forwards, disappear 0.2s linear forwards 1s;
-    /* animation: spaceShipExplosion 0.6s steps(9) forwards, disappear 0.5s linear forwards .4s; */
     left: 400px;
 }
 
@@ -221,7 +220,6 @@ header {
 }
 
 #elements {
-    /*position: relative;*/
     width: 8000px;
     height: 100%
 }
@@ -244,7 +242,6 @@ header {
 
 .meteorite {
     position: absolute;
-    /* background: url(../images/meteorite.svg) no-repeat; */
     background: url(../images/meteorite.png) no-repeat;
     width: 40px;
     height: 40px;
@@ -278,6 +275,7 @@ header {
     z-index: 999;
     font-weight: 700;
 }
+
 #count-score, #count-score-game-over {
     position: absolute;
     width: 100%;
@@ -289,6 +287,7 @@ header {
     z-index: 999;
     font-weight: 700;
 }
+
 #count-score-game-over {
     position: absolute;
     width: 100%;
@@ -314,12 +313,12 @@ header {
     font-weight: 700;
     position: absolute;
     right: 4%;
-    
 }
 
 .disappear {
     animation: disappear 0.3s linear forwards, coinsMovement 90s linear infinite forwards;
 }
+
 .disappearGem {
     animation: disappear 0.3s linear forwards, gemsMovement 90s linear infinite forwards;
 }
@@ -507,25 +506,26 @@ header {
 #restart-button-game-over {
     position: absolute;
     left: 11%;
-    top: 33%;  
+    top: 33%;
 }
-#text-win{
+
+#text-win {
     position: absolute;
     top: 10%;
     left: 9%;
 }
-#restart-button-win{
+
+#restart-button-win {
     position: absolute;
     top: 30%;
     left: 11%;
 }
-#win-score{
+
+#win-score {
     position: absolute;
     top: 20%;
     left: 8.2%;
 }
-
-
 
 @keyframes scale {
     0% {
@@ -536,7 +536,7 @@ header {
     }
 }
 
-#instructions, #close-button{
+#instructions, #close-button {
     background-color: transparent;
     color: white;
     border: none;
@@ -545,10 +545,12 @@ header {
     top: 5%;
     font-size: 40px;
 }
-#close-button{
-    display:none;
+
+#close-button {
+    display: none;
 }
-#pop-up-instructions{
+
+#pop-up-instructions {
     display: none;
     color: white;
     width: 28%;
@@ -557,50 +559,52 @@ header {
     padding-top: 3%;
     font-weight: 500;
 }
-@media only screen   and (min-width: 1030px)   and (max-width: 1366px)  {
-    .modal-content, .win-modal-content, .game-over-content{
+
+@media only screen and (min-width: 1030px) and (max-width: 1366px) {
+    .modal-content, .win-modal-content, .game-over-content {
         left: 26%;
         top: 10%;
     }
-    #start-button{
+    #start-button {
         left: 11%;
         top: 13%;
     }
-    #text-start{
-        left:6%;
-        top:30%;
+    #text-start {
+        left: 6%;
+        top: 30%;
     }
-    .back-images{
-        left:6%;
-        top:40%;
+    .back-images {
+        left: 6%;
+        top: 40%;
     }
-    #instructions{
-        left:38%;
+    #instructions {
+        left: 38%;
     }
-    #game{
+    #game {
         height: 670px;
     }
-    #close-button{
+    #close-button {
         left: 40%;
     }
-    #pop-up-instructions{
-        width: 38%; 
+    #pop-up-instructions {
+        width: 38%;
     }
-  #text-game-over{
-      left:12%;
-  }
-  #restart-button-game-over,  #restart-button-win{
-      top:45%;
-      left:15%
+    #text-game-over {
+        left: 12%;
     }
-    #game-over-score, #win-score{
-        left:12%;
-        top:29%;
+    #text-win {
+        left: 13%;
     }
-    #count-score-game-over, #count-score{
-        left:22%;
-        top:27%
+    #restart-button-game-over, #restart-button-win {
+        top: 45%;
+        left: 15%
     }
-   
-
+    #game-over-score, #win-score {
+        left: 12%;
+        top: 29%;
+    }
+    #count-score-game-over, #count-score {
+        left: 22%;
+        top: 26%
+    }
 }

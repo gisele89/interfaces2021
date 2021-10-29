@@ -1,11 +1,10 @@
-//probado en desktop (1920 x 1080), en Chrome
+//probado en desktop (1920 x 1080) y en notebook (1366 x 768), en Chrome
 "use strict";
 document.addEventListener("DOMContentLoaded", function () {
     let game = new Game();
     let keyDown = false;
     let keyCode = null;
 
-    console.log("hola");
     window.addEventListener('keydown', function (e) {
         keyDown = true;
         keyCode = e.code;
@@ -72,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector("#restart-button-game-over")) {
         document.querySelector("#restart-button-game-over").addEventListener('click', restartGameOver);
     }
+    //función para cerrar el texto de instrucciones
     function close(){
         document.querySelector("#close-button").style.display = "none";
         document.querySelector("#start-button").style.display = "block";
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#instructions").style.display = "block";
         document.querySelector("#pop-up-instructions").style.display = "none";
     }
-
+    //muestro las instrucciones
     function showInstructions(){
         document.querySelector("#pop-up-instructions").style.display = "block";
         document.querySelector("#start-button").style.display = "none";

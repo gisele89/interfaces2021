@@ -33,14 +33,9 @@ class Gem extends Element {
             rect1.height + rect1.y > rect2.y) {
             this.spaceShip.incrementCoinsByGem();
             this.spaceShip.printCoins();
-            console.log("colisión de gema detectada");
             return true;
         }
         return false;
-          
-            
-        // se le pasa el jugador y se le incrementa las monedas
-
     }
     reactToColission() {
         this.gem.classList.add('disappearGem');

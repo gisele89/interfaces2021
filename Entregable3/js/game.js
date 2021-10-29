@@ -5,7 +5,7 @@ class Game {
         this.avatarToChange = null;
         this.quantityCoins = 40;
         this.elements = [];
-        this.winnerCoins = 20; 
+        this.winnerCoins = 20;
 
 
     }
@@ -17,8 +17,6 @@ class Game {
         this.elements = [];
         this.playerSpaceShip.reset();
         this.createElements();
-        //this.doCountdown();
-
     }
 
     //genero dinámicamente los elementos
@@ -123,8 +121,8 @@ class Game {
     generateRandomPosition() {
         let maxX = 7500;
         let minX = 1900;
-        let maxY = window.screen.availHeight*0.6;//maximo de acuerdo al size de la pantalla
-        let minY = window.screen.availHeight*0.14;//minimo de acuerdo al size de la pantalla
+        let maxY = window.screen.availHeight * 0.6;//maximo de acuerdo al size de la pantalla
+        let minY = window.screen.availHeight * 0.14;//minimo de acuerdo al size de la pantalla
         let posX = Math.floor(Math.random() * (maxX - minX)) + minX;
         let posY = Math.floor(Math.random() * (maxY - minY)) + minY;
         return {
@@ -144,45 +142,18 @@ class Game {
         return false;
     }
 
-
-    // //se realiza la cuenta atrás de 1:30 minuto //ver duración de juego
-    // doCountdown() {
-    //     let countDownDate = new Date();
-    //     countDownDate = countDownDate.getTime() + 61000;//obtengo la fecha actual y le sumo 1 minuto
-
-    //     this.countdown = setInterval(function () {
-    //         let now = new Date().getTime();//fecha actual
-    //         let distance = countDownDate - now;
-
-    //         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    //         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    //         // document.querySelector("#timer-title").innerHTML = "Te quedan:";
-    //         document.querySelector("#count").innerHTML = "0" + minutes + ": " + ("0" + seconds).slice(-2);
-    //         if (distance < 0) {
-    //             clearInterval(this.countdown);//reseteo
-    //             // document.querySelector("#timer").innerHTML = "¡Se acabó el tiempo!";
-    //         }
-    //     }.bind(this), 1000);
-    // }
-    // //reseteo del timer
-    // clearCountdown() {
-    //     clearInterval(this.countdown);
-    // }
-
     //chequeo si ganó el jugador
     checkGameOver() {
         return this.gameOver();
     }
     //el jugador gana cuando junta las monedas
     isWinner() {
-        
         return this.playerSpaceShip.getQuantityCoins() >= this.winnerCoins;
     }
 
     //determino sí el jugador perdió de acuerdo a la posición, es decir cuando toca el piso o cuando choca con un meteorito
     gameOver() {
-        if (this.playerSpaceShip.getPosition().top + this.playerSpaceShip.getSize().height >= (window.screen.availHeight * 0.9)) {//se termina el juego cuando se toca el piso
-            console.log("tocando piso");
+        if (this.playerSpaceShip.getPosition().top + this.playerSpaceShip.getSize().height >= (window.screen.availHeight * 0.88)) {//se termina el juego cuando se toca el piso
             this.startGameOverAnimation();
             return true;
         } else {
@@ -190,18 +161,19 @@ class Game {
                 this.startGameOverAnimation();
                 return true;
             }
-
         }
     }
-//seteo la animación de explosión al caer
+
+    //seteo la animación de explosión al caer
     startGameOverAnimation() {
         this.spaceship.classList.remove('static-fall');
         this.spaceship.classList.add('ground');
     }
+
     //Muestro las monedas recolectadas
-    showHighScore(){
-        document.querySelector("#count-score").innerHTML =  this.playerSpaceShip.getQuantityCoins();  
-        document.querySelector("#count-score-game-over").innerHTML =  this.playerSpaceShip.getQuantityCoins(); 
+    showHighScore() {
+        document.querySelector("#count-score").innerHTML = this.playerSpaceShip.getQuantityCoins();
+        document.querySelector("#count-score-game-over").innerHTML = this.playerSpaceShip.getQuantityCoins();
     }
 
 }
