@@ -3,6 +3,7 @@ class Meteorite extends Element{
         super(spaceShip);
         this.meteorite = null;
     }
+    //Creo los elementos en el dom
     generateElement(randomPos) {
         this.meteorite = document.createElement("div");
         this.meteorite.setAttribute("class", "meteorite");
@@ -14,12 +15,12 @@ class Meteorite extends Element{
     }
     detectColission() {        
         //metodo para detectar si el jugador chocó contra la moneda
-        let spaceX = this.spaceShip.getPosition().top;
-        let spaceY = this.spaceShip.getPosition().left;
+        let spaceX = this.spaceShip.getPosition().left;
+        let spaceY = this.spaceShip.getPosition().top;
         let spaceW = this.spaceShip.getSize().width;
         let spaceH = this.spaceShip.getSize().height;
-        let meteoriteX = this.getPosition().top;
-        let meteoriteY = this.getPosition().left;
+        let meteoriteX = this.getPosition().left;
+        let meteoriteY = this.getPosition().top;
         let meteoriteW = this.getSize().width;
         let meteoriteH = this.getSize().height;
 
@@ -39,6 +40,7 @@ class Meteorite extends Element{
     }
     reactToColission(){
         this.spaceShip.setCrashed();
+        this.meteorite.classList.add('disappear');  
     }
     
 }

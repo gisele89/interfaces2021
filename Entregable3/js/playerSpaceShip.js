@@ -8,7 +8,7 @@ class playerSpaceShip {
         this.countCoins = document.querySelector("#count-coin");
         this.crashed = false;
     }
-
+    //reseteo las monedas cuando se reinicia el juego y la posición de la nave
     reset() {
         this.coins = 0;
         this.lives = 1;        
@@ -41,6 +41,7 @@ class playerSpaceShip {
     getLives() {
         return this.lives;
     }
+    //obtengo la posición de la nave
     getPosition() {
         let top = this.spaceShip.getBoundingClientRect().top + window.scrollY;
         let left = this.spaceShip.getBoundingClientRect().left + window.scrollX;
@@ -49,6 +50,7 @@ class playerSpaceShip {
             left: left
         }
     }
+     //obtengo el tamaño de la nave
     getSize() {
         let width = this.spaceShip.offsetWidth;
         let height = this.spaceShip.offsetHeight;
@@ -57,6 +59,7 @@ class playerSpaceShip {
             height: height
         }
     }
+    
     printCoins() {
         this.countCoins.innerHTML = this.coins;
     }

@@ -74,47 +74,47 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector("#restart-button-game-over")) {
         document.querySelector("#restart-button-game-over").addEventListener('click', restartGameOver);
     }
-
+//arranca el juego luego d epresionar start, se arrancan las animaciones
     function startGame() {
         document.querySelector("#start-modal").style.display = "none";
         game.initGame();
         startAnimation();
         req = window.requestAnimationFrame(step);
     }
-
+//reinicio del juego cuando gano y quiero jugar de nuevo
     function restartGameWin() {
         document.querySelector("#start-modal").style.display = "block";
         document.querySelector("#win-modal").style.display = "none";        
     }
-
+//reinicio del juego cuando pierdo y quiero jugar de nuevo
     function restartGameOver() {
         document.querySelector("#start-modal").style.display = "block";
         document.querySelector("#game-over-modal").style.display = "none";        
     }
-
+//cuando se gana se paran las animaciones y se muestra el pop up correspondiente
     function stopGame() {
         stopAnimation();
         game.stopAnimationElements();
         game.stopAnimationSpaceShip();
         document.querySelector("#win-modal").style.display = "block";
     }
-
+//cuando el juego termina paro las animaciones y muestro el pop up correspondiente
     function gameOver() {
         stopAnimation();
         game.stopAnimationElements();
         document.querySelector("#game-over-modal").style.display = "block";
     }
-
+//se arrancan las animaciones del fondo
     function startAnimation() {
         document.querySelector("#midground").style["animation-play-state"] = "running";
         document.querySelector("#foreground").style["animation-play-state"] = "running";
     }
-
+//se paran las animaciones del fondo
     function stopAnimation() {
         document.querySelector("#midground").style["animation-play-state"] = "paused";
         document.querySelector("#foreground").style["animation-play-state"] = "paused";        
     }
-
+//se hace el cambio de fondo con el evento asociado al botón
     function changeBackground() {
         document.querySelector("#background").classList.remove('background');
         document.querySelector("#background").classList.add('background2');
@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#foreground").classList.remove('foreground');
         document.querySelector("#foreground").classList.add('foreground2');
     }
+    //se hace el cambio de fondo con el evento asociado al botón
     function changeBackground1() {
         document.querySelector("#background").classList.remove('background2');
         document.querySelector("#background").classList.add('background');

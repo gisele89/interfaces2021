@@ -3,6 +3,7 @@ class ElectricityBall extends Element{
         super(spaceShip);
         this.ball = null;
     }
+    //Creo los elementos en el dom
     generateElement(randomPos) {
         this.ball = document.createElement("div");
         this.ball.setAttribute("class", "ball");

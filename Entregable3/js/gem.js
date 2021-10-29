@@ -3,6 +3,7 @@ class Gem extends Element{
         super(spaceShip);
         this.gem = null;
     }
+    //Creo los elementos en el dom
     generateElement(randomPos) {
         this.gem = document.createElement("div");
         this.gem.setAttribute("class", "gem");

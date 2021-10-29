@@ -41,8 +41,8 @@
         <!-- Modal content -->
         <div class="modal-content">
             <div><button id="start-button"><img src="images/start-button-8.png"></button></div>
-            <div><img src="images/start-text-8.png" alt=""></div>
-            <div>
+            <div><img id="text-start" src="images/start-text-8.png" alt=""></div>
+            <div class="back-images">
                 <button id="back-1-button"><img src="images/back-1-button-8.png"></button>
                 <button id="back-2-button"><img src="images/back-2-button-8.png"></button>
             </div>
@@ -53,8 +53,9 @@
     <div id="win-modal" class="win-modal">
         <!-- Modal content -->
         <div class="win-modal-content">
-            <p>Winner</p>
-            <div><button id="restart-button-win"><img src="images/start-button-8.png"></button></div>
+            <div><img id="text-win" src="images/winner-text-8.png" alt=""></div>
+            <div><button id="restart-button-win"><img src="images/home.png"></button></div>
+            <div><img  id="win-score" src="images/high-score.png" alt=""></div>
         </div>
 
     </div>
@@ -62,8 +63,11 @@
     <div id="game-over-modal" class="game-over-modal">
         <!-- Modal content -->
         <div class="game-over-content">
-            <p>Loser</p>
-            <div><button id="restart-button-game-over"><img src="images/start-button-8.png"></button></div>
+            <div><img  id="text-game-over" src="images/game-over.png" alt="">
+                <div><img id="game-over-score" src="images/high-score.png" alt=""></div>
+                <div><button id="restart-button-game-over"><img src="images/home.png"></button></div>
+            </div>
+
         </div>
 
     </div>

@@ -45,7 +45,8 @@ header {
 #name-logo {
     width: 10%;
 }
-#image-game{
+
+#image-game {
     justify-content: center;
     display: flex;
 }
@@ -53,11 +54,13 @@ header {
 .back {
     position: relative;
 }
-.background,.background2{
+
+.background, .background2 {
     position: absolute;
     bottom: 5%;
 }
-.foreground2,.midground2 {
+
+.foreground2, .midground2 {
     position: absolute;
     bottom: 15%;
 }
@@ -66,49 +69,50 @@ header {
     position: absolute;
     bottom: 10%;
 }
+
 .background {
     background: url(../images/background.png) no-repeat;
-     height: 1080px;
-    width: 1920px; 
+    height: 1080px;
+    width: 1920px;
 }
 
 .background2 {
     background: url(../images/background2.png) no-repeat;
-     height: 1080px;
-    width: 1920px; 
+    height: 1080px;
+    width: 1920px;
 }
 
 .midground {
     background: url(../images/midground.png) repeat-x;
     animation: movement 150s linear infinite;
-     height: 305px;
-    width: 8000px; 
+    height: 305px;
+    width: 8000px;
     animation-play-state: paused;
 }
 
- .foreground {
+.foreground {
     background: url(../images/foreground.png) repeat-x;
     animation: movementForeground 40s linear infinite;
-    height: 2200px; 
+    height: 2200px;
     width: 4829px;
     animation-play-state: paused;
-} 
+}
 
 .midground2 {
     background: url(../images/midground2.png) repeat-x;
     animation: movement2 150s linear infinite;
-     height: 302px;
-    width: 7003px; 
+    height: 302px;
+    width: 7003px;
     animation-play-state: paused;
 }
 
- .foreground2 {
+.foreground2 {
     background: url(../images/foreground2.png) repeat-x;
     animation: movementForeground2 40s linear infinite;
-    height:824px;
+    height: 824px;
     width: 8500px;
-    animation-play-state: paused; 
-} 
+    animation-play-state: paused;
+}
 
 @keyframes movement {
     0% {
@@ -118,6 +122,7 @@ header {
         background-position: 0
     }
 }
+
 @keyframes movementForeground {
     0% {
         background-position: 7003px
@@ -126,6 +131,7 @@ header {
         background-position: 0
     }
 }
+
 @keyframes movementForeground2 {
     0% {
         background-position: 8500px
@@ -134,6 +140,7 @@ header {
         background-position: 0
     }
 }
+
 @keyframes movement2 {
     0% {
         background-position: 4672px
@@ -142,23 +149,28 @@ header {
         background-position: 0
     }
 }
-#change-back{
-    margin-left:30px;
+
+#change-back {
+    margin-left: 30px;
     display: flex;
     align-items: center;
 }
-#back-1, #back-2{
+
+#back-1, #back-2 {
     width: 7%;
     background-color: transparent;
     border: none;
 }
-#back-1 img, #back-2 img{
-    width:100%
+
+#back-1 img, #back-2 img {
+    width: 100%
 }
-#back-1:hover, #back-2:hover{
-  cursor:pointer;
-  width: 9% ;
+
+#back-1:hover, #back-2:hover {
+    cursor: pointer;
+    width: 9%;
 }
+
 .static-fall {
     /*//para usar cuando está estático */
     position: absolute;
@@ -348,23 +360,33 @@ header {
 }
 
 .modal {
-    display: block; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: block;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content, .win-modal-content {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.modal-content, .win-modal-content {
     opacity: 0.8;
-    background:url(../images/start-back.png) no-repeat;
+    background: url(../images/start-back.png) no-repeat;
     margin: auto;
     padding: 20px;
     width: 100%;
@@ -372,26 +394,36 @@ header {
     position: absolute;
     left: 33%;
     top: 20%;
-  }
+}
 
-  .win-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+.win-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .win-modal-content {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.win-modal-content {
     opacity: 0.8;
-    background:url(../images/start-back.png) no-repeat;
+    background: url(../images/start-back.png) no-repeat;
     margin: auto;
     padding: 20px;
     width: 100%;
@@ -399,26 +431,36 @@ header {
     position: absolute;
     left: 33%;
     top: 20%;
-  }
+}
 
-  .game-over-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+.game-over-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .game-over-content {
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content */
+
+.game-over-content {
     opacity: 0.8;
-    background:url(../images/start-back.png) no-repeat;
+    background: url(../images/start-back.png) no-repeat;
     margin: auto;
     padding: 20px;
     width: 100%;
@@ -426,9 +468,76 @@ header {
     position: absolute;
     left: 33%;
     top: 20%;
-  }
+}
 
- #start-button, #back-1-button, #back-2-button{
-     background-color: transparent;
-     border: none;
- }
+#start-button, #back-1-button, #back-2-button, #restart-button-win, #restart-button-game-over {
+    background-color: transparent;
+    border: none;
+}
+
+#start-button:hover, #back-1-button:hover, #back-2-button:hover, #restart-button-game-over:hover, #restart-button-win:hover {
+    animation: scale .6s alternate infinite ease-in;
+    cursor: pointer;
+}
+
+#start-button {
+    position: absolute;
+    left: 8%;
+    top: 10%;
+}
+
+#text-start {
+    position: absolute;
+    left: 4%;
+    top: 25%;
+}
+
+.back-images {
+    position: absolute;
+    left: 4%;
+    top: 33%;
+}
+
+#text-game-over {
+    position: absolute;
+    left: 9%;
+    top: 5%;
+}
+
+#game-over-score {
+    position: absolute;
+    left: 8.5%;
+    top: 22%;
+}
+
+#restart-button-game-over {
+    position: absolute;
+    left: 11%;
+    top: 33%;  
+}
+#text-win{
+    position: absolute;
+    top: 10%;
+    left: 9%;
+}
+#restart-button-win{
+    position: absolute;
+    top: 30%;
+    left: 11%;
+}
+#win-score{
+    position: absolute;
+    top: 20%;
+    left: 8.2%;
+}
+
+
+
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
