@@ -50,14 +50,25 @@ document.addEventListener("DOMContentLoaded", function () {
        
         
     }
-    req = window.requestAnimationFrame(step);
+    
 
-    if(document.querySelector("#back-1")) {
-        document.querySelector("#back-1").addEventListener('click', changeBackground1);
+    if(document.querySelector("#back-1-button")) {
+        document.querySelector("#back-1-button").addEventListener('click', changeBackground1);
     }
     
-    if(document.querySelector("#back-2")) {
-        document.querySelector("#back-2").addEventListener('click', changeBackground);
+    if(document.querySelector("#back-2-button")) {
+        document.querySelector("#back-2-button").addEventListener('click', changeBackground);
+    }
+    if(document.querySelector("#start-button")) {
+        document.querySelector("#start-button").addEventListener('click', startGame);
+    }
+    function startGame(){
+        document.querySelector("#start-modal").style.display = "none";
+        document.querySelector("#midground").style["animation-play-state"] = "running";        
+        document.querySelector("#foreground").style["animation-play-state"] = "running";
+        game.initGame();
+        req = window.requestAnimationFrame(step);
+        
     }
    
     function changeBackground(){
