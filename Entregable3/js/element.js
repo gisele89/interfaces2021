@@ -7,6 +7,10 @@ class Element {
 
     }
 
+    removeElement() {
+        document.querySelector("#elements").removeChild(this.element);
+    }
+
     detectColission() {
     
     }

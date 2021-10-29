@@ -10,9 +10,12 @@ class Game {
     }
 
     initGame() {
+        for (let index = 0; index < this.elements.length; index++) {
+           this.elements[index].removeElement();
+        }
         this.elements = [];
         this.playerSpaceShip.reset(); 
-        this.createElements();
+        this.createElements(); 
         //this.doCountdown();
 
     }

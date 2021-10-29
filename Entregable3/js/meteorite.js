@@ -31,7 +31,9 @@ class Meteorite extends Element{
             rect1.y < rect2.y + rect2.height &&
             rect1.height + rect1.y > rect2.y) {
             console.log("colisión de meteorito detectada");
+            return true;
         }
+        return false;
         // se le pasa el jugador y se le incrementa las monedas
 
     }
