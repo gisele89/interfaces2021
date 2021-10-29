@@ -125,7 +125,7 @@ header {
 
 @keyframes movementForeground {
     0% {
-        background-position: 7003px
+        background-position: 4829px
     }
     100% {
         background-position: 0
@@ -244,10 +244,11 @@ header {
 
 .meteorite {
     position: absolute;
-    background: url(../images/meteorite.svg) no-repeat;
-    width: 145px;
-    height: 158px;
-    animation: meteoritesMovement 70s linear infinite forwards;
+    /* background: url(../images/meteorite.svg) no-repeat; */
+    background: url(../images/meteorite.png) no-repeat;
+    width: 40px;
+    height: 40px;
+    animation: meteoritesMovement 50s linear infinite forwards;
 }
 
 .ball {
@@ -275,6 +276,29 @@ header {
     color: white;
     font-size: 50px;
     z-index: 999;
+    font-weight: 700;
+}
+#count-score, #count-score-game-over {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 17%;
+    left: 15%;
+    color: white;
+    font-size: 50px;
+    z-index: 999;
+    font-weight: 700;
+}
+#count-score-game-over {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 19%;
+    left: 15%;
+    color: white;
+    font-size: 50px;
+    z-index: 999;
+    font-weight: 700;
 }
 
 .points {
@@ -284,13 +308,17 @@ header {
 }
 
 #count-coin {
-    font-size: 30px;
+    font-size: 40px;
     z-index: 999;
     color: white;
+    font-weight: 700;
 }
 
 .disappear {
     animation: disappear 0.3s linear forwards, coinsMovement 90s linear infinite forwards;
+}
+.disappearGem {
+    animation: disappear 0.3s linear forwards, gemsMovement 90s linear infinite forwards;
 }
 
 .shake {
@@ -342,8 +370,6 @@ header {
 @keyframes meteoritesMovement {
     to {
         transform: translateX(-7000px);
-        /* transform-origin: center center;
-        transform: rotate(360deg); */
     }
 }
 
@@ -361,28 +387,16 @@ header {
 
 .modal {
     display: block;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     padding-top: 100px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
-
-/* Modal Content */
 
 .modal-content, .win-modal-content {
     opacity: 0.8;
@@ -398,25 +412,15 @@ header {
 
 .win-modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     padding-top: 100px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -435,28 +439,16 @@ header {
 
 .game-over-modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     padding-top: 100px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
-    overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
-
-/* Modal Content */
 
 .game-over-content {
     opacity: 0.8;
@@ -475,7 +467,7 @@ header {
     border: none;
 }
 
-#start-button:hover, #back-1-button:hover, #back-2-button:hover, #restart-button-game-over:hover, #restart-button-win:hover {
+#start-button:hover, #back-1-button:hover, #back-2-button:hover, #restart-button-game-over:hover, #restart-button-win:hover, #instructions:hover, #close-button:hover {
     animation: scale .6s alternate infinite ease-in;
     cursor: pointer;
 }
@@ -496,6 +488,7 @@ header {
     position: absolute;
     left: 4%;
     top: 33%;
+    display: flex;
 }
 
 #text-game-over {
@@ -541,3 +534,28 @@ header {
         transform: scale(1.1);
     }
 }
+
+#instructions, #close-button{
+    background-color: transparent;
+    color: white;
+    border: none;
+    position: absolute;
+    left: 26.5%;
+    top: 5%;
+    font-size: 40px;
+}
+#close-button{
+    display:none;
+}
+#pop-up-instructions{
+    display: none;
+    color: white;
+    width: 28%;
+    font-size: 23px;
+    padding: 20px;
+    padding-top: 3%;
+    font-weight: 500;
+}
+@media (min-width: 700px) { 
+
+ }

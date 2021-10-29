@@ -6,16 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let keyCode = null;
 
     console.log("hola");
-
     window.addEventListener('keydown', function (e) {
         keyDown = true;
         keyCode = e.code;
-        console.log(keyCode);
-        if (keyCode == 'Enter') {//detecto enter
-            //game.doCountdown();
-            game.initGame();
-            console.log("inicio juego");
-        }
     });
 
     window.addEventListener('keyup', function (e) {
@@ -54,7 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-
+    if (document.querySelector("#instructions")) {
+        document.querySelector("#instructions").addEventListener('click', showInstructions);
+    }
+    if (document.querySelector("#close-button")) {
+        document.querySelector("#close-button").addEventListener('click', close);
+    }
     if (document.querySelector("#back-1-button")) {
         document.querySelector("#back-1-button").addEventListener('click', changeBackground1);
     }
@@ -74,6 +72,25 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector("#restart-button-game-over")) {
         document.querySelector("#restart-button-game-over").addEventListener('click', restartGameOver);
     }
+    function close(){
+        document.querySelector("#close-button").style.display = "none";
+        document.querySelector("#start-button").style.display = "block";
+        document.querySelector("#text-start").style.display = "block";
+        document.querySelector("#back-1-button").style.display = "block";
+        document.querySelector("#back-2-button").style.display = "block";
+        document.querySelector("#instructions").style.display = "block";
+        document.querySelector("#pop-up-instructions").style.display = "none";
+    }
+
+    function showInstructions(){
+        document.querySelector("#pop-up-instructions").style.display = "block";
+        document.querySelector("#start-button").style.display = "none";
+        document.querySelector("#text-start").style.display = "none";
+        document.querySelector("#back-1-button").style.display = "none";
+        document.querySelector("#back-2-button").style.display = "none";
+        document.querySelector("#instructions").style.display = "none";
+        document.querySelector("#close-button").style.display = "block";
+    }
 //arranca el juego luego d epresionar start, se arrancan las animaciones
     function startGame() {
         document.querySelector("#start-modal").style.display = "none";
@@ -89,19 +106,21 @@ document.addEventListener("DOMContentLoaded", function () {
 //reinicio del juego cuando pierdo y quiero jugar de nuevo
     function restartGameOver() {
         document.querySelector("#start-modal").style.display = "block";
-        document.querySelector("#game-over-modal").style.display = "none";        
+        document.querySelector("#game-over-modal").style.display = "none";
     }
 //cuando se gana se paran las animaciones y se muestra el pop up correspondiente
     function stopGame() {
         stopAnimation();
         game.stopAnimationElements();
         game.stopAnimationSpaceShip();
+        game.showHighScore();
         document.querySelector("#win-modal").style.display = "block";
     }
 //cuando el juego termina paro las animaciones y muestro el pop up correspondiente
     function gameOver() {
         stopAnimation();
         game.stopAnimationElements();
+        game.showHighScore();
         document.querySelector("#game-over-modal").style.display = "block";
     }
 //se arrancan las animaciones del fondo

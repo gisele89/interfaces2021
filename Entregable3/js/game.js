@@ -5,10 +5,11 @@ class Game {
         this.avatarToChange = null;
         this.quantityCoins = 40;
         this.elements = [];
+        this.winnerCoins = 20; 
 
 
     }
-//inicio el juego mediante la creación de elemntos y reseteo en caso de que ya se venga jugando previamente
+    //inicio el juego mediante la creación de elemntos y reseteo en caso de que ya se venga jugando previamente
     initGame() {
         for (let index = 0; index < this.elements.length; index++) {
             this.elements[index].removeElement();
@@ -27,13 +28,13 @@ class Game {
         this.generateMeteorites();
         this.generateElectricityBalls();
     }
-//detengo la animación de los elementos
+    //detengo la animación de los elementos
     stopAnimationElements() {
         for (let index = 0; index < this.elements.length; index++) {
             this.elements[index].stopAnimation();
         }
     }
-//detengo la animación de la nave
+    //detengo la animación de la nave
     stopAnimationSpaceShip() {
         this.playerSpaceShip.stopAnimation();
     }
@@ -74,9 +75,9 @@ class Game {
         this.spaceship.classList.add('up');
         this.changePositionUp();
     }
-//genero las bolas mediante su objeto correspondiente y una cantidad determinada de manera random según un máximo fijo
+    //genero las bolas mediante su objeto correspondiente y una cantidad determinada de manera random según un máximo fijo
     generateGems() {
-        let max = 3;
+        let max = 5;
         let quantiyGems = Math.floor(Math.random() * max);
         for (let index = 0; index < quantiyGems; index++) {
             let gem = new Gem(this.playerSpaceShip);
@@ -85,7 +86,7 @@ class Game {
             this.elements.push(gem);
         }
     }
-//genero las monedas mediante su objeto correspondiente y una cantidad determinada
+    //genero las monedas mediante su objeto correspondiente y una cantidad determinada
     generateCoins() {
         for (let index = 0; index < this.quantityCoins; index++) {
             let coin = new Coin(this.playerSpaceShip);
@@ -94,7 +95,7 @@ class Game {
             this.elements.push(coin);
         }
     }
-//genero los meteoritos mediante su objeto correspondiente y una cantidad establecidad random entr eun mínimo y un máximo
+    //genero los meteoritos mediante su objeto correspondiente y una cantidad establecidad random entr eun mínimo y un máximo
     generateMeteorites() {
         let max = 15;
         let min = 5;
@@ -118,7 +119,7 @@ class Game {
         }
 
     }
-//genero una posición random donde ubicar los elementos en pantalla
+    //genero una posición random donde ubicar los elementos en pantalla
     generateRandomPosition() {
         let maxX = 7500;
         let minX = 1900;
@@ -131,7 +132,7 @@ class Game {
             y: posY
         }
     }
-//detecto si se chocó contra algún elemento y sí es así se produce la reacción correspondiente y se elimina del arreglo de elemntos
+    //detecto si se chocó contra algún elemento y sí es así se produce la reacción correspondiente y se elimina del arreglo de elemntos
     detectColission() {
         for (let index = 0; index < this.elements.length; index++) {
             if (this.elements[index].detectColission()) {
@@ -172,24 +173,35 @@ class Game {
     checkGameOver() {
         return this.gameOver();
     }
-//el jugador gana cuando junta las monedas
+    //el jugador gana cuando junta las monedas
     isWinner() {
-        return this.playerSpaceShip.getQuantityCoins() >= 10;
+        
+        return this.playerSpaceShip.getQuantityCoins() >= this.winnerCoins;
     }
 
     //determino sí el jugador perdió de acuerdo a la posición, es decir cuando toca el piso o cuando choca con un meteorito
     gameOver() {
         let gameWindow = document.querySelector('#game');
         if (this.playerSpaceShip.getPosition().top + this.playerSpaceShip.getSize().height == gameWindow.offsetHeight) {//se termina el juego cuando se toca el piso
+            console.log("tocando piso");
+            this.startGameOverAnimation();
             return true;
         } else {
             if (this.playerSpaceShip.isCrashed()) {
-                this.spaceship.classList.remove('static-fall');
-                this.spaceship.classList.add('ground');
+                this.startGameOverAnimation();
                 return true;
             }
 
         }
+    }
+
+    startGameOverAnimation() {
+        this.spaceship.classList.remove('static-fall');
+        this.spaceship.classList.add('ground');
+    }
+    showHighScore(){
+        document.querySelector("#count-score").innerHTML =  this.playerSpaceShip.getQuantityCoins();  
+        document.querySelector("#count-score-game-over").innerHTML =  this.playerSpaceShip.getQuantityCoins(); 
     }
 
 }

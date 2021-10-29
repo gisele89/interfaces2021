@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleGame.css">
     <link rel="icon" href="images/spaceShip-2.svg">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Space Game</title>
 </head>
 
@@ -14,10 +15,6 @@
     <header>
         <img id="logo" src="images/spaceShip-2.svg" alt="Dibujo vectorial de Nave espacial">
         <img id="name-logo" src="images/name-logo.svg" alt="Dibujo vectorial de Nave espacial">
-        <!-- <div id="change-back">
-            <button id="back-1"><img src="images/back-1.jpeg"></button>
-            <button id="back-2"><img src="images/back-2.jpeg"></button>
-        </div> -->
     </header>
 
 
@@ -40,6 +37,15 @@
     <div id="start-modal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
+            <button id="instructions"><i class="fas fa-info"></i></button>
+            <button id="close-button"><img src="images/close.png"></button>
+            <div id = "pop-up-instructions">
+                <p> Para jugar, primero seleccioná en qué mundo querés jugar y luego presioná start para arrancar el juego.
+                    Apretando la barra espaciadora repetidamente te vas a desplazar hacia arriba y si la soltás la nave cae.
+                    Para evitar perder no toques nunca el suelo ni choques contra meteoritos. Recordá que las bolas de electricidad te hacen perder 10 monedas.
+                    Para ganar juntá 20 monedas y acordate que las gemas suman 5 monedas. Sí perdes podes reiniciar el juego apretando Start, lo mismo si ganás.
+                </p>
+            </div>
             <div><button id="start-button"><img src="images/start-button-8.png"></button></div>
             <div><img id="text-start" src="images/start-text-8.png" alt=""></div>
             <div class="back-images">
@@ -55,7 +61,10 @@
         <div class="win-modal-content">
             <div><img id="text-win" src="images/winner-text-8.png" alt=""></div>
             <div><button id="restart-button-win"><img src="images/home.png"></button></div>
-            <div><img  id="win-score" src="images/high-score.png" alt=""></div>
+            <div>
+                <img  id="win-score" src="images/high-score.png" alt="">
+                <p id="count-score"></p>
+            </div>
         </div>
 
     </div>
@@ -64,7 +73,10 @@
         <!-- Modal content -->
         <div class="game-over-content">
             <div><img  id="text-game-over" src="images/game-over.png" alt="">
-                <div><img id="game-over-score" src="images/high-score.png" alt=""></div>
+                <div>
+                    <img id="game-over-score" src="images/high-score.png" alt="">
+                    <p id="count-score-game-over"></p>
+                </div>
                 <div><button id="restart-button-game-over"><img src="images/home.png"></button></div>
             </div>
 

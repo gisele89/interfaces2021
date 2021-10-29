@@ -1,9 +1,6 @@
 class playerSpaceShip {
     constructor(spaceShip) {
-        this.avatar = new Image();
-        this.avatar.src = "";
         this.coins = 0;
-        this.lives = 1;
         this.spaceShip = spaceShip;
         this.countCoins = document.querySelector("#count-coin");
         this.crashed = false;
@@ -11,26 +8,26 @@ class playerSpaceShip {
     //reseteo las monedas cuando se reinicia el juego y la posición de la nave
     reset() {
         this.coins = 0;
-        this.lives = 1;        
+        this.crashed = false;
         this.spaceShip.style.bottom = '400px';
         this.spaceShip.style.top = '400px';
         this.spaceShip.classList.remove('ground');
         this.spaceShip.style["animation-play-state"] = "running";
     }
 
-    setAvatar(avatar) {
-        this.avatar = avatar;
-    }
     incrementCoins() {
         this.coins += 1;
+    }
+    incrementCoinsByGem() {
+        this.coins += 5;
     }
     incrementLives() {
         this.lives += 1;
     }
     decrementCoins() {
-        if(this.coins>=10){
+        if (this.coins >= 10) {
             this.coins -= 10;
-        }   
+        }
     }
     decrementLives() {
         this.lives -= 1;
@@ -50,7 +47,7 @@ class playerSpaceShip {
             left: left
         }
     }
-     //obtengo el tamaño de la nave
+    //obtengo el tamaño de la nave
     getSize() {
         let width = this.spaceShip.offsetWidth;
         let height = this.spaceShip.offsetHeight;
@@ -59,7 +56,7 @@ class playerSpaceShip {
             height: height
         }
     }
-    
+
     printCoins() {
         this.countCoins.innerHTML = this.coins;
     }
@@ -68,9 +65,11 @@ class playerSpaceShip {
     }
     setCrashed() {
         this.crashed = true;
-    } 
+    }
 
     isCrashed() {
         return this.crashed;
     }
+    
+    
 }

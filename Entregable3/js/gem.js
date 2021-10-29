@@ -1,4 +1,4 @@
-class Gem extends Element{
+class Gem extends Element {
     constructor(spaceShip) {
         super(spaceShip);
         this.gem = null;
@@ -10,7 +10,7 @@ class Gem extends Element{
         this.gem.style.left = randomPos.x + 'px';
         this.gem.style.top = randomPos.y + 'px';
         document.querySelector("#elements").appendChild(this.gem);
-        this.element = this.gem; 
+        this.element = this.gem;
 
     }
     detectColission() {
@@ -24,19 +24,25 @@ class Gem extends Element{
         let gemW = this.getSize().width;
         let gemH = this.getSize().height;
 
-        let rect1 = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }//pasar a objeto
-        let rect2 = { x: gemX, y: gemY, width: gemW, height: gemH }//pasar a objeto los elemnts
+        let rect1 = { x: spaceX, y: spaceY, width: spaceW, height: spaceH }
+        let rect2 = { x: gemX, y: gemY, width: gemW, height: gemH }
 
         if (rect1.x < rect2.x + rect2.width &&
             rect1.x + rect1.width > rect2.x &&
             rect1.y < rect2.y + rect2.height &&
             rect1.height + rect1.y > rect2.y) {
-           console.log("colisión de gema detectada");
+            this.spaceShip.incrementCoinsByGem();
+            this.spaceShip.printCoins();
+            console.log("colisión de gema detectada");
+            return true;
         }
+        return false;
+          
+            
         // se le pasa el jugador y se le incrementa las monedas
 
     }
-    reactToColission(){
-        this.gem.classList.add('disappear');  
+    reactToColission() {
+        this.gem.classList.add('disappearGem');
     }
 }
