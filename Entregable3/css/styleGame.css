@@ -423,8 +423,6 @@ header {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content */
-
 .win-modal-content {
     opacity: 0.8;
     background: url(../images/start-back.png) no-repeat;
@@ -556,6 +554,28 @@ header {
     padding-top: 3%;
     font-weight: 500;
 }
-@media (min-width: 700px) { 
-
- }
+@media only screen   and (min-width: 1030px)   and (max-width: 1366px)  {
+    .modal-content, .win-modal-content, .game-over-content{
+        left: 26%;
+        top: 10%;
+    }
+    #start-button{
+        left: 11%;
+        top: 13%;
+    }
+    #text-start{
+        left:6%;
+        top:30%;
+    }
+    .back-images{
+        left:6%;
+        top:40%;
+    }
+    #instructions{
+        left:38%;
+    }
+    #game{
+        width: 90%;
+        height: 670px;
+    }
+}

@@ -123,8 +123,8 @@ class Game {
     generateRandomPosition() {
         let maxX = 7500;
         let minX = 1900;
-        let maxY = 700;
-        let minY = 150;
+        let maxY = window.screen.height*0.6;//maximo de acuerdo al size de la pantalla
+        let minY = window.screen.height*0.14;//minimo de acuerdo al size de la pantalla
         let posX = Math.floor(Math.random() * (maxX - minX)) + minX;
         let posY = Math.floor(Math.random() * (maxY - minY)) + minY;
         return {
