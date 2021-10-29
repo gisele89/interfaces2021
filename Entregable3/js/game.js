@@ -123,8 +123,8 @@ class Game {
     generateRandomPosition() {
         let maxX = 7500;
         let minX = 1900;
-        let maxY = window.screen.height*0.6;//maximo de acuerdo al size de la pantalla
-        let minY = window.screen.height*0.14;//minimo de acuerdo al size de la pantalla
+        let maxY = window.screen.availHeight*0.6;//maximo de acuerdo al size de la pantalla
+        let minY = window.screen.availHeight*0.14;//minimo de acuerdo al size de la pantalla
         let posX = Math.floor(Math.random() * (maxX - minX)) + minX;
         let posY = Math.floor(Math.random() * (maxY - minY)) + minY;
         return {
@@ -181,8 +181,7 @@ class Game {
 
     //determino sí el jugador perdió de acuerdo a la posición, es decir cuando toca el piso o cuando choca con un meteorito
     gameOver() {
-        let gameWindow = document.querySelector('#game');
-        if (this.playerSpaceShip.getPosition().top + this.playerSpaceShip.getSize().height == gameWindow.offsetHeight) {//se termina el juego cuando se toca el piso
+        if (this.playerSpaceShip.getPosition().top + this.playerSpaceShip.getSize().height >= (window.screen.availHeight * 0.9)) {//se termina el juego cuando se toca el piso
             console.log("tocando piso");
             this.startGameOverAnimation();
             return true;
@@ -194,11 +193,12 @@ class Game {
 
         }
     }
-
+//seteo la animación de explosión al caer
     startGameOverAnimation() {
         this.spaceship.classList.remove('static-fall');
         this.spaceship.classList.add('ground');
     }
+    //Muestro las monedas recolectadas
     showHighScore(){
         document.querySelector("#count-score").innerHTML =  this.playerSpaceShip.getQuantityCoins();  
         document.querySelector("#count-score-game-over").innerHTML =  this.playerSpaceShip.getQuantityCoins(); 

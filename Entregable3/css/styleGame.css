@@ -312,6 +312,9 @@ header {
     z-index: 999;
     color: white;
     font-weight: 700;
+    position: absolute;
+    right: 4%;
+    
 }
 
 .disappear {
@@ -575,7 +578,29 @@ header {
         left:38%;
     }
     #game{
-        width: 90%;
         height: 670px;
     }
+    #close-button{
+        left: 40%;
+    }
+    #pop-up-instructions{
+        width: 38%; 
+    }
+  #text-game-over{
+      left:12%;
+  }
+  #restart-button-game-over,  #restart-button-win{
+      top:45%;
+      left:15%
+    }
+    #game-over-score, #win-score{
+        left:12%;
+        top:29%;
+    }
+    #count-score-game-over, #count-score{
+        left:22%;
+        top:27%
+    }
+   
+
 }
