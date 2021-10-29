@@ -36,7 +36,7 @@ class Meteorite extends Element{
 
     }
     reactToColission(){
-        
+        this.spaceShip.setCrashed();
     }
     
 }

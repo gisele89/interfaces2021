@@ -36,42 +36,86 @@ document.addEventListener("DOMContentLoaded", function () {
             if (keyDown && keyCode == 'Space') {
                 game.upPlayer();
             } else {
-                game.fallPlayer();
-                game.checkGameOver();
+                game.fallPlayer();                
             }
-            
+
             previousTimeStamp = timestamp;
-            if(game.detectColission()){
+            if (game.detectColission()) {
                 window.cancelAnimationFrame(req);
             }
-            
-            req = window.requestAnimationFrame(step);
+            if (game.isWinner()) {
+                stopGame();
+            } else if(game.checkGameOver()) {
+                gameOver();
+                window.cancelAnimationFrame(req);
+            } else {
+                req = window.requestAnimationFrame(step);
+            }
         }
-       
-        
     }
-    
 
-    if(document.querySelector("#back-1-button")) {
+
+    if (document.querySelector("#back-1-button")) {
         document.querySelector("#back-1-button").addEventListener('click', changeBackground1);
     }
-    
-    if(document.querySelector("#back-2-button")) {
+
+    if (document.querySelector("#back-2-button")) {
         document.querySelector("#back-2-button").addEventListener('click', changeBackground);
     }
-    if(document.querySelector("#start-button")) {
+    
+    if (document.querySelector("#start-button")) {
         document.querySelector("#start-button").addEventListener('click', startGame);
     }
-    function startGame(){
-        document.querySelector("#start-modal").style.display = "none";
-        document.querySelector("#midground").style["animation-play-state"] = "running";        
-        document.querySelector("#foreground").style["animation-play-state"] = "running";
-        game.initGame();
-        req = window.requestAnimationFrame(step);
-        
+    
+    if (document.querySelector("#restart-button-win")) {
+        document.querySelector("#restart-button-win").addEventListener('click', restartGameWin);
     }
-   
-    function changeBackground(){
+
+    if (document.querySelector("#restart-button-game-over")) {
+        document.querySelector("#restart-button-game-over").addEventListener('click', restartGameOver);
+    }
+
+    function startGame() {
+        document.querySelector("#start-modal").style.display = "none";
+        game.initGame();
+        startAnimation();
+        req = window.requestAnimationFrame(step);
+    }
+
+    function restartGameWin() {
+        document.querySelector("#start-modal").style.display = "block";
+        document.querySelector("#win-modal").style.display = "none";        
+    }
+
+    function restartGameOver() {
+        document.querySelector("#start-modal").style.display = "block";
+        document.querySelector("#game-over-modal").style.display = "none";        
+    }
+
+    function stopGame() {
+        stopAnimation();
+        game.stopAnimationElements();
+        game.stopAnimationSpaceShip();
+        document.querySelector("#win-modal").style.display = "block";
+    }
+
+    function gameOver() {
+        stopAnimation();
+        game.stopAnimationElements();
+        document.querySelector("#game-over-modal").style.display = "block";
+    }
+
+    function startAnimation() {
+        document.querySelector("#midground").style["animation-play-state"] = "running";
+        document.querySelector("#foreground").style["animation-play-state"] = "running";
+    }
+
+    function stopAnimation() {
+        document.querySelector("#midground").style["animation-play-state"] = "paused";
+        document.querySelector("#foreground").style["animation-play-state"] = "paused";        
+    }
+
+    function changeBackground() {
         document.querySelector("#background").classList.remove('background');
         document.querySelector("#background").classList.add('background2');
         document.querySelector("#midground").classList.remove('midground');
@@ -79,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#foreground").classList.remove('foreground');
         document.querySelector("#foreground").classList.add('foreground2');
     }
-    function changeBackground1(){
+    function changeBackground1() {
         document.querySelector("#background").classList.remove('background2');
         document.querySelector("#background").classList.add('background');
         document.querySelector("#midground").classList.remove('midground2');
@@ -87,6 +131,5 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector("#foreground").classList.remove('foreground2');
         document.querySelector("#foreground").classList.add('foreground');
     }
-   
-    
+
 })

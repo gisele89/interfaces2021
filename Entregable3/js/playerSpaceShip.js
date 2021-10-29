@@ -6,6 +6,16 @@ class playerSpaceShip {
         this.lives = 1;
         this.spaceShip = spaceShip;
         this.countCoins = document.querySelector("#count-coin");
+        this.crashed = false;
+    }
+
+    reset() {
+        this.coins = 0;
+        this.lives = 1;        
+        this.spaceShip.style.bottom = '400px';
+        this.spaceShip.style.top = '400px';
+        this.spaceShip.classList.remove('ground');
+        this.spaceShip.style["animation-play-state"] = "running";
     }
 
     setAvatar(avatar) {
@@ -49,5 +59,15 @@ class playerSpaceShip {
     }
     printCoins() {
         this.countCoins.innerHTML = this.coins;
+    }
+    stopAnimation() {
+        this.spaceShip.style["animation-play-state"] = "paused"
+    }
+    setCrashed() {
+        this.crashed = true;
+    } 
+
+    isCrashed() {
+        return this.crashed;
     }
 }

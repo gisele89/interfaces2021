@@ -10,6 +10,8 @@ class Game {
     }
 
     initGame() {
+        this.elements = [];
+        this.playerSpaceShip.reset(); 
         this.createElements();
         //this.doCountdown();
 
@@ -17,21 +19,20 @@ class Game {
 
     //genero dinámicamente los elementos
     createElements() {
-        //this.generateGems();
+        this.generateGems();
         this.generateCoins();
-        //this.generateMeteorites();
+        this.generateMeteorites();
         this.generateElectricityBalls();
     }
 
-
-    onKeyDown(e) {
-
+    stopAnimationElements() {
+        for (let index = 0; index < this.elements.length; index++) {
+            this.elements[index].stopAnimation();
+        }        
     }
 
-    isWinner() {
-        //si llega al final sin perder
-
-
+    stopAnimationSpaceShip() {
+        this.playerSpaceShip.stopAnimation();
     }
 
     //se chequea si junta todas las monedas del nivel entonces se le da una vida
@@ -163,9 +164,11 @@ class Game {
         clearInterval(this.countdown);
     }
     checkGameOver() {
-        if (this.gameOver()) {
-            console.log("Game over");
-        }
+        return this.gameOver();
+    }
+
+    isWinner(){
+        return this.playerSpaceShip.getQuantityCoins() >= 10;
     }
 
     gameOver() {
@@ -175,9 +178,11 @@ class Game {
             this.spaceship.classList.remove('static-fall');
             this.spaceship.classList.add('ground');
             return true;
-            // }else if(){
-
-            //   }
+        }else{
+            if(this.playerSpaceShip.isCrashed()){
+                return true;
+            }
+            
         }
     }
    

@@ -30,4 +30,8 @@ class Element {
     reactToColission(){
 
     }
+
+    stopAnimation() {
+        this.element.style["animation-play-state"] = "paused"
+    }
 }
