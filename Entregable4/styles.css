@@ -1,0 +1,30 @@
+body{
+    background-color: #935F95;
+    color:white;
+    font-family: 'Montserrat';
+}
+a{
+    color:white;
+}
+footer {
+    background-color: #4D1B50;
+    color: white;
+    text-align: center;
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    left: 0;
+}
+header{
+    display: flex;
+    align-items: center;
+}
+h1{
+    margin-left: 30px;
+}
+#links{
+    margin-top:30px;
+}
