@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="sass/materialize.css"  media="screen,projection"/>
+    <link rel="icon" href="images/logo.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body>
-    
+    <div class="container">
+        <div id="logo">
+            <img src= "images/Logo-text.png"> 
+            <h3 id="text-logo">Vet te ayuda a conectarte con amantes de los animales</h3>
+        </div>
+        <div id="form row">
+            <form class="col s12 m9">
+                <div class="row login-row">
+                    <div class="input-field col s12 m6">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">E-mail</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Contraseña</label>
+                        <i class="material-icons eye-icon disabled-icon">visibility_off</i>
+                    </div>
+                </div>
+                <div class="row links-login-div">
+                    <div id="links-login">
+                        <h4><a class="waves-effect waves-light  login-text">¿Olvidaste tu contraseña?</a></h4>
+                        <a id="inicio-btn" class="waves-effect waves-light btn disabled">Iniciar sesión</a>
+                        <h4><a class="waves-effect waves-light login-text-crear" href ="registro.html">Crear cuenta</a></h4>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/bin/materialize.min.js"></script>
 </body>
+
 </html>
