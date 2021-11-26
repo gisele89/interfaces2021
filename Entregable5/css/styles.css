@@ -2,61 +2,86 @@
     display: inline-grid;
     text-align: center;
 }
-#navLogo{
+
+#navLogo {
     width: 50px;
     height: 50px;
     margin-right: 5px;
 }
-.navbar{
-    background-color: white;
+
+.navbar {
+    /* background-color: white;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow:0 0 5px 0 #434343;
+    /*box-shadow:0 0 5px 0 #434343;*/
 }
 
-.leftnavbar{
+.leftnavbar {
     height: 56px;
 }
 
-.navbar i, #profile-navbar{
+/*.navbar i, #profile-navbar{
     color: #935f95;
-}
-#profile-navbar{
+}*/
+#profile-navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #434343;
+    font-weight: bold;
+    transition:all 0.5s ease-in-out;
 }
-#profile-navbar img{
+#profile-navbar:hover{
+    color:white;
+    background-color: #935F95;
+    border-radius: 0.563rem;
+    height: 45px;
+    margin-top: 0.5rem;
+}
+
+#profile-navbar img {
     margin-right: 5px;
 }
+
 .imgRedonda {
-    width:30px;
-    height:30px;
-    border-radius:15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+
+#search-box {
+    left: 30%;
+    position: relative;
 }
 
 
 #busqueda {
-    background-color:#DFDFDF; 
-    border: 1px solid gray;
-    border-radius: 1rem;
-	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    background-color: #DFDFDF;
+    border-bottom: none;
+    border-radius: 0.563rem;
+    font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
+    padding-left: 0.5rem;
 }
 
-#busqueda::placeholder{
+#busqueda::placeholder {
     color: #757575;
 }
 
-.on{
-    border-bottom: #935f95;
-    border-style: solid;
-    border-radius: 5px;
+.on {
+    border-bottom: 3px solid #935f95;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
-
+.nav-content li{
+    margin-right:30px
+}
+.left.hide-on-med-and-down.leftnavbar{
+    margin-top: 0.5rem;
+}
 
 .links-login-div {
     display: flex;
@@ -129,7 +154,8 @@ html {
     margin: auto;
     text-align: center;
 }
-.registro{
+
+.registro {
     margin-top: 120px;
 }
 
