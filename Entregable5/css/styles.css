@@ -2,6 +2,61 @@
     display: inline-grid;
     text-align: center;
 }
+#navLogo{
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+.navbar{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:0 0 5px 0 #434343;
+}
+
+.leftnavbar{
+    height: 56px;
+}
+
+.navbar i, #profile-navbar{
+    color: #935f95;
+}
+#profile-navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#profile-navbar img{
+    margin-right: 5px;
+}
+.imgRedonda {
+    width:30px;
+    height:30px;
+    border-radius:15px;
+}
+
+
+#busqueda {
+    background-color:#DFDFDF; 
+    border: 1px solid gray;
+    border-radius: 1rem;
+	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+#busqueda::placeholder{
+    color: #757575;
+}
+
+.on{
+    border-bottom: #935f95;
+    border-style: solid;
+    border-radius: 5px;
+}
+
 
 .links-login-div {
     display: flex;

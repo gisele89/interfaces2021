@@ -4599,7 +4599,7 @@ nav i,
 nav [class^="mdi-"], nav [class*="mdi-"],
 nav i.material-icons {
   display: block;
-  font-size: 24px;
+  font-size: 35px;
   height: 56px;
   line-height: 56px;
 }
@@ -4629,7 +4629,6 @@ nav .sidenav-trigger i {
 }
 
 nav .brand-logo {
-  position: absolute;
   color: #fff;
   display: inline-block;
   font-size: 2.1rem;
@@ -4671,7 +4670,7 @@ nav .brand-logo i,
 nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"],
 nav .brand-logo i.material-icons {
   float: left;
-  margin-right: 15px;
+  margin: 0 15px;
 }
 
 nav .nav-title {
@@ -4701,7 +4700,7 @@ nav ul a {
   font-size: 1rem;
   color: #fff;
   display: block;
-  padding: 0 15px;
+  padding: 0 30px;
   cursor: pointer;
 }
 
@@ -6866,7 +6865,6 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   font-size: 2rem;
   -webkit-transition: color .2s;
   transition: color .2s;
-  top: 0.5rem;
 }
 
 .input-field .prefix.active {
@@ -8771,10 +8769,19 @@ input[type=range]::-ms-thumb {
   visibility: visible;
   -webkit-animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
           animation: pulse-animation 1s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s;
-  transition: opacity .3s, transform .3s, visibility 0s 1s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s 1s,
+ -webkit-transform .3s;
 }
 
 .tap-target {
@@ -8827,10 +8834,19 @@ input[type=range]::-ms-thumb {
 
 .tap-target-wave::after {
   visibility: hidden;
-  -webkit-transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, visibility 0s, -webkit-transform .3s;
-  transition: opacity .3s, transform .3s, visibility 0s;
-  transition: opacity .3s, transform .3s, visibility 0s, -webkit-transform .3s;
+  -webkit-transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ visibility 0s,
+ -webkit-transform .3s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s;
+  transition: opacity .3s,
+ transform .3s,
+ visibility 0s,
+ -webkit-transform .3s;
   z-index: -1;
 }
 
