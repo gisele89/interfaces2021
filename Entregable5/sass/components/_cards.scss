@@ -4,8 +4,8 @@
   transition: box-shadow .25s;
   padding: $card-padding;
   margin: $element-top-margin 0 $element-bottom-margin 0;
-  border-radius: 2px;
-  @extend .z-depth-1;
+  border-radius: 9px;
+  @extend .z-depth-3;
   background-color: $card-bg-color;
 }
 
@@ -14,8 +14,10 @@
   margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   transition: box-shadow .25s;
-  border-radius: 2px;
-  @extend .z-depth-1;
+  @extend .z-depth-3;
+   border-radius:9px;
+      margin-top: 2rem;
+      border-radius: 0.5rem;
 
 
   .card-title {

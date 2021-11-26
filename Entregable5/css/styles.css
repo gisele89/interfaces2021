@@ -31,6 +31,8 @@
     color: #434343;
     font-weight: bold;
     transition:all 0.5s ease-in-out;
+    height: 45px;
+    margin-top: 0.5rem;
 }
 #profile-navbar:hover{
     color:white;
@@ -55,8 +57,10 @@
     position: relative;
 }
 
-
-#busqueda {
+div .card.card-padding{
+    padding:2rem 3rem;
+}
+#busqueda, #escribir-post {
     background-color: #DFDFDF;
     border-bottom: none;
     border-radius: 0.563rem;
@@ -65,6 +69,37 @@
     font-weight: normal;
     text-decoration: inherit;
     padding-left: 0.5rem;
+}
+#escribir-post:focus{
+    border:none;
+}
+#escribir-post{
+    margin-left:0.5rem;
+    height:38px;
+}
+.opciones-post{
+    display: flex;
+    justify-content: space-evenly;
+}
+.align-options{
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.align-options i{
+    color:#935F95;
+}
+.align-options a{
+    color:#757575;
+    font-weight: 600;
+    margin-left:0.563rem;
+}
+.img-post{
+    height:38px;
+    width:38px;
+}
+.write-post{
+    display:flex;
 }
 
 #busqueda::placeholder {
@@ -158,6 +193,7 @@ html {
 .registro {
     margin-top: 120px;
 }
+
 
 @media screen and (min-width: 1024px) {
     #logo {

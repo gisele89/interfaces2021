@@ -2936,7 +2936,7 @@ a {
 }
 
 /* 2dp elevation modified*/
-.z-depth-1, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
+.z-depth-1, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
@@ -2953,7 +2953,7 @@ a {
 }
 
 /* 12dp elevation modified*/
-.z-depth-3 {
+.z-depth-3, .card-panel, .card {
   /*box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),
               0 3px 14px 2px rgba(0,0,0,0.12),
               0 5px 5px -3px rgba(0, 0, 0, 0.2);*/
@@ -5047,7 +5047,7 @@ small {
   transition: box-shadow .25s, -webkit-box-shadow .25s;
   padding: 24px;
   margin: 0.5rem 0 1rem 0;
-  border-radius: 2px;
+  border-radius: 9px;
   background-color: #fff;
 }
 
@@ -5059,7 +5059,9 @@ small {
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
-  border-radius: 2px;
+  border-radius: 9px;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
 }
 
 .card .card-title {
