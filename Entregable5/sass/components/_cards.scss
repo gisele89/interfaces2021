@@ -11,7 +11,6 @@
 
 .card {
   position: relative;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   transition: box-shadow .25s;
   @extend .z-depth-3;

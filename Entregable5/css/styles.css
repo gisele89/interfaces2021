@@ -30,20 +30,46 @@
     align-items: center;
     color: #434343;
     font-weight: bold;
-    transition:all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     height: 45px;
     margin-top: 0.5rem;
 }
-#profile-navbar:hover{
-    color:white;
+
+#profile-navbar:hover {
+    color: white;
     background-color: #935F95;
     border-radius: 0.563rem;
     height: 45px;
     margin-top: 0.5rem;
 }
 
-#profile-navbar img {
+#profile-navbar img, #profile-post img {
     margin-right: 5px;
+}
+#profile-post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #434343;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    margin-top: 0.5rem;
+}
+.text-hora{
+    color: #757575;
+    margin-top:0;
+    font-size: 10px;
+}
+.text-post{
+    color: #434343;
+}
+.image-post{
+    height: 100%;
+    margin-bottom:1rem;
+}
+.published-post{
+    display: flex;
+    align-items: center;
 }
 
 .imgRedonda {
@@ -51,15 +77,19 @@
     height: 30px;
     border-radius: 15px;
 }
+.img-post{
+    height:38px;
+}
 
 #search-box {
     left: 30%;
     position: relative;
 }
 
-div .card.card-padding{
-    padding:2rem 3rem;
+div .card.card-padding {
+    padding: 2rem 3rem;
 }
+
 #busqueda, #escribir-post {
     background-color: #DFDFDF;
     border-bottom: none;
@@ -70,36 +100,50 @@ div .card.card-padding{
     text-decoration: inherit;
     padding-left: 0.5rem;
 }
-#escribir-post:focus{
-    border:none;
+
+#escribir-post:focus {
+    border: none;
 }
-#escribir-post{
-    margin-left:0.5rem;
-    height:38px;
+
+#escribir-post {
+    margin-left: 0.5rem;
+    height: 38px;
 }
-.opciones-post{
+
+.opciones-post {
     display: flex;
     justify-content: space-evenly;
 }
-.align-options{
+
+.align-options {
     display: inline-flex;
     align-items: center;
     margin-top: 1.5rem;
+    transition: all 0.5s ease-in-out;
 }
-.align-options i{
-    color:#935F95;
+
+.align-options i {
+    color: #935F95;
 }
-.align-options a{
-    color:#757575;
+
+.align-options a {
+    color: #757575;
     font-weight: 600;
-    margin-left:0.563rem;
+    margin-left: 0.563rem;
 }
-.img-post{
-    height:38px;
-    width:38px;
+
+.align-options:hover {
+    background-color:#EFE7EF;
+    border-radius: 4px;
 }
-.write-post{
-    display:flex;
+
+.img-post {
+    height: 38px;
+    width: 38px;
+}
+
+.write-post {
+    display: flex;
 }
 
 #busqueda::placeholder {
@@ -111,10 +155,12 @@ div .card.card-padding{
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
-.nav-content li{
-    margin-right:30px
+
+.nav-content li {
+    margin-right: 30px
 }
-.left.hide-on-med-and-down.leftnavbar{
+
+.left.hide-on-med-and-down.leftnavbar {
     margin-top: 0.5rem;
 }
 
@@ -193,7 +239,9 @@ html {
 .registro {
     margin-top: 120px;
 }
-
+i{
+    color:#935f95;
+}
 
 @media screen and (min-width: 1024px) {
     #logo {
@@ -207,5 +255,11 @@ html {
 
     .input-field {
         margin: 0 auto 30px auto;
+    }
+
+    .align-options {
+        height: 40px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
