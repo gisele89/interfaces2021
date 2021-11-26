@@ -11,12 +11,38 @@
     <link href="css/styles.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="sass/materialize.css"  media="screen,projection"/>
     <link rel="icon" href="images/logo.svg">
+    <script src="https://kit.fontawesome.com/2f9e23067a.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+    <nav>
+        <div class="navbar">
+            <ul class="left hide-on-med-and-down leftnavbar">
+                <li><a href="home.html" class="brand-logo"><img src="images/logo.png" alt="LOGO" id="navLogo"></a></li>
+                <li>
+                    <div class="input-field">
+                        <form action="">
+                            <input type="search" id="busqueda" placeholder="&#xf002; Buscar en Vet">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li class="on"><a href="home.html"><i class="material-icons">home</i></a></li>
+                <li><a href="badges.html"><i class="material-icons">chat</i></a></li>
+                <li><a href="collapsible.html"><i class="material-icons">people</i></a></li>
+                <li><a href="mobile.html"><i class="material-icons">pets</i></a></li>
+            </ul>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="sass.html" id="profile-navbar"><img src='images/fotoperfil.png' class='imgRedonda'/>Jesica</a></li>
+                <li><a href="collapsible.html"><i class="material-icons">notifications_none</i></a></li>
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
-        
     </div>
     <script type="text/javascript" src="js/bin/materialize.min.js"></script>
 </body>
