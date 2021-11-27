@@ -353,8 +353,8 @@ i:hover {
 }
 
 .border {
-    display: flex;
-    justify-content: space-between;
+   /* display: flex;
+    justify-content: space-between;*/
     border-bottom: 1px solid #e7e7e7;
     padding-bottom: 1rem;
     padding-top: 0.5rem;
@@ -452,5 +452,8 @@ i:hover {
         height: 40px;
         padding-left: 10px;
         padding-right: 10px;
+    }
+    .comentarios-post, .reaccion-comentarios,.border{
+        display:block;
     }
 }
