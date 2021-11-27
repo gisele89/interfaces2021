@@ -6384,8 +6384,8 @@ select:focus {
 }
 
 button:focus {
-  outline: none;
-  background-color: #9d699f;
+  outline: 1px solid #935f95;
+  border-radius: 9px;
 }
 
 label {

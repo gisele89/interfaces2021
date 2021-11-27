@@ -4,8 +4,8 @@ select:focus {
 }
 
 button:focus {
-  outline: none;
-  background-color: $button-background-focus;
+  outline:1px solid $primary-color;
+  border-radius: 9px;
 }
 
 label {
