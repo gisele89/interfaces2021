@@ -291,6 +291,76 @@ i:hover {
 .lateral {
     margin-top: 30px;
 }
+/*sugerencia card*/
+.sugerencias-div {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.sugerencia-card {
+    position: absolute;
+}
+
+.close {
+    justify-content: end;
+    display: flex;
+}
+
+.sugerencias-div p {
+    margin-top: 0;
+    text-align: center;
+}
+
+.sugerencias-div img {
+    margin: 0 auto;
+}
+
+.dr-name {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dr-name p {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #434343;
+    margin-bottom: 0.5rem;
+}
+
+.dr-name i {
+    margin-left: 0.5rem;
+    margin-top: 0.5rem
+;
+}
+
+.seguidores img {
+    height: 8%;
+    width: 8%;
+    margin:0;
+
+}
+
+.seguidores p {
+    font-size: 0.7rem;
+    color: #757575;
+}
+.seguidores{
+    display: inline-flex;
+    justify-content: center;
+}
+#seguir-btn{
+    margin-top:0;
+}
+.publicidad img{
+    border-radius: 9px;
+}
+.publicidad{
+    display: flex;
+    justify-content: center;
+}
+
 
 @media screen and (min-width: 1024px) {
     #logo {
