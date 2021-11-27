@@ -110,7 +110,40 @@ div .card.card-padding {
     padding: 2rem 3rem;
 }
 
-#busqueda, #escribir-post {
+#user-name {
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 13px;
+    color: #434343;
+}
+
+.comentar{
+    height: auto;
+    width: 25rem;
+}
+
+
+.comentarios-post {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: -0.01em;
+    text-align: left;
+
+}
+.comentario{
+    width: 20rem;
+}
+.botones-comentarios {
+    border: none;
+}
+
+.busqueda, #escribir-post {
     background-color: #DFDFDF;
     border-bottom: none;
     border-radius: 0.563rem;
@@ -129,30 +162,62 @@ div .card.card-padding {
     margin-left: 0.5rem;
     height: 38px;
 }
-
+.reaccion-comentarios{
+    display: flex;
+    justify-content:start;
+    
+}
+.reaccion-comentarios button{
+    background: none;
+    border: none;
+}
 .opciones-post {
+    color: #757575    ;
     display: flex;
     justify-content: space-evenly;
 }
+.opciones-post button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0px;
+    text-align: center;
 
-.align-options {
+}
+.carta{
+    display: flex;
+    flex-direction: column;
+}
+.align-options, .align-reactions {
     display: inline-flex;
     align-items: center;
-    margin-top: 1.5rem;
     transition: all 0.5s ease-in-out;
 }
+.align-options {
+    margin-top: 1.5rem;
+}
+.align-reactions {
+    margin-top: 0.5rem;
+}
 
-.align-options i {
+.align-options i, .align-reactions i {
     color: #935F95;
 }
 
-.align-options a {
+.align-options a, .align-reactions a {
     color: #757575;
     font-weight: 600;
     margin-left: 0.563rem;
 }
 
-.align-options:hover {
+.align-options:hover, .align-reactions:hover {
     background-color: #EFE7EF;
     border-radius: 4px;
 }
@@ -166,7 +231,7 @@ div .card.card-padding {
     display: flex;
 }
 
-#busqueda::placeholder {
+.busqueda::placeholder {
     color: #757575;
 }
 
@@ -233,10 +298,14 @@ html {
 .links-login-div div {
     margin: 0 auto;
 }
-
-.eye-icon {
+.eye-icon{
+    right: 56px;
+}
+.photo-icon{
+    right: 30px;
+}
+.eye-icon, .photo-icon {
     position: absolute;
-    right: 50px;
     bottom: 16px;
     cursor: pointer;
     color: #452C57;
@@ -284,8 +353,11 @@ i:hover {
 }
 
 .border {
+    display: flex;
+    justify-content: space-between;
     border-bottom: 1px solid #e7e7e7;
     padding-bottom: 1rem;
+    padding-top: 0.5rem;
 }
 
 .lateral {
