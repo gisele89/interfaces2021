@@ -24,6 +24,26 @@ body{
     height: 56px;
 }
 
+.carta-busqueda{
+    display: flex;
+    justify-content: space-between;
+}
+.carta-busqueda div {
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+}
+.carta-busqueda div img{
+    align-items: center;
+}
+.links-busqueda{
+    flex-direction: column;
+    justify-content: start;
+}
+.carta-busqueda div .links-busqueda {
+    flex-direction: column;
+    align-items: start;
+}
 /*.navbar i, #profile-navbar{
     color: #935f95;
 }*/
@@ -36,6 +56,17 @@ body{
     transition: all 0.5s ease-in-out;
     height: 45px;
     margin-top: 0.5rem;
+}
+
+#profile-lateralG {
+    display: flex;
+    align-items: center;
+    color: #434343;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    height: 45px;
+    margin-top: 0.5rem;
+    font-size: 1.3rem;
 }
 
 #profile-lateral img {
@@ -102,6 +133,11 @@ img.col.s12.image-post {
     width: 30px;
     height: 30px;
     border-radius: 15px;
+}
+.imgRedondaG {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
 }
 
 .img-post {
@@ -343,6 +379,11 @@ html {
     margin: 20px auto 10px auto;
 }
 
+.btn-large{
+    max-height: 53px;
+    max-width: 103px;
+}
+
 #registro-btn {
     width: 100%;
     margin-top: 20px;
@@ -564,6 +605,17 @@ i:hover {
 }
 
 
+
+#busqueda-relacionada {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.seleccionado {
+    background-color: #EFE7EF;
+    border-radius: 4px;
+}
 
 
 @media screen and (min-width: 1024px) {
