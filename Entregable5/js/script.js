@@ -8,6 +8,9 @@
 //var elems = document.querySelectorAll('.parallax');
 //var instances = M.Parallax.init(elems, options);
 
+document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
+document.querySelector(".close-pop-up").addEventListener('click', deactivatePopupPublish);
+
 const icon = document.querySelector('.eye-icon');
 let passLogin = document.querySelector("#password");
 let passRegistro = document.querySelector("#password-registro");
@@ -33,13 +36,28 @@ function verifyInputsRegistro() {
     let pass = document.querySelector("#password-registro");
     let email = document.querySelector("#email-registro");
     let bt = document.getElementById('registro-btn');
-    
+
     if ((pass.value != '') && (email.value != '') && (nombre.value != '') && (apellido.value != '')) {
         bt.classList.remove('disabled');
         icon.classList.remove('disabled-icon');
     }
 }
+function activatePopupPublish() {
+    let modal = document.querySelector(".modal-publicar");
+    let overlay = document.querySelector("#overlay");
+    modal.classList.remove("disable-pop-up");
+    modal.classList.add("enable-pop-up");
+    overlay.classList.add("overlay");
 
+}
+function deactivatePopupPublish() {
+    let modal = document.querySelector(".modal-publicar");
+    let overlay = document.querySelector("#overlay");
+    modal.classList.remove("enable-pop-up");
+    overlay.classList.remove("overlay");
+    modal.classList.add("disable-pop-up");
+
+}
 
 
 icon.addEventListener('click', (event) => {
@@ -62,6 +80,8 @@ icon.addEventListener('click', (event) => {
         }
 
     }
+
+
 
 
 });

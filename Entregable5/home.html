@@ -50,6 +50,36 @@
         </nav>
     </header>
     <div class="container">
+        <div class= "row">
+        <div class="col s4 offset-s2 z-depth-3 card card-padding modal-publicar disable-pop-up">
+            <div class="title inside-card-padding">
+                <div>
+                    <i class="material-icons close close-pop-up">close</i>
+                </div>
+                <h5>Crear publicación</h5>
+                <div class=" divider"></div>
+            </div>
+            <div class="write-post inside-card-padding">
+                <img src='images/perfil-post.png' class="img-post" />
+                <input type="text" id="publicar-post" placeholder="Escribí lo que pensas">
+            </div>
+            <div class="col s12 opciones-post inside-card-padding">
+                <div class="align-options">
+                    <a href="#">Agregar</a>
+                    <i class="material-icons">sentiment_satisfied_alt</i>
+                    <i class="material-icons">photo</i>
+                    <i class="material-icons">videocam</i>
+                    <i class="material-icons">location_on</i>
+                    <i class="material-icons">link</i>
+
+                </div>
+            </div>
+            <div class="col s12 publicar-btn inside-card-padding">
+                <a id="registro-btn" class="waves-effect waves-light btn disabled" href ="#">Publicar</a>
+            </div>
+        </div>
+        <div id ="overlay" class=""></div>
+    </div>
         <div class="row">
             <div class="col s12 m3 lateral">
                 <a href="#" id="profile-lateral"><img src='images/fotoperfil.png' class='imgRedonda' />Jesica Robles</a>
@@ -64,7 +94,7 @@
             </div>
             <div class=" col s12 m6">
                 <div class="col s12 z-depth-3 card card-padding">
-                    <div class="write-post">
+                    <div class="write-post inside-card-padding">
                         <img src='images/perfil-post.png' class="img-post" />
                         <input type="text" id="escribir-post" placeholder="Escribí lo que pensas">
                     </div>
@@ -84,16 +114,19 @@
                         </div>
                     </div>
                 </div>
+                <div>
+            </div>
+          
 
-                <div class="col s12  z-depth-3 card card-padding">
-                    <div class="published-post">
+                <div class="col s12  z-depth-3 card card-padding ">
+                    <div class="published-post inside-card-padding">
                         <img class="img-post" src='images/foto-post-ana.png' />
                         <div class="col s12">
                             <a href="#" id="profile-post"> Ana Rivera</a>
                             <p class="text-hora">Hace 9hs</p>
                         </div>
                     </div>
-                    <div class="text-post">
+                    <div class="text-post inside-card-padding">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                             laboris nisi ut aliquip ex ea commodo consequat</p>
@@ -101,7 +134,7 @@
                     <div>
                         <img class="col s12 image-post " src='images/image-post.png' />
                     </div>
-                    <div class=" col s12 border reactions-count">
+                    <div class=" col s12 border reactions-count inside-card-padding">
                         <div class="reactions">
                             <i class="material-icons">pets</i>
                             <i class="material-icons">sentiment_satisfied_alt</i>
@@ -111,7 +144,8 @@
                             <label>1 comentario</label>
                         </div>
                     </div>
-                    <div class="col s12">
+                    <div class="inside-card-padding divider"></div>
+                    <div class="col s12 inside-card-padding">
                         <div class="opciones-post">
                             <div class="align-reactions">
                                 <button><i class="material-icons">pets</i>Reaccionar</button>
@@ -126,11 +160,11 @@
                     </div>
 
                     <div>
-                        <div class="comentarios-post">
+                        <div class="comentarios-post inside-card-padding">
                             <div class="align-comment">
                                 <a href="#" id="profile"><img src='images/perfil-post.png' class='img-post' />
                                     <div class="comentario-text">
-                                        <a href="#" id="user-name">Brian Robinson</a>
+                                        <a href="#" id="user-name">Jesica Robles</a>
                                         <p class="comentario">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                                         </p>
                                     </div>
@@ -138,7 +172,85 @@
                         </div>
                         <div>
                             <div class="col s1"> <span></span></div>
-                            <div class="col s11 reaccion-comentarios">
+                            <div class="col s11 reaccion-comentarios inside-card-padding">
+                                <button>Reaccionar</button>
+                                <button>Responder</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col s12 input-field comentar inside-card-padding">
+                        <div class="write-post">
+                            <img src='images/perfil-post.png' class="img-post" />
+                            <input type="text" id="escribir-post" placeholder="Escribí un comentario">
+                            <div class="icons-write-post">
+                                <i class="material-icons eye-icon">sentiment_satisfied_alt</i>
+                                <i class="material-icons photo-icon">insert_photo</i>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12  z-depth-3 card card-padding">
+                    <div class="published-post inside-card-padding">
+                        <img class="img-post" src='images/andres-perfil.png' />
+                        <div class="col s12">
+                            <a href="#" id="profile-post"> Andrés Lezcano</a>
+                            <p class="text-hora">Hace 1 día</p>
+                        </div>
+                    </div>
+                    <div class="text-post inside-card-padding">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat</p>
+                    </div>
+                    <div class="images-gallery">
+                        <img class="col s12 image-post images-gallery-big  " src='images/gallery1.png' />
+                        <div class="images-lateral-gallery">
+                            <img class="col s12 image-post " src='images/gallery2.png' />
+                            <img class="col s12 image-post " src='images/gallery3.png' />
+                        </div>
+
+                    </div>
+                    <div class=" col s12 border reactions-count inside-card-padding">
+                        <div class="reactions">
+                            <i class="material-icons">pets</i>
+                            <i class="material-icons">sentiment_satisfied_alt</i>
+                            <label>1</label>
+                        </div>
+                        <div>
+                            <label>2 comentario</label>
+                        </div>
+                    </div>
+                    <div class="inside-card-padding divider"></div>
+                    <div class="col s12">
+                        <div class="opciones-post inside-card-padding">
+                            <div class="align-reactions">
+                                <button><i class="material-icons">pets</i>Reaccionar</button>
+                            </div>
+                            <div class="align-reactions">
+                                <button><i class="material-icons">chat_bubble_outline</i>Comentar</button>
+                            </div>
+                            <div class="align-reactions">
+                                <button><i class="material-icons">reply</i>Compartir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="comentarios-post inside-card-padding">
+                            <div class="align-comment">
+                                <a href="#" id="profile"><img src='images/foto-post-ana.png' class='img-post' />
+                                    <div class="comentario-text">
+                                        <a href="#" id="user-name">Ana Rivera</a>
+                                        <p class="comentario">Lorem ipsum.
+                                        </p>
+                                    </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col s1"> <span></span></div>
+                            <div class="col s11 reaccion-comentarios inside-card-padding">
                                 <button>Reaccionar</button>
                                 <button>Responder</button>
                             </div>
@@ -146,23 +258,21 @@
                     </div>
 
                     <div>
-                        <div class="comentarios-post">
+                        <div class="comentarios-post inside-card-padding">
                             <div class="align-comment">
-                                <a href="#" id="profile"><img src='images/perfil-post.png' class='img-post' />
+                                <a href="#" id="profile"><img src='images/brian-perfil.png' class='img-post' />
                                     <div class="comentario-text">
                                         <a href="#" id="user-name">Brian Robinson</a>
                                         <p class="comentario">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                                             Provident optio eius porro suscipit, nulla quibusdam magni debitis magnam
                                             ipsum
-                                            ipsa amet. Mollitia expedita tempora excepturi distinctio sint dolorem
-                                            inventore
-                                            beatae.</p>
+                                            ipsa amet.</p>
                                     </div>
                             </div>
                         </div>
                         <div>
                             <div class="col s1"> <span></span></div>
-                            <div class="col s11 reaccion-comentarios">
+                            <div class="col s11 reaccion-comentarios inside-card-padding">
                                 <button>Reaccionar</button>
                                 <button>Responder</button>
                             </div>
@@ -170,7 +280,7 @@
                     </div>
 
 
-                    <div class="col s12 input-field comentar">
+                    <div class="col s12 input-field comentar inside-card-padding">
                         <div class="write-post">
                             <img src='images/perfil-post.png' class="img-post" />
                             <input type="text" id="escribir-post" placeholder="Escribí un comentario">
@@ -212,6 +322,7 @@
             </div>
         </div>
         <script type="text/javascript" src="js/bin/materialize.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
