@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busqueda</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link href="css/styles.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="sass/materialize.css" media="screen,projection" />
+    <link rel="icon" href="images/logo.svg">
+    <script src="https://kit.fontawesome.com/2f9e23067a.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <header class="z-depth-3">
+        <nav>
+            <div class="navbar container">
+                <ul class="left hide-on-med-and-down leftnavbar">
+                    <li><a href="home.html" class="brand-logo"><img src="images/logo.png" alt="LOGO" id="navLogo"></a>
+                    </li>
+                    <li id="search-box">
+                        <div class="input-field">
+                            <form action="">
+                                <input type="search" class="busqueda" placeholder="&#xf002; Buscar en Vet">
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-content">
+                    <ul class="right hide-on-med-and-down">
+                        <li class="tab"><a href="home.html"><i class="material-icons">home</i></a></li>
+                        <li class="tab"><a href="badges.html"><i class="material-icons">sms</i></a></li>
+                        <li class="on tab"><a href="collapsible.html"><i class="material-icons">people</i></a></li>
+                        <li class="tab"><a href="mobile.html"><i class="material-icons">pets</i></a></li>
+                    </ul>
+                </div>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html" id="profile-navbar"><img src='images/fotoperfil.png'
+                                class='imgRedonda' />Jesica</a></li>
+                    <li><a href="collapsible.html"><i class="material-icons">notifications_none</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i
+                                class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m3 lateral">
+                <h3>Busqueda avanzada</h3>
+                <div class="accesos">
+                    <a href="#" id="profile-lateral" class="seleccionado"><i class="fas fa-check-circle"></i>Todo</a>
+                    <a href="#" id="profile-lateral"><i class="fas fa-newspaper"></i>Publicaciones</a>
+                    <a href="#" id="profile-lateral"><i class="fas fa-user-friends"></i>Personas</a>
+                    <a href="#" id="profile-lateral"><i class="fas fa-user-md"></i>Veterinarios</a>
+                    <a href="#" id="profile-lateral"><i class="fas fa-images"></i>Fotos</a>
+                </div>
+            </div>
+            <div class=" col s12 m9">
+                <div class="col s12 z-depth-3 card card-padding carta-busqueda">
+                    <div>
+                        <img src='images/foto-busqueda-1.png' class='imgRedondaG'/>
+                        <div class="links-busqueda">
+                            <a href="#" id="profile-lateralG">Carolina San Martin</a>
+                            <a href="#">Universidad Nacional de La Plata</a>
+                        </div>
+                    </div>    
+                    <button class="waves-effect waves-light btn-large">No seguir</button>
+                </div>
+            </div>
+            <div class=" col s12 m9">
+                <div class="col s12 z-depth-3 card card-padding carta-busqueda">
+                    <div>
+                        <img src='images/foto-busqueda-2.png' class='imgRedondaG'/>
+                        <div class="links-busqueda">
+                            <a href="#" id="profile-lateralG">Carolina San Martin</a>
+                            <a href="#">Universidad Nacional de La Plata</a>
+                        </div>
+                    </div>    
+                    <button class="waves-effect waves-light btn-large">Seguir</button>
+                </div>
+            </div>
+            <div class=" col s12 m9">
+                <div class="col s12 z-depth-3 card card-padding carta-busqueda">
+                    <div>
+                        <img src='images/foto-busqueda-3.png' class='imgRedondaG'/>
+                        <div class="links-busqueda">
+                            <a href="#" id="profile-lateralG">Carolina San Martin</a>
+                            <a href="#">Universidad Nacional de La Plata</a>
+                        </div>
+                    </div>    
+                    <button class="waves-effect waves-light btn-large">Seguir</button>
+                </div>
+            </div>
+            <div class="col s9 offset-s3">
+                <div class="col s12 z-depth-3 card card-padding" id="busqueda-relacionada">
+                    <h4>Busquedas relacionadas</h4>
+                    <a href="#"><i class="material-icons">search</i>Carolina San Martinn</a>
+                    <a href="#"><i class="material-icons">search</i>Caro Sanmartin</a>
+                    <a href="#"><i class="material-icons">search</i>Caro San Martia</a>
+                    <a href="#"><i class="material-icons">search</i>Car SanMartin</a>
+                    <a href="#"><i class="material-icons">search</i>Caro San Martin Veterinaria</a>
+                    <a href="#"><i class="material-icons">search</i>Caro San Martin Tandil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/bin/materialize.min.js"></script>
+</body>
+</html>
