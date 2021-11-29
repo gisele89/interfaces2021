@@ -14,10 +14,33 @@ document.querySelector(".close-pop-up").addEventListener('click', deactivatePopu
 const icon = document.querySelector('.eye-icon');
 let passLogin = document.querySelector("#password");
 let passRegistro = document.querySelector("#password-registro");
-if (typeof passLogin === 'undefined' || passLogin === null) {
+let post = document.querySelector("#publicar-post-modal");
+/*if (typeof passLogin === 'undefined' || passLogin === null || typeof post === 'undefined' || post === null) {
     passRegistro.addEventListener('input', verifyInputsRegistro);
-} else {
+} else if (typeof passRegistro === 'undefined' || passRegistro === null || typeof post === 'undefined' || post === null) {
     passLogin.addEventListener('input', verifyInputsLogin);
+} else {
+    post.addEventListener('input', verifyPost);
+}*/
+
+if(passRegistro) {
+    passRegistro.addEventListener('input', verifyInputsRegistro);
+}  
+
+if(passLogin) {
+    passLogin.addEventListener('input', verifyInputsLogin);
+} 
+
+if(post) {
+    post.addEventListener('input', verifyPost);
+}
+
+function verifyPost() {
+    let post = document.querySelector("#publicar-post-modal");
+    let bt = document.querySelector('#publicar-btn');
+    if (post.value != '') {
+        bt.classList.remove('disabled');
+    }
 }
 
 function verifyInputsLogin() {

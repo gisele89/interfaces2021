@@ -50,62 +50,65 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m3 lateral">
-                <h3>Busqueda avanzada</h3>
+                <h3 class="busqueda-text">Busqueda avanzada</h3>
                 <div class="accesos">
-                    <a href="#" id="profile-lateral" class="seleccionado"><i class="fas fa-check-circle"></i>Todo</a>
-                    <a href="#" id="profile-lateral"><i class="fas fa-newspaper"></i>Publicaciones</a>
-                    <a href="#" id="profile-lateral"><i class="fas fa-user-friends"></i>Personas</a>
-                    <a href="#" id="profile-lateral"><i class="fas fa-user-md"></i>Veterinarios</a>
-                    <a href="#" id="profile-lateral"><i class="fas fa-images"></i>Fotos</a>
+                    <a href="#" id="profile-lateral-busqueda"><i class="fas fa-check-circle"></i>Todo</a>
+                    <a href="#" id="profile-lateral-busqueda"><i class="fas fa-newspaper"></i>Publicaciones</a>
+                    <a href="#" id="profile-lateral-busqueda" class="seleccionado"><i class="fas fa-user-friends"></i>Personas</a>
+                    <a href="#" id="profile-lateral-busqueda"><i class="fas fa-user-md"></i>Veterinarios</a>
+                    <a href="#" id="profile-lateral-busqueda"><i class="fas fa-images"></i>Fotos</a>
                 </div>
             </div>
-            <div class=" col s12 m9">
-                <div class="col s12 z-depth-3 card card-padding carta-busqueda">
-                    <div>
-                        <img src='images/foto-busqueda-1.png' class='imgRedondaG'/>
-                        <div class="links-busqueda">
-                            <a href="#" id="profile-lateralG">Carolina San Martin</a>
-                            <a href="#">Universidad Nacional de La Plata</a>
-                        </div>
-                    </div>    
-                    <button class="waves-effect waves-light btn-large">No seguir</button>
+            <div class="">
+                <div class=" col s12 m9">
+                    <div class="col s12 z-depth-3 card card-padding carta-busqueda inside-card-padding">
+                        <div>
+                            <img src='images/foto-busqueda-1.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Carolina San Martin</a>
+                                <a id="university" href="#">Universidad Nacional de La Plata</a>
+                            </div>
+                        </div>    
+                        <button class="waves-effect waves-light btn">No seguir</button>
+                    </div>
+                </div>
+                <div class=" col s12 m9">
+                    <div class="col s12 z-depth-3 card card-padding carta-busqueda inside-card-padding">
+                        <div>
+                            <img src='images/foto-busqueda-2.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Carolina San Martin</a>
+                                <a id="university" href="#">Universidad Nacional de La Plata</a>
+                            </div>
+                        </div>    
+                        <button class="waves-effect waves-light btn">Seguir</button>
+                    </div>
+                </div>
+                <div class=" col s12 m9">
+                    <div class="col s12 z-depth-3 card card-padding carta-busqueda inside-card-padding">
+                        <div>
+                            <img src='images/foto-busqueda-3.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Carolina San Martin</a>
+                                <a id="university" href="#">Universidad Nacional de La Plata</a>
+                            </div>
+                        </div>    
+                        <button class="waves-effect waves-light btn">Seguir</button>
+                    </div>
+                </div>
+                <div class="col s9 offset-s3">
+                    <div class="col s12 z-depth-3 card card-padding inside-card-padding" id="busqueda-relacionada">
+                        <h4>Busquedas relacionadas</h4>
+                        <a href="#"><i class="material-icons">search</i>Carolina San Martinn</a>
+                        <a href="#"><i class="material-icons">search</i>Caro Sanmartin</a>
+                        <a href="#"><i class="material-icons">search</i>Caro San Martia</a>
+                        <a href="#"><i class="material-icons">search</i>Car SanMartin</a>
+                        <a href="#"><i class="material-icons">search</i>Caro San Martin Veterinaria</a>
+                        <a href="#"><i class="material-icons">search</i>Caro San Martin Tandil</a>
+                    </div>
                 </div>
             </div>
-            <div class=" col s12 m9">
-                <div class="col s12 z-depth-3 card card-padding carta-busqueda">
-                    <div>
-                        <img src='images/foto-busqueda-2.png' class='imgRedondaG'/>
-                        <div class="links-busqueda">
-                            <a href="#" id="profile-lateralG">Carolina San Martin</a>
-                            <a href="#">Universidad Nacional de La Plata</a>
-                        </div>
-                    </div>    
-                    <button class="waves-effect waves-light btn-large">Seguir</button>
-                </div>
-            </div>
-            <div class=" col s12 m9">
-                <div class="col s12 z-depth-3 card card-padding carta-busqueda">
-                    <div>
-                        <img src='images/foto-busqueda-3.png' class='imgRedondaG'/>
-                        <div class="links-busqueda">
-                            <a href="#" id="profile-lateralG">Carolina San Martin</a>
-                            <a href="#">Universidad Nacional de La Plata</a>
-                        </div>
-                    </div>    
-                    <button class="waves-effect waves-light btn-large">Seguir</button>
-                </div>
-            </div>
-            <div class="col s9 offset-s3">
-                <div class="col s12 z-depth-3 card card-padding" id="busqueda-relacionada">
-                    <h4>Busquedas relacionadas</h4>
-                    <a href="#"><i class="material-icons">search</i>Carolina San Martinn</a>
-                    <a href="#"><i class="material-icons">search</i>Caro Sanmartin</a>
-                    <a href="#"><i class="material-icons">search</i>Caro San Martia</a>
-                    <a href="#"><i class="material-icons">search</i>Car SanMartin</a>
-                    <a href="#"><i class="material-icons">search</i>Caro San Martin Veterinaria</a>
-                    <a href="#"><i class="material-icons">search</i>Caro San Martin Tandil</a>
-                </div>
-            </div>
+           
         </div>
     </div>
     <script type="text/javascript" src="js/bin/materialize.min.js"></script>
