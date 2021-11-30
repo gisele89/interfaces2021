@@ -65,8 +65,7 @@ margin:20px 10px;
     align-items: center;
 }
 .carta-chat i{
-    position: absolute;
-    left: 35rem;
+    margin-right:1.5rem;
     font-size: xx-small; 
 }
 
@@ -233,7 +232,7 @@ div.col.s12.z-depth-3.card.card-padding, .col.s9.offset-s1.z-depth-3.enable-pop-
 
 div.col.s12.input-field.comentar {
     height: auto;
-    padding-left:0;
+    padding-left:1rem;
     padding-right: 0;
 }
 
@@ -535,8 +534,15 @@ i:hover {
     margin-bottom: 0.8rem;
 }
 
-.lateral {
+.lateral, .chat-window {
     margin-top: 2.5rem;
+}
+.chat-window{
+    border-bottom: 1px solid #dfdfdf;
+    
+}
+div.col.s12.m8.chat-window {
+    padding-bottom:1rem;
 }
 
 /*sugerencia card*/
@@ -631,7 +637,7 @@ i:hover {
     align-items: center;
     margin-top:2rem;
 }
-.modal-publicar img{
+.modal-publicar img, .lateral-chat .write-post, #chats{
     margin-right: 1rem;
 }
 .modal-publicar .align-options{
@@ -665,6 +671,17 @@ i:hover {
 }
 .overlay{
     background-color: white;
+    opacity: 0.8;
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    top:0;
+    overflow: auto;
+    bottom: 0;
+}
+.overlay-dark{
+    background-color: #434343;
     opacity: 0.8;
     width: 100%;
     z-index: 1;
@@ -804,6 +821,19 @@ i.right-reply{
     background-color: #935F95;
     color: white;
 }
+.burbuja-text-propio label{
+    display: inline-flex;
+    align-items: center;
+}
+.chat-write{
+    position:fixed;
+    bottom: 0;
+}
+div.col.s12.m4.lateral.lateral-chat{
+    border-right: 1px solid #dfdfdf;
+    padding-right: 0px;
+}
+
 
 @media screen and (min-width: 1024px) {
     #logo {
