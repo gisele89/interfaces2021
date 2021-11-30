@@ -7,104 +7,143 @@
 
 //var elems = document.querySelectorAll('.parallax');
 //var instances = M.Parallax.init(elems, options);
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
+    document.querySelector("#gallery-1").addEventListener('click', activatePopupImage);
+    document.querySelector(".close-pop-up").addEventListener('click', deactivatePopupPublish);
+    document.querySelector(".close-pop-up-image").addEventListener('click', deactivatePopupImage);
+    document.querySelector("#chevron-right").addEventListener('click', changeImageGalleryRight);
+    document.querySelector("#chevron-left").addEventListener('click', changeImageGalleryLeft);
 
-document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
-document.querySelector(".close-pop-up").addEventListener('click', deactivatePopupPublish);
-
-const icon = document.querySelector('.eye-icon');
-let passLogin = document.querySelector("#password");
-let passRegistro = document.querySelector("#password-registro");
-let post = document.querySelector("#publicar-post-modal");
-/*if (typeof passLogin === 'undefined' || passLogin === null || typeof post === 'undefined' || post === null) {
-    passRegistro.addEventListener('input', verifyInputsRegistro);
-} else if (typeof passRegistro === 'undefined' || passRegistro === null || typeof post === 'undefined' || post === null) {
-    passLogin.addEventListener('input', verifyInputsLogin);
-} else {
-    post.addEventListener('input', verifyPost);
-}*/
-
-if(passRegistro) {
-    passRegistro.addEventListener('input', verifyInputsRegistro);
-}  
-
-if(passLogin) {
-    passLogin.addEventListener('input', verifyInputsLogin);
-} 
-
-if(post) {
-    post.addEventListener('input', verifyPost);
-}
-
-function verifyPost() {
+    const icon = document.querySelector('.eye-icon');
+    let passLogin = document.querySelector("#password");
+    let passRegistro = document.querySelector("#password-registro");
     let post = document.querySelector("#publicar-post-modal");
-    let bt = document.querySelector('#publicar-btn');
-    if (post.value != '') {
-        bt.classList.remove('disabled');
+    let img = document.querySelector("#image-gallery");
+
+    if (passRegistro) {
+        passRegistro.addEventListener('input', verifyInputsRegistro);
     }
-}
 
-function verifyInputsLogin() {
-    let pass = document.querySelector("#password");
-    let email = document.querySelector("#email");
-    let bt = document.getElementById('inicio-btn');
-    if ((pass.value != '') && (email.value != '')) {
-        bt.classList.remove('disabled');
-        icon.classList.remove('disabled-icon');
+    if (passLogin) {
+        passLogin.addEventListener('input', verifyInputsLogin);
     }
-}
 
-function verifyInputsRegistro() {
-    let nombre = document.querySelector("#nombre");
-    let apellido = document.querySelector("#apellido");
-    let pass = document.querySelector("#password-registro");
-    let email = document.querySelector("#email-registro");
-    let bt = document.getElementById('registro-btn');
-
-    if ((pass.value != '') && (email.value != '') && (nombre.value != '') && (apellido.value != '')) {
-        bt.classList.remove('disabled');
-        icon.classList.remove('disabled-icon');
+    if (post) {
+        post.addEventListener('input', verifyPost);
     }
-}
-function activatePopupPublish() {
-    let modal = document.querySelector(".modal-publicar");
-    let overlay = document.querySelector("#overlay");
-    modal.classList.remove("disable-pop-up");
-    modal.classList.add("enable-pop-up");
-    overlay.classList.add("overlay");
 
-}
-function deactivatePopupPublish() {
-    let modal = document.querySelector(".modal-publicar");
-    let overlay = document.querySelector("#overlay");
-    modal.classList.remove("enable-pop-up");
-    overlay.classList.remove("overlay");
-    modal.classList.add("disable-pop-up");
-
-}
-
-
-icon.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (typeof passLogin === 'undefined' || passLogin === null) {
-        const type = (passRegistro.getAttribute('type') === 'text') ? 'password' : 'text';
-        passRegistro.setAttribute('type', type);
-        if (icon.innerText == 'visibility_off') {
-            icon.textContent = 'visibility';
-        } else {
-            icon.textContent = 'visibility_off';
+    function verifyPost() {
+        let post = document.querySelector("#publicar-post-modal");
+        let bt = document.querySelector('#publicar-btn');
+        if (post.value != '') {
+            bt.classList.remove('disabled');
         }
-    } else {
-        const type = (passLogin.getAttribute('type') === 'text') ? 'password' : 'text';
-        passLogin.setAttribute('type', type);
-        if (icon.innerText == 'visibility_off') {
-            icon.textContent = 'visibility';
-        } else {
-            icon.textContent = 'visibility_off';
+    }
+
+    function verifyInputsLogin() {
+        let pass = document.querySelector("#password");
+        let email = document.querySelector("#email");
+        let bt = document.getElementById('inicio-btn');
+        if ((pass.value != '') && (email.value != '')) {
+            bt.classList.remove('disabled');
+            icon.classList.remove('disabled-icon');
         }
+    }
+
+    function verifyInputsRegistro() {
+        let nombre = document.querySelector("#nombre");
+        let apellido = document.querySelector("#apellido");
+        let pass = document.querySelector("#password-registro");
+        let email = document.querySelector("#email-registro");
+        let bt = document.getElementById('registro-btn');
+
+        if ((pass.value != '') && (email.value != '') && (nombre.value != '') && (apellido.value != '')) {
+            bt.classList.remove('disabled');
+            icon.classList.remove('disabled-icon');
+        }
+    }
+    function activatePopupPublish() {
+        let modal = document.querySelector(".modal-publicar");
+        let overlay = document.querySelector("#overlay");
+        modal.classList.remove("disable-pop-up");
+        modal.classList.add("enable-pop-up");
+        overlay.classList.add("overlay");
+
+    }
+    function activatePopupImage() {
+        let modal = document.querySelector(".modal-photo-row");
+        let overlay = document.querySelector("#overlay");
+        modal.classList.remove("disable-pop-up");
+        modal.classList.add("enable-pop-up");
+        overlay.classList.add("overlay");
+        enableChevron();
 
     }
 
+    function deactivatePopupPublish() {
+        let modal = document.querySelector(".modal-publicar");
+        let overlay = document.querySelector("#overlay");
+        modal.classList.remove("enable-pop-up");
+        overlay.classList.remove("overlay");
+        modal.classList.add("disable-pop-up");
+
+    }
+    function deactivatePopupImage() {
+        let modal = document.querySelector(".modal-photo-row");
+        let overlay = document.querySelector("#overlay");
+        modal.classList.remove("enable-pop-up");
+        overlay.classList.remove("overlay");
+        modal.classList.add("disable-pop-up");
+    }
+    function changeImageGalleryRight() {
+        if (img.src.indexOf('images/gallery3-big.png') != -1) {
+            img.src = 'images/gallery2-big.jpg';
+        } else if (img.src.indexOf('images/gallery2-big.jpg') != -1) {
+            img.src = 'images/gallery1-big.jpg';
+        }
+    }
+
+    function changeImageGalleryLeft() {
+        if (img.src.indexOf('images/gallery2-big.jpg') != -1) {
+            img.src = 'images/gallery3-big.png';
+        } else if (img.src.indexOf('images/gallery1-big.jpg') != -1) {
+            img.src = 'images/gallery2-big.jpg';
+        }
+    }
+
+    function enableChevron() {
+        console.log("voy a habilitar");
+        let chevronLeft = document.querySelector('#chevron-left');
+        let chevronRight = document.querySelector('#chevron-right');
+        if (img.src.indexOf('images/gallery2-big.jpg') != -1) {
+            chevronLeft.classList.remove("disable-pop-up");
+            chevronLeft.classList.add("enable-pop-up");
+        }
+        if(img.src.indexOf('images/gallery1-big.jpg') != -1){
+            chevronRight.classList.add("disable-pop-up");
+        }
+    }
 
 
-
-});
+    icon.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (typeof passLogin === 'undefined' || passLogin === null) {
+            const type = (passRegistro.getAttribute('type') === 'text') ? 'password' : 'text';
+            passRegistro.setAttribute('type', type);
+            if (icon.innerText == 'visibility_off') {
+                icon.textContent = 'visibility';
+            } else {
+                icon.textContent = 'visibility_off';
+            }
+        } else {
+            const type = (passLogin.getAttribute('type') === 'text') ? 'password' : 'text';
+            passLogin.setAttribute('type', type);
+            if (icon.innerText == 'visibility_off') {
+                icon.textContent = 'visibility';
+            } else {
+                icon.textContent = 'visibility_off';
+            }
+        }
+    });
+})

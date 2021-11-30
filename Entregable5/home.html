@@ -33,7 +33,7 @@
                 <div class="nav-content">
                     <ul class="right hide-on-med-and-down">
                         <li class="on tab"><a href="home.html"><i class="material-icons">home</i></a></li>
-                        <li class="tab"><a href="badges.html"><i class="material-icons">sms</i></a></li>
+                        <li class="tab"><a href="chat.html"><i class="material-icons">sms</i></a></li>
                         <li class="tab"><a href="busqueda.html"><i class="material-icons">people</i></a></li>
                         <li class="tab"><a href="mobile.html"><i class="material-icons">pets</i></a></li>
                     </ul>
@@ -79,6 +79,27 @@
             </div>
         </div>
         <div id ="overlay" class=""></div>
+        <div class="row modal-photo-row disable-pop-up">
+            <div class="col s8 offset-s2">
+                <div>
+                    <div class="col s12 container-photo">
+                        <i class="material-icons close close-pop-up-image">close</i>
+                        <div class="col s12 container-chevron">
+                            <i id="chevron-right" class="material-icons chevron right">chevron_right</i>
+                            <i id="chevron-left" class="material-icons chevron left disable-pop-up">chevron_left</i>
+                        </div>
+        
+                        <div class="col s1 offset-s10 container-reactions">
+                            <i class="material-icons  right-pet">pets</i>
+                            <i class="material-icons  right-emoji">sentiment_satisfied_alt</i>
+                            <i class="material-icons right-reply">reply</i>
+                        </div>
+                        <img id="image-gallery" src='images/gallery3-big.png' />
+                    </div>
+                </div>
+                <div id="overlay" class=""></div>
+            </div>
+        </div>
     </div>
         <div class="row">
             <div class="col s12 m3 lateral">
@@ -205,7 +226,7 @@
                             laboris nisi ut aliquip ex ea commodo consequat</p>
                     </div>
                     <div class="images-gallery">
-                        <img class="col s12 image-post images-gallery-big  " src='images/gallery1.png' />
+                        <img id="gallery-1" class="col s12 image-post images-gallery-big  " src='images/gallery1.png' />
                         <div class="images-lateral-gallery">
                             <img class="col s12 image-post " src='images/gallery2.png' />
                             <img class="col s12 image-post " src='images/gallery3.png' />

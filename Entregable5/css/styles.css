@@ -51,7 +51,7 @@ margin:20px 10px;
     flex-direction: column;
     justify-content: start;
 }
-.links-busqueda a{
+.links-busqueda a, .modal-row, .modal-photo-row{
     margin-top:0;
 }
 .carta-busqueda div .links-busqueda {
@@ -196,7 +196,7 @@ div .card.card-padding {
     padding-left: 2rem;
     padding-right: 2rem;
 }
-div.col.s12.z-depth-3.card.card-padding {
+div.col.s12.z-depth-3.card.card-padding, .col.s9.offset-s1.z-depth-3.enable-pop-up, .container-photo {
     padding-left: 0;
     padding-right: 0;  
 }
@@ -629,6 +629,9 @@ i:hover {
     z-index: 10;
    
 }
+.enable-pop-up{
+    display:block;
+}
 .modal-publicar .align-options:hover{
     background-color: white;
 }
@@ -657,7 +660,79 @@ i:hover {
     background-color: #EFE7EF;
     border-radius: 4px;
 }
+.modal-photo-row img{
+    width:100%;
+}
+.modal-photo-row{
+    z-index: 2;
+    top:10%;
+    position: fixed;
+    left: 0px;
+    
+}
+.container-photo{
+    position:relative;
+}
+.container-photo .close-pop-up-image{
+    position:absolute;
+    top:2%;
+    right:2%;
+}
+.container-photo .chevron{
+    position:absolute;
+    top:50%;
+}
+.container-chevron{
+    right:2%;
+    left:2%
+}
+.chevron.right{
+    right:1%;
+}
+.chevron.left{
+    left:1%;
+}
+.container-reactions{
+    position:absolute;
+    bottom:2%;
+    background-color:#EFE7EF;
+    border-radius:4px;
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+.col.s1.offset-s10.container-reactions{
+    padding:0.6rem;
+}
 
+i.close-pop-up-image{
+    padding:0.1rem;
+    border-radius:50%;  
+}
+i.chevron.right, i.chevron.left{
+    font-size: 4rem;
+    padding:0.1rem;
+    border-radius:50%;
+}
+i.right:hover, i.left:hover, i.close-pop-up-image:hover{
+    background-color:#EFE7EF;
+    padding:0.1rem;
+    border-radius:50%;
+}
+.container-reactions i{
+    font-size: 2rem;
+}
+i.right-pet{
+    right:22%;
+}
+i.right-emoji{
+    right:12%;
+}
+i.right-reply{
+    right:2%;
+}
+#gallery-1:hover{
+    cursor: pointer;
+}
 
 @media screen and (min-width: 1024px) {
     #logo {
