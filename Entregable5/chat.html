@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link href="css/styles.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="sass/materialize.css" media="screen,projection" />
+    <link rel="icon" href="images/logo.svg">
+    <script src="https://kit.fontawesome.com/2f9e23067a.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <header class="z-depth-3">
+        <nav>
+            <div class="navbar container">
+                <ul class="left hide-on-med-and-down leftnavbar">
+                    <li><a href="home.html" class="brand-logo"><img src="images/logo.png" alt="LOGO" id="navLogo"></a>
+                    </li>
+                    <li id="search-box">
+                        <div class="input-field">
+                            <form action="">
+                                <input type="search" class="busqueda" placeholder="&#xf002; Buscar en Vet">
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-content">
+                    <ul class="right hide-on-med-and-down">
+                        <li class="tab"><a href="home.html"><i class="material-icons">home</i></a></li>
+                        <li class="on tab"><a href="chat.html"><i class="material-icons">sms</i></a></li>
+                        <li class="tab"><a href="busqueda.html"><i class="material-icons">people</i></a></li>
+                        <li class="tab"><a href="mobile.html"><i class="material-icons">pets</i></a></li>
+                    </ul>
+                </div>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="sass.html" id="profile-navbar"><img src='images/fotoperfil.png'
+                                class='imgRedonda' />Jesica</a></li>
+                    <li><a href="collapsible.html"><i class="material-icons">notifications_none</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i
+                                class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 lateral">
+                <div id="chats">
+                    <h3 class="busqueda-text">Chats</h3>
+                    <i class="fas fa-comment-medical fa-2x"></i>
+                </div>
+                <div class="write-post">
+                    <input type="text" id="busqueda-chats" placeholder="&#xf002; Buscar en tus chats">
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                <label id="university">Tú: Ok, gracias!</label> 
+                                <label id="university"> 9:25 AM </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/juan-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Juan Rodriguez</a>
+                                <label id="university">Ok, gracias!</label> 
+                                <label id="university"> 9:23 AM </label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/foto-busqueda-1.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Carolina San Martín</a>
+                                <label id="university">Tú: Ok, gracias!</label> 
+                                <label id="university"> 8:25 AM </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/brian-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Brian Robinson</a>
+                                <label id="university">Tú: Ok, gracias!</label> 
+                                <label id="university"> Ayer </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/alan-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Alan Estrada</a>
+                                <label id="university">Ok, gracias!</label> 
+                                <label id="university"> Ayer </label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/ana-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Ana Martinez</a>
+                                <label id="university">Tú: Ok, gracias!</label> 
+                                <label id="university"> 23/11/21 </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/sofia-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Sofía Perez</a>
+                                <label id="university">Ok, gracias!</label> 
+                                <label id="university"> 20/11/21 </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/francisco-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Francisco Andes Lezcano</a>
+                                <label id="university">Tú: Ok, gracias!</label> 
+                                <label id="university"> 20/11/21 </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/alexis-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Alexis Black</a>
+                                <label id="university">Ok, gracias!</label> 
+                                <label id="university"> 19/10/21 </label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="carta-chat">
+                            <img src='images/andres2-perfil.png' class='imgRedondaG'/>
+                            <div class="links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Diaz</a>
+                                <label id="university">Tú: Ok, gracias!</label> 
+                                <label id="university"> 9:25 AM </label>
+                            </div>
+                            <i></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8 z-depth-3 card card-padding border ">
+                <div class="published-post inside-card-padding">
+                    <img class="img-post" src='images/andres-perfil.png' />
+                    <div class="col m12">
+                        <a href="#" id="profile-post"> Andrés Lezcano</a>
+                    </div>
+                    <div class="col m3">
+                        <i class="material-icons">phone</i>
+                        <i class="material-icons">video_call</i>
+                        <i class="material-icons">help</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8 input-field comentar">
+                <div class="chat">
+                    <a href="#" id="profile"><img src='images/andres-perfil.png' class='img-post'></a>
+                    <div class="burbujas-chat">
+                        <div class="burbuja-text">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                Provident optio eius porro suscipit, nulla quibusdam magni debitis magnam
+                                ipsum
+                                ipsa amet.</p>
+                        </div>        
+                        <div class="burbuja-text">        
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8 input-field comentar">
+                    <div class="burbuja-chat-propio">
+                        <div class="burbuja-text-propio">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                Provident optio eius porro suscipit, nulla quibusdam magni debitis magnam
+                                ipsum
+                                ipsa amet.</p>
+                        </div>   
+                        <div class="burbuja-text-propio">        
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                        <label><i class="material-icons">check</i>Visto</label>
+                    </div>
+            </div>
+            <div>
+                <div class="col s12 m8 input-field comentar inside-card-padding">
+                    <div class="write-post">
+                        <input type="text" id="escribir-post" placeholder="Aa">
+                        <i class="material-icons eye-icon">sentiment_satisfied_alt</i>
+                        <i class="material-icons photo-icon">insert_photo</i>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>        
+</body>
+</html>

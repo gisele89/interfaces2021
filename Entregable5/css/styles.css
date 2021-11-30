@@ -34,19 +34,42 @@ margin:20px 10px;
     padding-top:1rem;
     padding-bottom: 1rem;
 }
+
+
 .carta-busqueda{
     display: flex;
     justify-content: space-between;
     
 }
-.carta-busqueda div {
+
+.carta-busqueda div, .carta-chat div {
     padding-left: 1rem;
     display: flex;
+}
+
+.carta-busqueda div{
     align-items: center;
 }
-.carta-busqueda div img{
+
+
+.carta-busqueda div img, .carta-chat img{
     align-items: center;
 }
+
+.carta-chat .links-busqueda {
+    margin-bottom: 0.2rem;
+}
+.carta-chat{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.carta-chat i{
+    position: absolute;
+    left: 35rem;
+    font-size: xx-small; 
+}
+
 .links-busqueda{
     flex-direction: column;
     justify-content: start;
@@ -260,7 +283,7 @@ div.col.s12.border.reactions-count{
     border: none;
 }
 
-.busqueda, #escribir-post {
+.busqueda, #escribir-post, #busqueda-chats {
     background-color: #DFDFDF;
     border-bottom: none;
     border-radius: 0.563rem;
@@ -269,6 +292,11 @@ div.col.s12.border.reactions-count{
     font-weight: normal;
     text-decoration: inherit;
     padding-left: 0.5rem;
+}
+
+#busqueda-chats{
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 #escribir-post:focus {
@@ -732,6 +760,49 @@ i.right-reply{
 }
 #gallery-1:hover{
     cursor: pointer;
+}
+#chats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ventanas-chats{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+.chat{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.burbuja-chat, .burbuja-chat-propio{
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+
+.burbuja-chat-propio{
+    align-items: flex-end;
+    padding-right: 2rem;
+}
+
+.burbuja-text, .burbuja-text-propio {
+    border-radius: 4px;
+    margin-left: 5px;
+    margin-top: 0.5rem;
+    padding: 8px;
+    max-width: 75%;
+}
+.burbuja-text{
+    background-color: #DFDFDF;
+}
+.burbuja-text-propio{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: #935F95;
+    color: white;
 }
 
 @media screen and (min-width: 1024px) {
