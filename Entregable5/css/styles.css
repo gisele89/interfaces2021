@@ -63,6 +63,7 @@ margin:20px 10px;
     display: flex;
     justify-content: start;
     align-items: center;
+    padding-left: 1rem;
 }
 .carta-chat i{
     margin-right:1.5rem;
