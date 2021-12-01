@@ -25,6 +25,12 @@ body {
 .muro{
     overflow-y: hidden;
 }
+.home{
+    overflow-x: hidden;
+}
+div.row.muro-row{
+    margin-bottom:0px;
+}
 .esconder {
     display: none;
 }
@@ -70,6 +76,27 @@ section#login {
 .btn-floating.pulse i:hover {
     color: #EFE7EF;
 }
+header nav.nav-color{
+    background-color:#935f95;
+}
+.nav-color{
+    display: flex;
+    justify-content: end;
+}
+#nav-button{
+    margin-right: 3rem;
+    background-color: transparent;
+    border:1px solid white;
+    box-shadow:none;
+    transition: all 0.5s ease-in-out;
+}
+
+#nav-button:hover{
+    color:#935f95;
+    background-color: #EFE7EF;
+    border:1px solid #EFE7EF;
+    box-shadow:none;
+}
 
 .home-section-1 {
     height: 100%;
@@ -81,16 +108,16 @@ section#login {
 }
 
 .parallax {
-    min-height: 500px;
+    min-height: 700px;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url("../images/patitas\ -\ 1.svg");
     /*overflow: hidden;*/
-    
-    
+   
 }
+
 .parallax-image{
    /* transform: translateZ(-2px) scale(3);*/
     width:100%;
@@ -231,7 +258,7 @@ text-align: center;
 }
 
 .noticias {
-    max-height: 1000px;
+    max-height: 1100px;
     overflow-y: scroll;
 }
 
@@ -252,10 +279,7 @@ text-align: center;
     height: 10px;
 }
 
-.noticias::-webkit-scrollbar-thumb {
-    background-color: #f0f0f0;
-    border-radius: 20px;
-}
+
 
 .noticias::-webkit-scrollbar-track {
     border-radius: 10px;
@@ -444,6 +468,11 @@ img.col.s12.image-post {
 #search-box {
     left: 30%;
     position: relative;
+}
+.input-field input[type=search].busqueda, .input-field input[type=search].busqueda:active{
+    background-color:#dfdfdf;
+    border-radius: 0.563rem;
+    padding-left: 1rem;
 }
 
 div .card.card-padding {
@@ -910,6 +939,11 @@ div.col.s12.m8.chat-window {
 
 .disable-pop-up, .btn-floating.pulse.btn-large.disable-pop-up {
     display: none;
+}
+.home-section-2 .container{
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .modal-publicar.enable-pop-up {
