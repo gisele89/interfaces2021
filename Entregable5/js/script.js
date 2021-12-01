@@ -162,14 +162,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
-    document.querySelector("#notifications-icon").addEventListener('click', function(){
-        console.log("entra");
-        if(document.querySelector(".popup-notificaciones").classList.contains("esconder")){
-            document.querySelector(".popup-notificaciones").classList.remove("esconder");
-            document.querySelector("#notifications-icon").innerHTML = "notifications";
-        }else{
-            document.querySelector(".popup-notificaciones").classList.add("esconder");
-            document.querySelector("#notifications-icon").innerHTML = "notifications_none";
-        }
-    });
 })

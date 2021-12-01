@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let carga = document.getElementsByClassName("centrar");
         carga[0].classList.add("esconder");
+        document.querySelector(".popup-notificaciones").classList.add("esconder");
     }
 
     setTimeout(loaderRemove,3000);
