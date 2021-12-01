@@ -35,6 +35,35 @@ margin:20px 10px;
     padding-bottom: 1rem;
 }
 
+.noticias{
+    max-height: 1000px;
+    overflow-y: scroll;
+}
+.noticias::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.noticias::-webkit-scrollbar:vertical {
+    width:7px;
+}
+
+.noticias::-webkit-scrollbar-button:increment,.noticias::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.noticias::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.noticias::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.noticias::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
 
 .carta-busqueda{
     display: flex;
