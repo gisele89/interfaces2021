@@ -1,28 +1,31 @@
-@keyframes spin{
+@keyframes spin {
     0% {
         transform: rotate(0deg);
-      }
-    
-      100% {
+    }
+
+    100% {
         transform: rotate(360deg);
-      }
+    }
 }
 
-body{
-    height:100%;
+body {
+    height: 100%;
 }
 
-.centrar{
+.centrar {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.loader{
-    margin-top: 10%;
+
+.loader {
+    margin-top: 20%;
     animation: 3s infinite spin;
 }
-
-.esconder{
+.muro{
+    overflow-y: hidden;
+}
+.esconder {
     display: none;
 }
 
@@ -45,72 +48,95 @@ section.home-section1 {
     height: 945px;
     width: 100%;
 }
-section.home-section2{
+
+section.home-section2 {
     background-color: #d2b1d4;
     width: 100%;
     height: 500px;
 }
-section#login{
+
+section#login {
     height: 880px;
 }
-.btn-floating.pulse{
-background-color: #EFE7EF;
+
+.btn-floating.pulse {
+    background-color: #EFE7EF;
 }
-.btn-floating.pulse i{
+
+.btn-floating.pulse i {
     color: #935f95;
 }
-.btn-floating.pulse i:hover{
+
+.btn-floating.pulse i:hover {
     color: #EFE7EF;
 }
+
 .home-section-1 {
     height: 100%;
 }
-#sumate-btn{
+
+#sumate-btn {
     background-color: #e4d3e4;
-    color:#523568;
+    color: #523568;
 }
+
 .parallax {
-    /* The image used */
-    background-image: url("../images/patitas\ -\ 1.svg");
-  
-    /* Set a specific height */
     min-height: 500px;
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
     background-position: center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  .dissapear-animation{
-        animation: disappear 1s linear forwards ;
-  }
-  .appear-animation{
-    animation: appear 1s linear forwards;
+    background-image: url("../images/patitas\ -\ 1.svg");
+    /*overflow: hidden;*/
+    
+    
 }
+.parallax-image{
+   /* transform: translateZ(-2px) scale(3);*/
+    width:100%;
+    height: 100%;  
+    
+}
+
+
+
+.dissapear-animation {
+    animation: disappear 2s linear forwards;
+}
+
+.appear-animation {
+    animation: appear 2s linear forwards;
+}
+
 @keyframes moveUp {
     to {
         transform: translateY(-500px);
     }
 }
+
 @keyframes moveDown {
     to {
         transform: translateY(500px);
     }
 }
-  @keyframes disappear {
+
+@keyframes disappear {
     0% {
         opacity: 1;
     }
+
     25% {
         opacity: 0.7;
     }
+
     50% {
         opacity: 0.5;
     }
+
     75% {
         opacity: 0.2;
     }
+
     100% {
         opacity: 0;
     }
@@ -120,50 +146,55 @@ background-color: #EFE7EF;
     0% {
         opacity: 0;
     }
+
     25% {
         opacity: 0.2;
     }
+
     50% {
         opacity: 0.5;
     }
+
     75% {
         opacity: 0.7;
     }
+
     100% {
         opacity: 1;
     }
 }
 
 
-  .parallax-2 {
-    /* The image used */
+.parallax-2 {
     background-image: url("../images/patitas\ -\ 2.svg");
-  
-    /* Set a specific height */
-    min-height: 500px;
-  
-    /* Create the parallax scrolling effect */
+    min-height: 600px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
 .image-logo-login-top {
     position: fixed;
     bottom: 50%;
-    display:grid;
+    display: grid;
     justify-items: center;
     text-align: center;
 }
-.row .col.s6.image-logo-login-top{
+
+.row .col.s6.image-logo-login-top {
     left: 25%;
 }
 
-.image-logo-login-top h1{
-    color:white;
+.image-logo-login-top h1, .parallax h1 {
+    color: white;
 }
-.btn-floating-container{
+.parallax{
+    display: flex;
+align-items: center;
+text-align: center;
+}
+.btn-floating-container {
     left: 50%
 }
 
@@ -199,21 +230,22 @@ background-color: #EFE7EF;
     padding-bottom: 1rem;
 }
 
-.noticias{
+.noticias {
     max-height: 1000px;
     overflow-y: scroll;
 }
+
 .noticias::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
 .noticias::-webkit-scrollbar:vertical {
-    width:7px;
+    width: 7px;
 }
 
-.noticias::-webkit-scrollbar-button:increment,.noticias::-webkit-scrollbar-button {
+.noticias::-webkit-scrollbar-button:increment, .noticias::-webkit-scrollbar-button {
     display: none;
-} 
+}
 
 .noticias::-webkit-scrollbar:horizontal {
     display: none;
@@ -221,13 +253,12 @@ background-color: #EFE7EF;
 }
 
 .noticias::-webkit-scrollbar-thumb {
-    background-color: #797979;
+    background-color: #f0f0f0;
     border-radius: 20px;
-    border: 2px solid #f1f2f3;
 }
 
 .noticias::-webkit-scrollbar-track {
-    border-radius: 10px;  
+    border-radius: 10px;
 }
 
 .carta-busqueda {
@@ -630,7 +661,7 @@ html {
     margin-top: 100px;
 }
 
-#text-logo, .modal-publicar h5 {
+#text-logo, .modal-publicar h5, .parallax-2 h1 {
     text-align: center;
 }
 
@@ -877,7 +908,7 @@ div.col.s12.m8.chat-window {
     margin-left: 0;
 }
 
-.disable-pop-up {
+.disable-pop-up, .btn-floating.pulse.btn-large.disable-pop-up {
     display: none;
 }
 
@@ -1054,12 +1085,16 @@ i.right-reply {
     align-items: flex-end;
     padding-right: 2rem;
 }
+.burbuja-text-propio p, .burbuja-text p{
+    margin-top:0.1rem;
+    margin-bottom: 0.1rem;
+}
 
 .burbuja-text, .burbuja-text-propio {
     border-radius: 4px;
     margin-left: 5px;
     margin-top: 0.5rem;
-    padding: 8px;
+    padding: 0.5rem;
     max-width: 75%;
 }
 
@@ -1090,18 +1125,28 @@ div.col.s12.m4.lateral.lateral-chat {
     padding-right: 0px;
 }
 
-.popup-notificaciones{
-    background-color:white;
+.popup-notificaciones {
+    background-color: white;
     z-index: 10;
     position: absolute;
-    border: 0.2rem solid #dfdfdf;
-    border-radius: 1rem;
+    border-radius: 0.563rem;
+
 }
-#notificaciones{
+
+.popup-notificaciones p {
+    font-weight: initial;
+    margin-left: 0.5rem;
+}
+
+.col.s3.offset-s6.z-depth-3.popup-notificaciones {
+    padding: 2rem 1rem;
+}
+
+#notificaciones {
     border-style: none;
 }
 
-.notificaciones-off{
+.notificaciones-off {
     background-color: white;
 }
 

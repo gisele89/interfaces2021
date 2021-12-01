@@ -1,10 +1,12 @@
 let oldValue = 0
     let newValue = 0
-    console.log("estoy acá");
+    let oldValueButton=1545;
+    let newValueButton=0;
     window.addEventListener('scroll', (e) => {
-        console.log("estoy acá");
         let content = document.querySelector(".section-1-content");
+        let btn = document.querySelector(".btn-floating");
         newValue = window.pageYOffset;
+        newValueButton = window.scrollY;
         if (oldValue < newValue) {
             content.classList.remove("appear-animation");
             content.classList.add("dissapear-animation");
@@ -17,4 +19,10 @@ let oldValue = 0
             
         }
         oldValue = newValue;
+       /* if(oldValueButton < newValueButton){
+            btn.classList.add("disable-pop-up");
+        } else if (oldValueButton > newValueButton) {
+            content.classList.remove("disable-pop-up");    
+        }*/
+        oldValueButton = newValueButton;
     });

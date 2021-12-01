@@ -7,33 +7,18 @@
 
 //var elems = document.querySelectorAll('.parallax');
 //var instances = M.Parallax.init(elems, options);
+let img = document.querySelector("#image-gallery");
 document.addEventListener("DOMContentLoaded", function () {
-   /* document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
+    document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
     document.querySelector("#gallery-1").addEventListener('click', activatePopupImage);
     document.querySelector(".close-pop-up").addEventListener('click', deactivatePopupPublish);
     document.querySelector(".close-pop-up-image").addEventListener('click', deactivatePopupImage);
     document.querySelector("#chevron-right").addEventListener('click', changeImageGalleryRight);
-    document.querySelector("#chevron-left").addEventListener('click', changeImageGalleryLeft);*/
-
-    const icon = document.querySelector('.eye-icon');
-    let passLogin = document.querySelector("#password");
-    let passRegistro = document.querySelector("#password-registro");
+    document.querySelector("#chevron-left").addEventListener('click', changeImageGalleryLeft);
     let post = document.querySelector("#publicar-post-modal");
-    let img = document.querySelector("#image-gallery");
-
-    if (passRegistro) {
-        passRegistro.addEventListener('input', verifyInputsRegistro);
-    }
-
-    if (passLogin) {
-        passLogin.addEventListener('input', verifyInputsLogin);
-    }
-
     if (post) {
         post.addEventListener('input', verifyPost);
     }
-
-
     function verifyPost() {
         let post = document.querySelector("#publicar-post-modal");
         let bt = document.querySelector('#publicar-btn');
@@ -41,29 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             bt.classList.remove('disabled');
         }
     }
-
-    function verifyInputsLogin() {
-        let pass = document.querySelector("#password");
-        let email = document.querySelector("#email");
-        let bt = document.getElementById('inicio-btn');
-        if ((pass.value != '') && (email.value != '')) {
-            bt.classList.remove('disabled');
-            icon.classList.remove('disabled-icon');
-        }
-    }
-
-    function verifyInputsRegistro() {
-        let nombre = document.querySelector("#nombre");
-        let apellido = document.querySelector("#apellido");
-        let pass = document.querySelector("#password-registro");
-        let email = document.querySelector("#email-registro");
-        let bt = document.getElementById('registro-btn');
-
-        if ((pass.value != '') && (email.value != '') && (nombre.value != '') && (apellido.value != '')) {
-            bt.classList.remove('disabled');
-            icon.classList.remove('disabled-icon');
-        }
-    }
+    
     function activatePopupPublish() {
         let modal = document.querySelector(".modal-publicar");
         let overlay = document.querySelector("#overlay");
@@ -143,24 +106,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    icon.addEventListener('click', (event) => {
-        event.preventDefault();
-        if (typeof passLogin === 'undefined' || passLogin === null) {
-            const type = (passRegistro.getAttribute('type') === 'text') ? 'password' : 'text';
-            passRegistro.setAttribute('type', type);
-            if (icon.innerText == 'visibility_off') {
-                icon.textContent = 'visibility';
-            } else {
-                icon.textContent = 'visibility_off';
-            }
-        } else {
-            const type = (passLogin.getAttribute('type') === 'text') ? 'password' : 'text';
-            passLogin.setAttribute('type', type);
-            if (icon.innerText == 'visibility_off') {
-                icon.textContent = 'visibility';
-            } else {
-                icon.textContent = 'visibility_off';
-            }
-        }
-    });
+   
 })
