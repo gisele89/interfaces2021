@@ -1,5 +1,29 @@
-body {
-    height: 100%;
+@keyframes spin{
+    0% {
+        transform: rotate(0deg);
+      }
+    
+      100% {
+        transform: rotate(360deg);
+      }
+}
+
+body{
+    height:100%;
+}
+
+.centrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loader{
+    margin-top: 10%;
+    animation: 3s infinite spin;
+}
+
+.esconder{
+    display: none;
 }
 
 #links-login {
@@ -175,6 +199,36 @@ background-color: #EFE7EF;
     padding-bottom: 1rem;
 }
 
+.noticias{
+    max-height: 1000px;
+    overflow-y: scroll;
+}
+.noticias::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.noticias::-webkit-scrollbar:vertical {
+    width:7px;
+}
+
+.noticias::-webkit-scrollbar-button:increment,.noticias::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.noticias::-webkit-scrollbar:horizontal {
+    display: none;
+    height: 10px;
+}
+
+.noticias::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.noticias::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
 
 .carta-busqueda {
     display: flex;
@@ -1036,6 +1090,20 @@ div.col.s12.m4.lateral.lateral-chat {
     padding-right: 0px;
 }
 
+.popup-notificaciones{
+    background-color:white;
+    z-index: 10;
+    position: absolute;
+    border: 0.2rem solid #dfdfdf;
+    border-radius: 1rem;
+}
+#notificaciones{
+    border-style: none;
+}
+
+.notificaciones-off{
+    background-color: white;
+}
 
 @media screen and (min-width: 1024px) {
     #logo {

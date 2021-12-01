@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-    <header class="z-depth-3">
+    <header class="z-depth-3 esconder">
         <nav>
             <div class="navbar container">
                 <ul class="left hide-on-med-and-down leftnavbar">
@@ -40,14 +40,18 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="sass.html" id="profile-navbar"><img src='images/fotoperfil.png'
                                 class='imgRedonda' />Jesica</a></li>
-                    <li><a href="collapsible.html"><i class="material-icons">notifications_none</i></a></li>
+                    <li><a><i class="material-icons" id="notifications-icon">notifications</i></a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="centrar">
+        <img src="images/logo.png" class="loader" alt="">
+        <span>CARGANDO...</span>
+    </div>
+    <div class="container esconder">
         <div class="row">
             <div class="col s12 m3 lateral">
                 <h3 class="busqueda-text">Busqueda avanzada</h3>
@@ -59,8 +63,49 @@
                     <a href="#" id="profile-lateral-busqueda"><i class="fas fa-images"></i>Fotos</a>
                 </div>
             </div>
-            <div class="">
-                <div class=" col s12 m9">
+                <div class="col s4 offset-s5 popup-notificaciones">
+                    <div id="chats">
+                        <h3 class="busqueda-text">Notificaciones</h3>
+                    </div>
+                    <div class="ventanas-chats">
+                        <div>
+                            <div class="seleccionado carta-chat">
+                                <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                                <div class="col s12 links-busqueda">
+                                    <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                    <label id="university">Nueva publicacion</label>
+                                </div>
+                                <i class="fas fa-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ventanas-chats">
+                        <div>
+                            <div class="seleccionado carta-chat">
+                                <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                                <div class="col s12 links-busqueda">
+                                    <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                    <label id="university">Nueva publicacion</label>
+                                </div>
+                                <i class="fas fa-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ventanas-chats">
+                        <div>
+                            <div class="seleccionado carta-chat">
+                                <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                                <div class="col s12 links-busqueda">
+                                    <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                    <label id="university">Nueva publicacion</label>
+                                </div>
+                                <i class="fas fa-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col s12 m9 noticias">
                     <div class="col s12 z-depth-3 card card-padding carta-busqueda inside-card-padding">
                         <div>
                             <img src='images/foto-busqueda-1.png' class='imgRedondaG'/>
@@ -107,10 +152,9 @@
                         <a href="#"><i class="material-icons">search</i>Caro San Martin Tandil</a>
                     </div>
                 </div>
-            </div>
-           
         </div>
     </div>
-    <script type="text/javascript" src="js/bin/materialize.min.js"></script>
+    <script type="text/javascript" src="js/notificaciones.js"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
 </body>
 </html>
