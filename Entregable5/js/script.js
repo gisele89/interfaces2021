@@ -8,12 +8,12 @@
 //var elems = document.querySelectorAll('.parallax');
 //var instances = M.Parallax.init(elems, options);
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
+   /* document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);
     document.querySelector("#gallery-1").addEventListener('click', activatePopupImage);
     document.querySelector(".close-pop-up").addEventListener('click', deactivatePopupPublish);
     document.querySelector(".close-pop-up-image").addEventListener('click', deactivatePopupImage);
     document.querySelector("#chevron-right").addEventListener('click', changeImageGalleryRight);
-    document.querySelector("#chevron-left").addEventListener('click', changeImageGalleryLeft);
+    document.querySelector("#chevron-left").addEventListener('click', changeImageGalleryLeft);*/
 
     const icon = document.querySelector('.eye-icon');
     let passLogin = document.querySelector("#password");
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (post) {
         post.addEventListener('input', verifyPost);
     }
+
 
     function verifyPost() {
         let post = document.querySelector("#publicar-post-modal");
@@ -113,18 +114,18 @@ document.addEventListener("DOMContentLoaded", function () {
         enableChevron();
     }
 
-    function enableChevron() {        
+    function enableChevron() {
         let chevronLeft = document.querySelector('#chevron-left');
-        let chevronRight = document.querySelector('#chevron-right');        
-       
-        if (img.src.indexOf('images/gallery3-big.png') != -1) {  
+        let chevronRight = document.querySelector('#chevron-right');
+
+        if (img.src.indexOf('images/gallery3-big.png') != -1) {
             disableChevronElement(chevronLeft);
             enableChevronElement(chevronRight);
         } else if (img.src.indexOf('images/gallery2-big.jpg') != -1) {
             console.log("voy a habilitar left");
             enableChevronElement(chevronLeft);
             enableChevronElement(chevronRight);
-        } else if(img.src.indexOf('images/gallery1-big.jpg') != -1){
+        } else if (img.src.indexOf('images/gallery1-big.jpg') != -1) {
             console.log("voy a deshabilitar right");
             disableChevronElement(chevronRight);
             enableChevronElement(chevronLeft);
