@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reacciones.css">
     <link type="text/css" rel="stylesheet" href="sass/materialize.css" media="screen,projection" />
     <link rel="icon" href="images/logo.svg">
     <script src="https://kit.fontawesome.com/2f9e23067a.js" crossorigin="anonymous"></script>
@@ -16,7 +17,7 @@
 </head>
 
 <body class="muro">
-    <header class="z-depth-3">
+    <header class="z-depth-3 esconder">
         <nav>
             <div class="navbar container">
                 <ul class="left hide-on-med-and-down leftnavbar">
@@ -24,7 +25,7 @@
                     </li>
                     <li id="search-box">
                         <div class="input-field">
-                            <form action="">
+                            <form action="busqueda.html">
                                 <input type="search" class="busqueda" placeholder="&#xf002; Buscar en Vet">
                             </form>
                         </div>
@@ -35,21 +36,25 @@
                         <li class="on tab"><a href="home.html"><i class="material-icons">home</i></a></li>
                         <li class="tab"><a href="chat.html"><i class="material-icons">sms</i></a></li>
                         <li class="tab"><a href="busqueda.html"><i class="material-icons">people</i></a></li>
-                        <li class="tab"><a href="mobile.html"><i class="material-icons">pets</i></a></li>
+                        <li class="tab"><a href="https://www.google.com/maps/search/veterinarias+tandil/@-37.3195532,-59.1544758,13z/data=!3m1!4b1" target="_blank"><i class="material-icons">pets</i></a></li>
                     </ul>
                 </div>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="sass.html" id="profile-navbar"><img src='images/fotoperfil.png'
                                 class='imgRedonda' />Jesica</a></li>
-                    <li><a href="collapsible.html"><i class="material-icons">notifications_none</i></a></li>
+                    <li><a><i class="material-icons" id="notifications-icon">notifications</i></a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="centrar">
+        <img src="images/logo-loader.png" class="loader" alt="">
+        <span>Cargando...</span>
+    </div>
+    <div class="container esconder">
         <div class= "row muro-row">
         <div class="col s4 offset-s2 z-depth-3 card card-padding modal-publicar disable-pop-up">
             <div class="title inside-card-padding">
@@ -90,8 +95,8 @@
                         </div>
         
                         <div class="col s1 offset-s10 container-reactions">
-                            <i class="material-icons  right-pet">pets</i>
-                            <i class="material-icons  right-emoji">sentiment_satisfied_alt</i>
+                            <i class="material-icons">thumb_up</i>
+                            <i class="material-icons">thumb_down</i>
                             <i class="material-icons right-reply">reply</i>
                         </div>
                         <img id="image-gallery" src='images/gallery3-big.png' />
@@ -158,20 +163,27 @@
                     </div>
                     <div class=" col s12 border reactions-count inside-card-padding">
                         <div class="reactions">
-                            <i class="material-icons">pets</i>
-                            <i class="material-icons">sentiment_satisfied_alt</i>
-                            <label>12</label>
+                            <i class="material-icons">thumb_up</i>
+                            <i class="material-icons">thumb_down</i>
+                            <label class="cant-reacciones">12</label>
                         </div>
                         <div>
-                            <label>2 comentarios</label>
+                            <label>1 comentario</label>
                         </div>
                     </div>
                     <div class="inside-card-padding divider"></div>
                     <div class="col s12 inside-card-padding">
                         <div class="opciones-post">
-                            <div class="align-reactions">
-                                <button><i class="material-icons">pets</i>Reaccionar</button>
-                            </div>
+                                <div class="reaction-container">
+                                    <button class="reaction-btn">
+                                        <span class="reaction-btn-emo like-btn-default"></span> 
+                                        <i class="material-icons">thumb_up</i><span class="reaction-btn-text">Like</span> 
+                                        <ul class="emojies-box">
+                                            <li class="emoji emo-like" data-reaction="Like"></li>
+                                            <li class="emoji emo-dislike" data-reaction="Dislike"></li>
+                                        </ul>
+                                    </button>
+                                </div>
                             <div class="align-reactions">
                                 <button><i class="material-icons">chat_bubble_outline</i>Comentar</button>
                             </div>
@@ -236,19 +248,30 @@
                     </div>
                     <div class=" col s12 border reactions-count inside-card-padding">
                         <div class="reactions">
-                            <i class="material-icons">pets</i>
-                            <i class="material-icons">sentiment_satisfied_alt</i>
-                            <label>1</label>
+                            <i class="material-icons">thumb_up</i>
+                            <i class="material-icons">thumb_down</i>
+                            <label>10</label>
                         </div>
                         <div>
-                            <label>2 comentario</label>
+                            <label>2 comentarios</label>
                         </div>
                     </div>
                     <div class="inside-card-padding divider"></div>
                     <div class="col s12">
                         <div class="opciones-post inside-card-padding">
                             <div class="align-reactions">
-                                <button><i class="material-icons">pets</i>Reaccionar</button>
+                                <div>
+                                    <div class="reaction-container">
+                                        <button class="reaction-btn">
+                                            <span class="reaction-btn-emo like-btn-default"></span> 
+                                            <i class="material-icons">thumb_up</i><span class="reaction-btn-text">Like</span> 
+                                            <ul class="emojies-box">
+                                                <li class="emoji emo-like" data-reaction="Like"></li>
+                                                <li class="emoji emo-dislike" data-reaction="Dislike"></li>
+                                            </ul>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="align-reactions">
                                 <button><i class="material-icons">chat_bubble_outline</i>Comentar</button>
@@ -300,14 +323,53 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col s12 input-field comentar inside-card-padding">
                         <div class="write-post">
                             <img src='images/perfil-post.png' class="img-post" />
                             <input type="text" id="escribir-post" placeholder="Escribí un comentario">
                             <i class="material-icons eye-icon">sentiment_satisfied_alt</i>
                             <i class="material-icons photo-icon">insert_photo</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s3 offset-s6 z-depth-3 popup-notificaciones">
+                <div id="chats">
+                    <h3 class="busqueda-text">Notificaciones</h3>
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="col s12 links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano <p>Hizo una nueva publicación</p></a>
+                                <label id="university">Hace 20 minutos</label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="col s12 links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                <label id="university">Nueva publicacion</label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="col s12 links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                <label id="university">Nueva publicacion</label>
+                            </div>
+                            <i class="fas fa-circle"></i>
                         </div>
                     </div>
                 </div>
@@ -344,8 +406,10 @@
             </div>
         </div>
         <script type="text/javascript" src="js/bin/materialize.min.js"></script>
+        <script type="text/javascript" src="js/like-dislike.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/loader.js"></script>   
+        <script type="text/javascript" src="js/loader.js"></script>
+        <script type="text/javascript" src="js/notificaciones.js"></script>   
 </body>
 
 </html>
