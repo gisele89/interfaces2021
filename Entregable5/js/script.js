@@ -1,12 +1,4 @@
-//import M from './sass/materialize-css';
-//const M = require('./js/bin/materialize.js');
-//M.AutoInit();
 
-//import {  Parallax } from '../sass/components/materialize-css';
-//import '../sass/components/materialize-css/';
-
-//var elems = document.querySelectorAll('.parallax');
-//var instances = M.Parallax.init(elems, options);
 let img = document.querySelector("#image-gallery");
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#escribir-post").addEventListener('click', activatePopupPublish);

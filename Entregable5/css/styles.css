@@ -23,9 +23,7 @@ body {
     animation: 3s infinite spin;
 }
 
-.muro {
-    overflow-y: hidden;
-}
+
 
 .home {
     overflow-x: hidden;
@@ -325,7 +323,7 @@ div.col.s12.m6.image-logo-login-top img{
 }
 
 .carta-busqueda {
-    display: flex;
+    display: grid;
     justify-content: space-between;
 
 }
@@ -626,11 +624,15 @@ div.col.s12.border.reactions-count {
     border: none;
     margin-right: 2rem;
 }
+#reaction-2.reaction-container{
+    margin-top: 0;
+}
 
 .opciones-post {
     color: #757575;
     display: flex;
     justify-content: space-evenly;
+    align-items: center
 }
 
 .opciones-post button {
@@ -676,6 +678,10 @@ div.col.s12.border.reactions-count {
     color: #757575;
     font-weight: 600;
     margin-left: 0.563rem;
+}
+.reaction-btn i{
+    color: #757575;
+    margin-right:0.5rem;
 }
 
 .align-options:hover, .align-reactions:hover {
@@ -1342,6 +1348,15 @@ section#login-registro div.row.login-row{
         padding-left:2rem;
        padding-right:2rem;
     }
+    .noticias {
+        max-height: 990px;
+        overflow-y: scroll;
+    }
    
-
+    .muro {
+        overflow-y: hidden;
+    }
+    .carta-busqueda {
+        display: flex;
+    }
 }

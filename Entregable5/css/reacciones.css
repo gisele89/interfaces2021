@@ -55,13 +55,13 @@
   .emo-like {
     left: 10px;
     transition-delay: 0s;
-    background-image: url('../images/reactions_like.png');
+    background-image: url('../images/like.png');
   }
   
   .emo-dislike {
     left: 68px;
     transition-delay: .05s;
-    background-image: url('../images/reactions_dislike.png');
+    background-image: url('../images/dislike.png');
   }
   
   .reaction-btn:hover .emoji {
