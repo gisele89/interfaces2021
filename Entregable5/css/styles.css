@@ -642,7 +642,7 @@ div.col.s12.border.reactions-count {
     background: none;
     border: none;
     font-family: Montserrat;
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: 17px;
@@ -1180,6 +1180,10 @@ i.right-reply {
 #gallery-1:hover {
     cursor: pointer;
 }
+#gallery-1{
+    padding-left:0;
+    padding-right: 0;
+}
 
 #chats {
     display: flex;
@@ -1283,6 +1287,9 @@ section#login-registro div.row.login-row{
  .row.login-row input[type="password"]:not(.browser-default).validate + label{
     width:auto;
 }
+.align-options .post-addons{
+    font-size:11px;
+}
 
 @media screen and (min-width: 1024px) {
     #logo {
@@ -1352,11 +1359,17 @@ section#login-registro div.row.login-row{
         max-height: 990px;
         overflow-y: scroll;
     }
+  /* a.post-addons{
+        font-size:11px;
+    }*/
    
     .muro {
         overflow-y: hidden;
     }
     .carta-busqueda {
         display: flex;
+    }
+   .align-options .post-addons, .opciones-post button{
+        font-size:14px;
     }
 }

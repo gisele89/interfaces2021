@@ -1,6 +1,6 @@
 .reaction-container{
     display: flex;
-    padding:0 20px;
+    padding:0 0px;
     align-items: center;
     margin-top: 0.5rem;
   }
@@ -21,7 +21,7 @@
   .reaction-btn-emo {
     display: inline-block;
     margin: 0 6px -3px 0;
-    width: 16px;
+    width: auto;
     height: 16px;
   }
   
