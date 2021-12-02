@@ -43,7 +43,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="sass.html" id="profile-navbar"><img src='images/fotoperfil.png'
                                 class='imgRedonda' />Jesica</a></li>
-                    <li><a href="collapsible.html"><i class="material-icons">notifications_none</i></a></li>
+                    <li><a><i class="material-icons" id="notifications-icon">notifications</i></a></li>
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i
                                 class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
@@ -319,14 +319,53 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col s12 input-field comentar inside-card-padding">
                         <div class="write-post">
                             <img src='images/perfil-post.png' class="img-post" />
                             <input type="text" id="escribir-post" placeholder="Escribí un comentario">
                             <i class="material-icons eye-icon">sentiment_satisfied_alt</i>
                             <i class="material-icons photo-icon">insert_photo</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s3 offset-s6 z-depth-3 popup-notificaciones">
+                <div id="chats">
+                    <h3 class="busqueda-text">Notificaciones</h3>
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="col s12 links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano <p>Hizo una nueva publicación</p></a>
+                                <label id="university">Hace 20 minutos</label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="col s12 links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                <label id="university">Nueva publicacion</label>
+                            </div>
+                            <i class="fas fa-circle"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ventanas-chats">
+                    <div>
+                        <div class="seleccionado carta-chat">
+                            <img src='images/andres-perfil.png' class='imgRedondaG'/>
+                            <div class="col s12 links-busqueda">
+                                <a href="#" id="profile-lateralG">Andrés Lezcano</a>
+                                <label id="university">Nueva publicacion</label>
+                            </div>
+                            <i class="fas fa-circle"></i>
                         </div>
                     </div>
                 </div>
@@ -365,7 +404,8 @@
         <script type="text/javascript" src="js/bin/materialize.min.js"></script>
         <script type="text/javascript" src="js/like-dislike.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/loader.js"></script>   
+        <script type="text/javascript" src="js/loader.js"></script>
+        <script type="text/javascript" src="js/notificaciones.js"></script>   
 </body>
 
 </html>
