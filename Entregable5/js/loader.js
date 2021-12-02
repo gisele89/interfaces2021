@@ -10,5 +10,5 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".popup-notificaciones").classList.add("esconder");
     }
 
-    setTimeout(loaderRemove,3000);
+    setTimeout(loaderRemove,1000);
 });

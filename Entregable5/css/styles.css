@@ -605,7 +605,6 @@ div.col.s12.border.reactions-count {
 
 #busqueda-chats {
     margin-top: 0.5rem;
-    margin-left: 0.5rem;
 }
 
 #escribir-post:focus {
@@ -708,8 +707,12 @@ div.col.s12.border.reactions-count {
 }
 
 .nav-content li {
-    margin-right: 30px
+    margin-right: 0.2rem;
 }
+.nav-content img{
+    margin-top:1rem;
+}
+
 
 .left.hide-on-med-and-down.leftnavbar {
     margin-top: 0.5rem;
@@ -877,6 +880,14 @@ i:hover {
     border-bottom: 1px solid #dfdfdf;
 
 }
+div.chat-window div.inside-card-padding{
+    padding-left:0;
+    padding-right:0 ;
+}
+div#options-chat{
+    display:flex;
+    justify-content: flex-end;
+}
 
 div.col.s12.m8.chat-window {
     padding-bottom: 1rem;
@@ -981,6 +992,9 @@ div.col.s12.m8.chat-window {
 
 .modal-publicar img, .lateral-chat .write-post, #chats {
     margin-right: 1rem;
+}
+.lateral-chat .write-post{
+    margin-right: 0;
 }
 div.col.s12.m5.write-post.chat-write{
     left:0;
@@ -1315,11 +1329,18 @@ section#login-registro div.row.login-row{
     }
     
     .col.s12.m8.input-field.comentar.inside-card-padding div.col.s12.m5.write-post.chat-write{
-        left:auto;
+        left:40.7%;
     }
     .seleccionado {
         background-color: #EFE7EF;
         border-radius: 4px;
+    }
+    .nav-content li {
+        margin-right: 2rem;
+    }
+    div.chat-window div.inside-card-padding{
+        padding-left:2rem;
+       padding-right:2rem;
     }
    
 
