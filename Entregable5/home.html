@@ -17,7 +17,7 @@
 </head>
 
 <body class="muro">
-    <header class="z-depth-3">
+    <header class="z-depth-3 esconder">
         <nav>
             <div class="navbar container">
                 <ul class="left hide-on-med-and-down leftnavbar">
@@ -25,7 +25,7 @@
                     </li>
                     <li id="search-box">
                         <div class="input-field">
-                            <form action="">
+                            <form action="busqueda.html">
                                 <input type="search" class="busqueda" placeholder="&#xf002; Buscar en Vet">
                             </form>
                         </div>
@@ -36,7 +36,7 @@
                         <li class="on tab"><a href="home.html"><i class="material-icons">home</i></a></li>
                         <li class="tab"><a href="chat.html"><i class="material-icons">sms</i></a></li>
                         <li class="tab"><a href="busqueda.html"><i class="material-icons">people</i></a></li>
-                        <li class="tab"><a href="mobile.html"><i class="material-icons">pets</i></a></li>
+                        <li class="tab"><a href="https://www.google.com/maps/search/veterinarias+tandil/@-37.3195532,-59.1544758,13z/data=!3m1!4b1" target="_blank"><i class="material-icons">pets</i></a></li>
                     </ul>
                 </div>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -50,7 +50,11 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="centrar">
+        <img src="images/logo-loader.png" class="loader" alt="">
+        <span>Cargando...</span>
+    </div>
+    <div class="container esconder">
         <div class= "row muro-row">
         <div class="col s4 offset-s2 z-depth-3 card card-padding modal-publicar disable-pop-up">
             <div class="title inside-card-padding">
@@ -91,8 +95,8 @@
                         </div>
         
                         <div class="col s1 offset-s10 container-reactions">
-                            <i class="material-icons  right-pet">pets</i>
-                            <i class="material-icons  right-emoji">sentiment_satisfied_alt</i>
+                            <i class="material-icons">thumb_up</i>
+                            <i class="material-icons">thumb_down</i>
                             <i class="material-icons right-reply">reply</i>
                         </div>
                         <img id="image-gallery" src='images/gallery3-big.png' />
