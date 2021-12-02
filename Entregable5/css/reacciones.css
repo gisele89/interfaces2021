@@ -1,0 +1,163 @@
+.reaction-container{
+    display: flex;
+    padding:0 20px;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  
+  .reaction-btn {
+    display: flex;
+    align-items: end;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .like-btn-default {
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: -277px -446px;
+  }
+  
+  .reaction-btn-emo {
+    display: inline-block;
+    margin: 0 6px -3px 0;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .emojies-box {
+    padding: 10px;
+    position: absolute;
+    top: -63px;
+    left: -14px;
+  }
+  
+  .emoji {
+    list-style-type: none;
+    cursor: pointer;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 8px;
+    opacity: 0;
+    transform: scale(1, 1);
+    transition: opacity .5s ease-in-out 1s, transform .07s ease-in-out 0s, top .07s ease-in-out 0s;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center
+  }
+  
+  .reaction-btn:hover .emojies-box {
+    display: block;
+  }
+  
+  .emo-like {
+    left: 10px;
+    transition-delay: 0s;
+    background-image: url('../images/reactions_like.png');
+  }
+  
+  .emo-dislike {
+    left: 68px;
+    transition-delay: .05s;
+    background-image: url('../images/reactions_dislike.png');
+  }
+  
+  .reaction-btn:hover .emoji {
+    opacity: 1;
+    animation-name: reaction_delay;
+    animation-duration: .5s;
+  }
+  
+  @keyframes reaction_delay {
+    0% {
+      width: 48px;
+      height: 48px;
+      top: 60px;
+    }
+    48% {
+      width: 56px;
+      height: 56px;
+      top: 5px;
+    }	
+    100% {
+      width: 48px;
+      height: 48px;
+      top: 8px;
+    }
+  }
+  
+  
+  .reaction-btn:hover .emo-like {
+    animation-delay: 0s
+  }
+  
+  .reaction-btn:hover .emo-dislike {
+    animation-delay: .05s
+  }
+  
+  
+  .emoji:hover {
+    transform: scale(1.3, 1.3);
+    top: 2px
+  }
+  
+  
+  
+  .emoji::before {
+    display: inline-block;
+    color: #ffffff;
+    text-align: center;
+    line-height: 17px;
+    font-size: .7em;
+    width: 80%;
+    height: 17px;
+    margin-left: 10%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    position: absolute;
+    top: -25px;
+    opacity: 0;
+    transition: opacity .2s ease-in-out 0s;
+  }
+  
+  .emoji:hover::before {
+    opacity: 1
+  }
+  
+  .emo-like::before {
+    content: 'Like'
+  }
+  
+  .emo-dislike::before {
+    content: 'Dislike'
+  }
+  
+  .like-stat {
+    margin-top: 10px;
+  }
+  
+  .reaction-btn-text-like {
+    color:rgb(88, 144, 255);
+  }
+  
+  .reaction-btn-text-dislike{
+    color:rgb(247, 113, 75);
+  }
+  
+  .like-emo > span{
+      display: inline-block;
+      margin: 0 -3px -3px 0px;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #EEE;
+      border-radius: 50%;
+  
+  }
+  
+  .like-details{
+    margin-left:10px;
+    color:#9197a3;
+    font-size:12px;
+  }
