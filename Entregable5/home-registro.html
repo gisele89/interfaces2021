@@ -12,64 +12,66 @@
     <link rel="icon" href="images/logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
+
 <body class="home">
     <div>
         <section class="home-section1 overlay-home">
-            <div id ="overlay-home">
-            <div class="container">
-                <div></div>
-                <div id="button-nav-div">
-                    <a id ="nav-button" class="waves-effect waves-light btn" href="login.html">Iniciar Sesión</a>
+            <div id="overlay-home">
+                <div class="container">
+                    <div></div>
+                    <div id="button-nav-div">
+                        <a id="nav-button" class="waves-effect waves-light btn" href="login.html">Iniciar Sesión</a>
+                    </div>
+                    <div class="row section-1-content">
+                        <div class="col s12 m6 image-logo-login-top"><img class="" src='images/logo-home.png' />
+                            <h1>La plataforma que conecta profesionales y amantes de los animales</h1>
+                            <a id="sumate-btn" class="waves-effect waves-light btn" href="#login-registro">Sumarse a Vet</a>
+                        </div>
+                    </div>
+                    <div class="btn-floating-container">
+
+                        <a class="btn-floating pulse btn-large" href="#login-registro"><i
+                                class="material-icons">expand_more</i></a>
+                    </div>
                 </div>
-                <div class = "row section-1-content">
-                <div class="col s6 image-logo-login-top"><img class="" src='images/logo-home.png' />
-                <h1>La plataforma que conecta profesionales y amantes de los animales</h1>
-                <a id="sumate-btn" class="waves-effect waves-light btn" href="#login">Sumarse a Vet</a>
             </div>
-            </div>
-            <div class="btn-floating-container">
-            
-                <a class="btn-floating pulse btn-large" href="#login"><i class="material-icons">expand_more</i></a>
-            </div>
-        </div>
-    </div>
         </section>
         <section>
             <div class="container">
                 <div class="row col s12 promotion-section">
-                    <div class="col s4 center-promotion">
-                        <i class="material-icons">medication</i>
-                        <h2>Lorem ipsum</h2>
+                    <div class="col s12 m4 center-promotion">
+                        <i class="material-icons">newspaper</i>
+                        <h2>Noticias</h2>
+                        <p>Mantenete actualizado sobre temas como veterinaria y sanidad animal</p>
                     </div>
-                    <div class="col s4 center-promotion">
+                    <div class="col s12 m4 center-promotion">
                         <i class="material-icons">health_and_safety</i>
-                        <h2>Lorem ipsum</h2>
+                        <h2>Profesionales</h2>
+                        <p>Contactá con profesionales del mundo de la veterinaria</p>
                     </div>
-                    <div class="col s4 center-promotion">
+                    <div class="col s12 m4 center-promotion">
                         <i class="material-icons">people</i>
                         <h2>Lorem ipsum</h2>
-                    </div>
-                  </div> 
-            </div>
-           
-        </section>
-        <section class="home-section2 parallax ">
-            <div class="parallax-image">
-            <div class="container">
-                <div class="row">
-                    <div class="col s12">
-                        <h1>Registráte en Vet<h1>
+                        <p>Conectá con personas que aman los animales como vos</p>
                     </div>
                 </div>
             </div>
-        </div>
-    
+
+        </section>
+        <section class="home-section2 parallax ">
+            <div class="parallax-image">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <h1>¡Registráte en Vet!<h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
-
-    <img class="image-left" src='images/login-left.png' />
-    <img class="image-right" src='images/login-right.png' />
-    <section id="login">
+    <section id="login-registro">
         <div id="form row">
             <form class="col s12 m9">
                 <div class="logo">
@@ -100,17 +102,27 @@
                         <label>
                             <input type="checkbox" />
                             <span>Veterinario</span>
-                          </label>
+                        </label>
                     </div>
-                        <div class="col s12 m4 center-registro">
-                            <a id="registro-btn" class="waves-effect waves-light btn disabled" href ="registro-exitoso.html">Registrarse en Vet</a>
-                        </div>
-                 
+                    <div class="col s12 m4 center-registro">
+                        <a id="registro-btn" class="waves-effect waves-light btn disabled"
+                            href="registro-exitoso.html">Registrarse en Vet</a>
+                    </div>
+                    <div class ="col s12" id="images-registro-bottom">
+                        <img  src='images/login-left.png' />
+                        <img  src='images/login-right.png' />
+                    </div>
+
                 </div>
+               
             </form>
+          
         </div>
+        
     </section>
     </div>
+    
+   
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/myParallax.js"></script>
     <script type="text/javascript" src="js/bin/materialize.min.js"></script>

@@ -48,9 +48,19 @@ div.row.muro-row {
     text-align: center;
 }
 
-.image-left, .image-right, .btn-floating-container {
+ .image-right, .image-left,.btn-floating-container {
     position: fixed;
     bottom: 0;
+}
+.image-right, .image-left{
+    opacity: 0.1;
+}
+div.col.s12#images-registro-bottom{
+    display: none;
+    justify-content: space-between;
+    position:absolute;
+    bottom:0;
+    padding:0;
 }
 
 .image-right {
@@ -59,10 +69,9 @@ div.row.muro-row {
 
 section.home-section1 {
     background-image: url('../images/home.jpg');
-    /*height: 800px;*/
     width: 100%;
     background-size: cover;
-    min-height: 800px;
+    min-height: 770px;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -74,8 +83,8 @@ section.home-section1 {
 }
 
 #overlay-home {
-    background: rgba(0, 0, 0, 0.5);
-    height: 800px;
+    background: rgba(0, 0, 0, 0.6);
+    height: 770px;
 }
 
 section.home-section2 {
@@ -87,6 +96,11 @@ section.home-section2 {
 section#login {
     height: 880px;
 }
+section#login-registro{
+    position:relative;
+    height: 0;
+}
+
 
 .btn-floating.pulse {
     background-color: #EFE7EF;
@@ -148,11 +162,11 @@ section#login {
 
 
 .dissapear-animation {
-    animation: disappear 2s linear forwards;
+    animation: disappear 0.5s linear forwards;
 }
 
 .appear-animation {
-    animation: appear 2s linear forwards;
+    animation:  appear 0.5s linear forwards;
 }
 
 @keyframes moveUp {
@@ -223,10 +237,13 @@ section#login {
 
 .image-logo-login-top {
     position: fixed;
-    bottom: 50%;
-    display: grid;
+    bottom: 10%;
+    display: block;
     justify-items: center;
     text-align: center;
+}
+div.col.s12.m6.image-logo-login-top img{
+    width:90%;
 }
 
 .row .col.s6.image-logo-login-top {
@@ -244,7 +261,7 @@ section#login {
 }
 
 .btn-floating-container {
-    left: 50%
+    left: 40%
 }
 
 #navLogo {
@@ -707,9 +724,16 @@ div.col.s12.border.reactions-count {
     font-size: 9rem;
     text-align: center
 }
+.center-promotion h2, .center-promotion p{
+    text-align: center;
+}
 
 .promotion-section {
     align-items: center;
+    display: block;
+}
+.section-1-content{
+    justify-content: center;
     display: flex;
 }
 
@@ -958,6 +982,9 @@ div.col.s12.m8.chat-window {
 .modal-publicar img, .lateral-chat .write-post, #chats {
     margin-right: 1rem;
 }
+div.col.s12.m5.write-post.chat-write{
+    left:0;
+}
 
 .modal-publicar .align-options {
     border: 1px solid #DFDFDF;
@@ -982,6 +1009,10 @@ div.col.s12.m8.chat-window {
     height: 100%;
     display: flex;
     align-items: center;
+}
+.home-section2 h1{
+    font-weight: bold;
+    color:#523568;
 }
 
 .modal-publicar.enable-pop-up {
@@ -1036,7 +1067,7 @@ div.col.s12.m8.chat-window {
 }
 
 .seleccionado {
-    background-color: #EFE7EF;
+    background-color: transparent;
     border-radius: 4px;
 }
 
@@ -1222,6 +1253,16 @@ div.col.s12.m4.lateral.lateral-chat {
 .notificaciones-off {
     background-color: white;
 }
+section#login-registro div.row.login-row{
+    margin-right: auto;
+    margin-left:auto;
+    margin-bottom: 0;
+}
+ .row.login-row input[type="email"]:not(.browser-default).validate + label,
+ .row.login-row input[type="text"]:not(.browser-default).validate + label,
+ .row.login-row input[type="password"]:not(.browser-default).validate + label{
+    width:auto;
+}
 
 @media screen and (min-width: 1024px) {
     #logo {
@@ -1246,5 +1287,40 @@ div.col.s12.m4.lateral.lateral-chat {
     .images-gallery-big img.image-post {
         height: 100%;
     }
+    .promotion-section, div.col.s12#images-registro-bottom {
+        display: flex;
+    }
+    div.col.s12#images-registro-bottom {
+        display: flex;
+    }
+
+    .image-logo-login-top{
+        bottom: 50%;
+    }
+    div.col.s12.m6.image-logo-login-top img{
+        width: auto;
+    }
+    section#login-registro div.row.login-row{
+        margin-right: auto;
+        margin-left:auto;
+    }
+    .btn-floating-container {
+        left: 50%
+    }
+    section#login-registro{
+        height: 880px;
+    }
+    .image-right, .image-left{
+        opacity: 1;
+    }
+    
+    .col.s12.m8.input-field.comentar.inside-card-padding div.col.s12.m5.write-post.chat-write{
+        left:auto;
+    }
+    .seleccionado {
+        background-color: #EFE7EF;
+        border-radius: 4px;
+    }
+   
 
 }
