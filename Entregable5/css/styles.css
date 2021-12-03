@@ -16,6 +16,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 667px;
 }
 
 .loader {
@@ -1371,5 +1373,8 @@ section#login-registro div.row.login-row{
     }
    .align-options .post-addons, .opciones-post button{
         font-size:14px;
+    }
+    .centrar {
+        height: 900px;
     }
 }
