@@ -707,6 +707,9 @@ background-color: transparent;
     color: #757575;
     margin-right:0.5rem;
 }
+.reaction-btn:focus{
+    outline: none;
+}
 
 .align-options:hover, .align-reactions:hover {
     background-color: #EFE7EF;
