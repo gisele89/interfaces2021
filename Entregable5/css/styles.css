@@ -742,6 +742,13 @@ background-color: transparent;
 .nav-content img{
     margin-top:1rem;
 }
+.nav-content a{
+    padding-left:0.5rem;
+    padding-right: 0.5rem;
+}
+li.tab.tab-mobile{
+    margin-left:1.5rem;
+}
 
 
 .left.hide-on-med-and-down.leftnavbar {
@@ -1379,6 +1386,9 @@ section#login-registro div.row.login-row{
     .nav-content li {
         margin-right: 2rem;
     }
+    li.tab.tab-mobile{
+        margin-left:0;
+    }
     div.chat-window div.inside-card-padding{
         padding-left:2rem;
        padding-right:2rem;
@@ -1417,4 +1427,12 @@ section#login-registro div.row.login-row{
         display: inline-flex;
         justify-content: space-evenly;
     }
+    .nav-content a{
+        padding-left:1rem;
+        padding-right: 1rem;
+    }
+    ul.ul-nav{
+        margin-left:0;
+    }
+    
 }
