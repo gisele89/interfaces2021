@@ -355,6 +355,14 @@ div.col.s12.m4.image-logo-login-top img{
     justify-content: start;
     align-items: center;
     padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+#chat-datos{
+    display: inline-flex;
+    justify-content: space-between;
+    padding-left: 0;
 }
 
 .carta-chat i {
