@@ -511,7 +511,7 @@ img.col.s12.image-post {
     position: relative;
 }
 
-.input-field input[type=search].busqueda, .input-field input[type=search].busqueda:active {
+.input-field input[type=search].busqueda, div.input-field form input[type=search].busqueda:active {
     background-color: #dfdfdf;
     border-radius: 0.563rem;
     padding-left: 1rem;
