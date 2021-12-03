@@ -511,10 +511,13 @@ img.col.s12.image-post {
     position: relative;
 }
 
-.input-field input[type=search].busqueda, div.input-field form input[type=search].busqueda:active {
+.input-field input[type=search].busqueda, div.input-field form input[type=search].busqueda.focus-visible {
     background-color: #dfdfdf;
     border-radius: 0.563rem;
     padding-left: 1rem;
+}
+.input-field input[type=search]:not(.browser-default){
+    border:none;
 }
 
 div .card.card-padding {
