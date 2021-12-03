@@ -68,9 +68,10 @@ div.col.s12#images-registro-bottom{
 }
 
 section.home-section1 {
-    background-image: url('../images/home.jpg');
+    /*background-image: url('../images/home.jpg');*/
+    background-image: url('../images/home-1.svg');
     width: 100%;
-    background-size: cover;
+    background-size: contain;
     min-height: 770px;
     background-position: center;
     background-attachment: fixed;
@@ -240,9 +241,9 @@ section#login-registro{
     bottom: 10%;
     display: block;
     justify-items: center;
-    text-align: center;
+    text-align:center;
 }
-div.col.s12.m6.image-logo-login-top img{
+div.col.s12.m4.image-logo-login-top img{
     width:90%;
 }
 
@@ -261,7 +262,7 @@ div.col.s12.m6.image-logo-login-top img{
 }
 
 .btn-floating-container {
-    left: 40%
+    left: 42%
 }
 
 #navLogo {
@@ -1324,9 +1325,9 @@ section#login-registro div.row.login-row{
     }
 
     .image-logo-login-top{
-        bottom: 50%;
+        bottom: 40%;
     }
-    div.col.s12.m6.image-logo-login-top img{
+    div.col.s12.m4.image-logo-login-top img{
         width: auto;
     }
     section#login-registro div.row.login-row{
@@ -1334,7 +1335,7 @@ section#login-registro div.row.login-row{
         margin-left:auto;
     }
     .btn-floating-container {
-        left: 50%
+        left: 48.5%
     }
     section#login-registro{
         height: 880px;
@@ -1376,5 +1377,11 @@ section#login-registro div.row.login-row{
     }
     .centrar {
         height: 900px;
+    }
+    .section-1-content{
+        justify-content: flex-start;
+    }
+    .image-logo-login-top{
+        text-align:left;
     }
 }
