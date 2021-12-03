@@ -61,6 +61,7 @@ div.col.s12#images-registro-bottom{
     position:absolute;
     bottom:0;
     padding:0;
+    z-index:-1;
 }
 
 .image-right {
@@ -237,7 +238,7 @@ section#login-registro{
 }
 
 .image-logo-login-top {
-    position: fixed;
+    position: absolute;
     bottom: 10%;
     display: block;
     justify-items: center;
