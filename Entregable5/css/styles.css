@@ -458,12 +458,15 @@ div.col.s12.m4.image-logo-login-top img{
 
 #profile-post {
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     align-items: center;
     color: #434343;
     font-weight: bold;
     transition: all 0.5s ease-in-out;
     margin-top: 0.5rem;
+}
+#profile-post i{
+    margin-left:0.5rem ;
 }
 
 .text-hora {
@@ -676,6 +679,9 @@ div.col.s12.border.reactions-count {
 .align-reactions {
     margin-top: 0.5rem;
 }
+#post-2:hover{
+background-color: transparent;
+}
 
 .align-options i, .align-reactions i {
     color: #935F95;
@@ -863,6 +869,10 @@ i:hover {
 
 .reactions p {
     margin-left: 7px;
+}
+.reactions i:hover{
+    color:#935f95;
+    cursor:default;
 }
 
 .reaccion-comentarios button, .opciones-post button {
@@ -1140,7 +1150,7 @@ div.col.s12.m5.write-post.chat-write{
 
 .container-reactions {
     position: absolute;
-    bottom: 2%;
+    bottom: 4%;
     background-color: #EFE7EF;
     border-radius: 4px;
     display: inline-flex;
@@ -1387,5 +1397,13 @@ section#login-registro div.row.login-row{
     }
     .image-logo-login-top{
         text-align:left;
+    }
+    .container-reactions {
+        position: absolute;
+        bottom: 2%;
+        background-color: #EFE7EF;
+        border-radius: 4px;
+        display: inline-flex;
+        justify-content: space-evenly;
     }
 }
